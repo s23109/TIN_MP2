@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj Klient</title>
+    <link rel="stylesheet" href="/Styles/default.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Quicksand:wght@300&display=swap"
+        rel="stylesheet">
+    <script type="application/javascript" src="/Scripts/validationCommon.js"></script>
+    <script type="application/javascript" src="/Scripts/validationKlient.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <a href="/index.html">
+            <h1>Biblioteka</h1>
+        </a>
+        <a href="/index.html">
+            <img src="/Images/Logo.png" alt="Biblioteka Logo">
+        </a>
+    </header>
+
+
+
+    <nav>
+
+        <ul>
+
+            <li><a href="/index.html">Strona główna</a> </li>
+            <li><a href="/Subpages/Klient/list.html" class="active">Klient</a> </li>
+            <li><a href="/Subpages/Wypozyczenie/list.html">Wypożyczenie</a> </li>
+            <li><a href="/Subpages/Egzemplarz_ksiazki/list.html">Egzemplarz Książki</a> </li>
+
+
+        </ul>
+
+    </nav>
+
+    <main>
+
+        <h2>Edycja Klienta</h2>
+
+
+
+        <form class="form" novalidate onsubmit="return validateForm();">
+
+            <label>Imie:<span class="symbol-required">*</span></label>
+            <input type="text" name="firstName" id="firstName" value="Adam" required>
+            <span id="errorFirstName" class="error-text"></span>
+
+            <label>Nazwisko:<span class="symbol-required">*</span></label>
+            <input type="text" name="lastName" id="lastName" value="Małysz" required>
+            <span id="errorLastName" class="error-text"></span>
+
+            <label>Email:</label>
+            <input type="email" name="email" id="email" value="AM@ttt.pl">
+            <span id="errorEmail" class="error-text"></span>
+
+            <!-- Buttons end form -->
+            <div class="form-buttons">
+
+                <p id="errorSummary" class="error-text"></p>
+                <input type="submit" value="Dodaj" class="form-button-submit">
+                <a href="/Subpages/Klient/list.html" class="form-button-cancel">Anuluj</a>
+
+            </div>
+
+        </form>
+
+    </main>
+    <footer><a href="mailto: s23109@pjwstk.edu.pl">Dawid Kachniarz, s23109</a></footer>
+
+</body>
+
+</html>

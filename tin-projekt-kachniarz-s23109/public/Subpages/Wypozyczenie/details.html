@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wypożyczenie</title>
+    <link rel="stylesheet" href="/Styles/default.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Quicksand:wght@300&display=swap"
+        rel="stylesheet">
+    <script type="application/javascript" src="/Scripts/validationCommon.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <a href="/index.html">
+            <h1>Biblioteka</h1>
+        </a>
+        <a href="/index.html">
+            <img src="/Images/Logo.png" alt="Biblioteka Logo">
+        </a>
+    </header>
+
+
+
+    <nav>
+
+        <ul>
+
+            <li><a href="/index.html">Strona główna</a> </li>
+            <li><a href="/Subpages/Klient/list.html">Klient</a> </li>
+            <li><a href="/Subpages/Wypozyczenie/list.html" class="active">Wypożyczenie</a> </li>
+            <li><a href="/Subpages/Egzemplarz_ksiazki/list.html">Egzemplarz Książki</a> </li>
+
+
+        </ul>
+
+    </nav>
+
+    <main>
+
+        <h2>Wypożyczenie</h2>
+
+
+
+        <form class="form">
+
+            <label>Książka:<span class="symbol-required">*</span></label>
+            <input type="text" name="book" id="book" value=",,Pan Tadeusz'' ID:1" disabled>
+            <span id="errorBook"></span>
+
+            <label>Klient:<span class="symbol-required">*</span></label>
+            <input type="text" name="client" id="client" value="Adam Małysz ID:1" disabled>
+            <span id="errorClient"></span>
+
+
+            <label>Data wypożyczenia:<span class="symbol-required">*</span></label>
+            <input type="date" name="dateFrom" id="dateFrom" value="2001-01-01" disabled>
+            <span id="errorDateFrom"></span>
+
+            <label>Data zwrotu:</label>
+            <input type="date" name="dateTo" id="dateTo" value="2001-02-19" disabled>
+            <span id="errorDateTo"></span>
+
+
+
+
+        </form>
+
+        <div class="details-buttons">
+            <a href="/Subpages/Wypozyczenie/list.html" class="button-return">
+                <img src="/Images/icons8-u-turn-to-left-64.png" alt="RETURN" class="button-return-icon">
+                <span class="button-return-text">Powrót</span>
+            </a>
+            <a href="/Subpages/Wypozyczenie/form-edit.html" class="button-edit">
+                <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="button-edit-icon">
+                <span class="button-edit-text">Edytuj</span>
+            </a>
+        </div>
+
+    </main>
+    <footer><a href="mailto: s23109@pjwstk.edu.pl">Dawid Kachniarz, s23109</a></footer>
+
+</body>
+
+</html>

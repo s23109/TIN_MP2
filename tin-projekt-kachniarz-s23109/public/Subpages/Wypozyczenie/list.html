@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Wypożyczenie</title>
+  <link rel="stylesheet" href="/Styles/default.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Quicksand:wght@300&display=swap"
+    rel="stylesheet">
+  <script type="application/javascript" src="/Scripts/validationCommon.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <a href="/index.html">
+      <h1>Biblioteka</h1>
+    </a>
+    <a href="/index.html">
+      <img src="/Images/Logo.png" alt="Biblioteka Logo">
+    </a>
+  </header>
+
+
+
+  <nav>
+
+    <ul>
+
+      <li><a href="/index.html">Strona główna</a> </li>
+      <li><a href="/Subpages/Klient/list.html">Klient</a> </li>
+      <li><a href="/Subpages/Wypozyczenie/list.html" class="active">Wypożyczenie</a> </li>
+      <li><a href="/Subpages/Egzemplarz_ksiazki/list.html">Egzemplarz Książki</a> </li>
+
+
+
+    </ul>
+
+  </nav>
+
+  <main>
+
+    <h2>Lista Wypożyczeń</h2>
+
+
+
+    <table class="table-list">
+
+      <thead>
+        <tr>
+          <th>Nazwa Książki</th>
+          <th>Klient</th>
+          <th class="cut-detail">Email</th>
+          <th>Data Wypożyczenia</th>
+          <th>Data Zwrotu</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+
+        <tr>
+
+          <td>,,Pan Tadeusz''</td>
+          <td>Adam Małysz</td>
+          <td class="cut-detail">AM@ttt.pl</td>
+          <td>2001-01-01</td>
+          <td>2001-02-19</td>
+          <td>
+
+            <ul class="list-actions">
+              <li>
+                <a href="/Subpages/Wypozyczenie/details.html" class="list-actions-button-details">
+                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
+                  <span class="list-actions-button-details-text">Więcej</span>
+                </a>
+
+              </li>
+
+              <li>
+                <a href="/Subpages/Wypozyczenie/form-edit.html" class="list-actions-button-edit">
+                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
+                  <span class="list-actions-button-edit-text">Edytuj</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="" class="list-actions-button-delete">
+                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
+                  <span class="list-actions-button-delete-text">Usuń</span>
+                </a>
+              </li>
+            </ul>
+
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>,,Java - Podstawy''</td>
+          <td>Adam Małysz</td>
+          <td class="cut-detail">AM@ttt.pl</td>
+          <td>2001-03-22</td>
+          <td></td>
+          <td>
+
+            <ul class="list-actions">
+              <li>
+                <a href="/Subpages/Wypozyczenie/details.html" class="list-actions-button-details">
+                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
+                  <span class="list-actions-button-details-text">Więcej</span>
+                </a>
+
+              </li>
+
+              <li>
+                <a href="/Subpages/Wypozyczenie/form-edit.html" class="list-actions-button-edit">
+                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
+                  <span class="list-actions-button-edit-text">Edytuj</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="" class="list-actions-button-delete">
+                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
+                  <span class="list-actions-button-delete-text">Usuń</span>
+                </a>
+              </li>
+            </ul>
+
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>,,1984''</td>
+          <td>Mariusz Pudzianowski</td>
+          <td class="cut-detail">MP_MP@mp.pl</td>
+          <td>1999-12-01</td>
+          <td>2000-01-14</td>
+          <td>
+
+            <ul class="list-actions">
+              <li>
+                <a href="/Subpages/Wypozyczenie/details.html" class="list-actions-button-details">
+                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
+                  <span class="list-actions-button-details-text">Więcej</span>
+                </a>
+
+              </li>
+
+              <li>
+                <a href="/Subpages/Wypozyczenie/form-edit.html" class="list-actions-button-edit">
+                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
+                  <span class="list-actions-button-edit-text">Edytuj</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="" class="list-actions-button-delete">
+                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
+                  <span class="list-actions-button-delete-text">Usuń</span>
+                </a>
+              </li>
+            </ul>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+
+
+    </table>
+
+    <p><a href="/Subpages/Wypozyczenie/form.html" class="button-add">Dodaj nowe wypożyczenie</a> </p>
+
+  </main>
+
+  <footer><a href="mailto: s23109@pjwstk.edu.pl">Dawid Kachniarz, s23109</a></footer>
+
+</body>
+
+</html>

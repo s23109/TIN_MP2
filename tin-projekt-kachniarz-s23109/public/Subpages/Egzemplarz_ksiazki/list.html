@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Egzemplarz Książki</title>
+  <link rel="stylesheet" href="/Styles/default.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Quicksand:wght@300&display=swap"
+    rel="stylesheet">
+  <script type="application/javascript" src="/Scripts/validationCommon.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <a href="/index.html">
+      <h1>Biblioteka</h1>
+    </a>
+    <a href="/index.html">
+      <img src="/Images/Logo.png" alt="Biblioteka Logo">
+    </a>
+  </header>
+
+
+
+  <nav>
+
+    <ul>
+
+      <li><a href="/index.html">Strona główna</a> </li>
+      <li><a href="/Subpages/Klient/list.html">Klient</a> </li>
+      <li><a href="/Subpages/Wypozyczenie/list.html">Wypożyczenie</a> </li>
+      <li><a href="/Subpages/Egzemplarz_ksiazki/list.html" class="active">Egzemplarz Książki</a> </li>
+
+    </ul>
+
+  </nav>
+
+  <main>
+
+    <h2>Lista Książek</h2>
+
+
+
+    <table class="table-list">
+
+      <thead>
+        <tr>
+          <th>Tytuł</th>
+          <th>Data Pozyskania</th>
+          <th>Strony</th>
+          <th>Uszkodzenia</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <!-- Pan Tadeusz -->
+        <tr>
+
+          <td>,,Pan Tadeusz''</td>
+          <td>2000-01-01</td>
+          <td>21</td>
+          <td></td>
+          <td>
+
+            <ul class="list-actions">
+              <li>
+                <a href="/Subpages/Egzemplarz_ksiazki/details.html" class="list-actions-button-details">
+                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
+                  <span class="list-actions-button-details-text">Więcej</span>
+                </a>
+
+              </li>
+
+              <li>
+                <a href="/Subpages/Egzemplarz_ksiazki/form-edit.html" class="list-actions-button-edit">
+                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
+                  <span class="list-actions-button-edit-text">Edytuj</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="" class="list-actions-button-delete">
+                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
+                  <span class="list-actions-button-delete-text">Usuń</span>
+                </a>
+              </li>
+            </ul>
+
+          </td>
+
+        </tr>
+        <!-- 1984 -->
+        <tr>
+
+          <td>,,1984''</td>
+          <td>1999-11-11</td>
+          <td>69</td>
+          <td>Uszkodzona strona tytułowa, porwane niektóre strony</td>
+          <td>
+
+            <ul class="list-actions">
+              <li>
+                <a href="/Subpages/Egzemplarz_ksiazki/details.html" class="list-actions-button-details">
+                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
+                  <span class="list-actions-button-details-text">Więcej</span>
+                </a>
+
+              </li>
+
+              <li>
+                <a href="/Subpages/Egzemplarz_ksiazki/form-edit.html" class="list-actions-button-edit">
+                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
+                  <span class="list-actions-button-edit-text">Edytuj</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="" class="list-actions-button-delete">
+                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
+                  <span class="list-actions-button-delete-text">Usuń</span>
+                </a>
+              </li>
+            </ul>
+
+          </td>
+
+        </tr>
+        <!-- Java - Podstawy -->
+        <tr>
+
+          <td>,,Java - Podstawy''</td>
+          <td>2000-03-27</td>
+          <td>999</td>
+          <td>Ślady zalania kawą</td>
+          <td>
+
+            <ul class="list-actions">
+              <li>
+                <a href="/Subpages/Egzemplarz_ksiazki/details.html" class="list-actions-button-details">
+                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
+                  <span class="list-actions-button-details-text">Więcej</span>
+                </a>
+
+              </li>
+
+              <li>
+                <a href="/Subpages/Egzemplarz_ksiazki/form-edit.html" class="list-actions-button-edit">
+                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
+                  <span class="list-actions-button-edit-text">Edytuj</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="" class="list-actions-button-delete">
+                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
+                  <span class="list-actions-button-delete-text">Usuń</span>
+                </a>
+              </li>
+            </ul>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+
+
+    </table>
+
+    <p><a href="/Subpages/Egzemplarz_ksiazki/form.html" class="button-add">Dodaj nową książkę</a> </p>
+
+  </main>
+  <footer><a href="mailto: s23109@pjwstk.edu.pl">Dawid Kachniarz, s23109</a></footer>
+
+</body>
+
+</html>
