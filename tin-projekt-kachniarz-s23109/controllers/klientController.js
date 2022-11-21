@@ -1,5 +1,5 @@
 exports.showKlientList = (req, res, next) => {
-    res.render('Subpages/Klient/list',{});
+    res.render('Subpages/Klient/list',{navLocation:'klient'});
 }
 
 exports.showAddKlientForm = (req, res , next) => {
