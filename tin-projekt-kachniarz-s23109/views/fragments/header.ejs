@@ -26,11 +26,11 @@
 <nav>
 
     <ul>
-
-        <li><a href="/"  class ="<%= navLocation == 'main' ? 'active' : '' %>">Strona główna</a> </li>
-        <li><a href="/klient" class ="<%= navLocation == 'klient' ? 'active' : '' %>">Klient</a> </li>
-        <li><a href="/Subpages/Wypozyczenie/list.html">Wypożyczenie</a> </li>
-        <li><a href="/Subpages/Egzemplarz_ksiazki/list.html">Egzemplarz Książki</a> </li>
+        <!-- To w "" jest po prostu krótkim ifem -->
+        <li><a href="/"  class ="<%= navLocation == 'Main' ? 'active' : '' %>">Strona główna</a> </li>
+        <li><a href="/klient" class ="<%= navLocation == 'Klient' ? 'active' : '' %>">Klient</a> </li>
+        <li><a href="/wypozyczenie" class ="<%= navLocation == 'Wypozyczenie' ? 'active' : '' %>">Wypożyczenie</a> </li>
+        <li><a href="/egzemplaz_ksiazki" class ="<%= navLocation == 'Egzemplarz_ksiazki' ? 'active' : '' %>">Egzemplarz Książki</a> </li>
 
     </ul>
 
