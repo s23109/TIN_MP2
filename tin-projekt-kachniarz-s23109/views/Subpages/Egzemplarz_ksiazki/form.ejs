@@ -1,44 +1,4 @@
-<!DOCTYPE html>
-<html lang="pl">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Nowy Egzemplarz Książki</title>
-    <link rel="stylesheet" href="/Styles/default.css" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Quicksand:wght@300&display=swap"
-        rel="stylesheet">
-    <script type="application/javascript" src="/Scripts/validationCommon.js"></script>
-    <script type="application/javascript" src="/Scripts/validationEgzemplarz_Ksiazki.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
-</head>
-
-<body>
-
-    <header>
-        <a href="/views/index.html">
-            <h1>Biblioteka</h1>
-        </a>
-        <a href="/views/index.html">
-            <img src="/Images/Logo.png" alt="Biblioteka Logo">
-        </a>
-    </header>
-
-
-
-    <nav>
-
-        <ul>
-
-            <li><a href="/views/index.html">Strona główna</a> </li>
-            <li><a href="/Subpages/Klient/list.html">Klient</a> </li>
-            <li><a href="/Subpages/Wypozyczenie/list.html">Wypożyczenie</a> </li>
-            <li><a href="/Subpages/Egzemplarz_ksiazki/list.html" class="active">Egzemplarz Książki</a> </li>
-
-
-        </ul>
-
-    </nav>
+<%- include('../../fragments/header.ejs') %>
 
     <main>
 
@@ -74,8 +34,4 @@
 
         </form>
     </main>
-    <footer><a href="mailto: s23109@pjwstk.edu.pl">Dawid Kachniarz, s23109</a></footer>
-
-</body>
-
-</html>
+<%- include('../../fragments/footer.ejs') %>
