@@ -8,17 +8,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Quicksand:wght@300&display=swap"
           rel="stylesheet">
-    <script type="application/javascript" src="/Scripts/validationCommon.js"></script>
+
+    <% if (isForm===true) {%>
+        <%- include('formValidations.ejs') %>
+    <% } %>
+
+
     <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
 </head>
 
 <body>
 
 <header>
-    <a href="/views/index.html">
+    <a href="/">
         <h1>Biblioteka</h1>
     </a>
-    <a href="/views/index.html">
+    <a href="/">
         <img src="/Images/Logo.png" alt="Biblioteka Logo">
     </a>
 </header>
@@ -30,7 +35,7 @@
         <li><a href="/"  class ="<%= navLocation == 'Main' ? 'active' : '' %>">Strona główna</a> </li>
         <li><a href="/klient" class ="<%= navLocation == 'Klient' ? 'active' : '' %>">Klient</a> </li>
         <li><a href="/wypozyczenie" class ="<%= navLocation == 'Wypozyczenie' ? 'active' : '' %>">Wypożyczenie</a> </li>
-        <li><a href="/egzemplaz_ksiazki" class ="<%= navLocation == 'Egzemplarz_ksiazki' ? 'active' : '' %>">Egzemplarz Książki</a> </li>
+        <li><a href="/egzemplarz_ksiazki" class ="<%= navLocation == 'Egzemplarz_Ksiazki' ? 'active' : '' %>">Egzemplarz Książki</a> </li>
 
     </ul>
 
