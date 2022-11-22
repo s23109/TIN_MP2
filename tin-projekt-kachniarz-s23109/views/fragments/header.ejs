@@ -12,10 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Quicksand:wght@300&display=swap"
           rel="stylesheet">
 
-    <% if (docType == 'form') {%>
-        <%- include('formValidations.ejs') %>
-    <% } %>
-
+    <% switch (docType) {
+        case 'form': %>
+    <%- include('formValidations.ejs') %>
+    <% break;
+    case 'list' :%>
+    <script type="application/javascript" src="/Scripts/verificationCommon.js"></script>
+    <% break ;
+    default: %>
+    <!--Doc type not implemented-->
+    <%}%>
 
 
 </head>
