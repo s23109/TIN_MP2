@@ -1,20 +1,17 @@
-<% switch (navLocation) {
-
+    <% switch (navLocation) {
 case 'Main' : %>
-<title>Biblioteka</title>
+    <title>Biblioteka</title>
 <% break;%>
 <% case 'Wypozyczenie' :%>
-<title>Wypozyczenie</title>
+    <title>Wypozyczenie</title>
 <% break;%>
 <%case 'Egzemplarz_Ksiazki' :%>
-<title>Egzemplarz_Ksiazki</title>
+    <title>Egzemplarz_Ksiazki</title>
 <% break;%>
-
 <%case 'Klient' :%>
-<title>Klient</title>
+    <title>Klient</title>
 <% break;%>
-
 <%default :%>
 <!-- PAGE NAME NOT IMPLEMENTED , check /fragments/pagesTitles.ejs-->
-<title>Not_Implemented</title>
+    <title>Not_Implemented</title>
 <% } %>
