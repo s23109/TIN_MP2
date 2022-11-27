@@ -9,6 +9,12 @@ var klientRouter = require('./routes/klientRoute');
 var wypozyczenieRouter = require('./routes/wypozyczenieRoute');
 var egzemplarz_ksiazkiRoute = require('./routes/egzemplarz_ksiazkiRoute');
 
+const sequelizeInit = require('./config/sequelize/init');
+
+sequelizeInit().catch(err => {
+  console.log(err);
+})
+
 var app = express();
 
 // view engine setup
