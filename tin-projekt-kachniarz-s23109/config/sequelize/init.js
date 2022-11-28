@@ -15,14 +15,14 @@ module.exports = () => {
 
     let allKlient , allEgzemplarz;
 
-    return sequelize.sync({force: true})
+    return sequelize.sync({force: false})
         .then( () => {
             return Klient.findAll();
             }
         )
         .then( klie => {
-
-            if (!klie || klie.length === 0){
+            console.log("Klie length =" + klie.length);
+            if (!klie || klie.length == 0){
                 //jak nie ma nic przy start upie, to wklej dane startowe
                 return Klient.bulkCreate([
                     {imie:'Adam' , nazwisko:'Małysz' ,email:'AM@ttt.pl'},
@@ -44,8 +44,8 @@ module.exports = () => {
             return Egzemplarz_ksiazki.findAll();
         })
         .then( ksia => {
-
-            if (!ksia || ksia.length === 0 ){
+            console.log("ksia length =" + ksia.length);
+            if (!ksia || ksia.length == 0 ){
 
                 return Egzemplarz_ksiazki.bulkCreate([
                     {tytul:'Pan Tadeusz' , data_pozyskania:'2001-01-01' , strony:'21' , uszkodzenia:null},
@@ -67,7 +67,8 @@ module.exports = () => {
             return Wypozyczenie.findAll();
         })
         .then( wypo => {
-            if (!wypo || wypo.length ===0) {
+            console.log("wypo length =" + wypo.length);
+            if (!wypo || wypo.length ==0) {
                 // w aso brak później findall
                 Wypozyczenie.bulkCreate([
                     {Ksiazka_id:allEgzemplarz[0]._id, Klient_id:allKlient[0]._id, data_od:'2001-01-01', data_do:'2001-02-19'},
