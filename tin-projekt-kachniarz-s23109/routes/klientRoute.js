@@ -6,8 +6,8 @@ const klientController = require('../controllers/klientController');
 //routowanie na dane ,,podstrony
 router.get('/',klientController.showKlientList);
 router.get('/add' , klientController.showAddKlientForm);
-//tu z tzw ,,path param'' - empID który będzie potem czytany
-router.get('/details/:empId',klientController.showKlientDetails);
+//tu z tzw ,,path param'' - kliID który będzie potem czytany
+router.get('/details/:kliID',klientController.showKlientDetails);
 
 //eksport routera jako obiektu
 module.exports = router;

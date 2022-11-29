@@ -5,6 +5,6 @@ const egzemplarz_ksiazkiController = require('../controllers/egzemplarz_ksiazkiC
 
 router.get('/' , egzemplarz_ksiazkiController.showKsiazkaList);
 router.get('/add' , egzemplarz_ksiazkiController.showAddKsiazkaForm);
-router.get('/details/:bookId' , egzemplarz_ksiazkiController.showKsiazkaDetails);
+router.get('/details/:bookID' , egzemplarz_ksiazkiController.showKsiazkaDetails);
 
 module.exports = router;

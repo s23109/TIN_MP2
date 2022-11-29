@@ -51,6 +51,6 @@ exports.deleteWypozyczenie = (wypID) => {
 };
 
 exports.deleteManyWypozyczenie = (wypIDs) => {
-    //jakiś dziwny skaner ? 
+    //jakiś dziwny skaner ?
   return Wypozyczenie.find( {_id: {[Sequelize.Op.in] : wypIDs}});
 };
