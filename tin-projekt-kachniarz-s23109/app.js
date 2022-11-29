@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var klientRouter = require('./routes/klientRoute');
 var wypozyczenieRouter = require('./routes/wypozyczenieRoute');
-var egzemplarz_ksiazkiRoute = require('./routes/egzemplarz_ksiazkiRoute');
+var egzemplarz_ksiazkiRouter = require('./routes/egzemplarz_ksiazkiRoute');
 
 var klientAPIRouter = require('./routes/api/KlientAPIRoute');
 var wypozyczeniaAPIRouter = require('./routes/api/WypozyczenieAPIRoute');
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/klient',klientRouter);
 app.use('/wypozyczenie' , wypozyczenieRouter);
-app.use('/egzemplarz_ksiazki',egzemplarz_ksiazkiRoute);
+app.use('/egzemplarz_ksiazki',egzemplarz_ksiazkiRouter);
 
 app.use('/api/klient' , klientAPIRouter);
 app.use('/api/wypozyczenie' , wypozyczeniaAPIRouter);
