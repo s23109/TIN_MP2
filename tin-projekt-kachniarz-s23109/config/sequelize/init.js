@@ -14,7 +14,7 @@ module.exports = () => {
     Wypozyczenie.belongsTo(Egzemplarz_ksiazki, {as: 'ksiazka' , foreignKey:{name:'Ksiazka_id' , allowNull:false}});
 
     let allKlient , allEgzemplarz;
-
+    // jeśli force = true , to zawsze podmieni
     return sequelize.sync({force: false})
         .then( () => {
             return Klient.findAll();
