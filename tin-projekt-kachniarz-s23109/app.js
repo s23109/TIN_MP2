@@ -9,6 +9,10 @@ var klientRouter = require('./routes/klientRoute');
 var wypozyczenieRouter = require('./routes/wypozyczenieRoute');
 var egzemplarz_ksiazkiRoute = require('./routes/egzemplarz_ksiazkiRoute');
 
+var klientAPIRouter = require('./routes/api/KlientAPIRoute');
+var wypozyczeniaAPIRouter = require('./routes/api/WypozyczenieAPIRoute');
+var egzemplarz_ksiazkiAPIRouter = require('./routes/api/Egzemplarz_ksiazkiAPIRoute');
+
 const sequelizeInit = require('./config/sequelize/init');
 
 sequelizeInit().catch(err => {
@@ -31,6 +35,10 @@ app.use('/', indexRouter);
 app.use('/klient',klientRouter);
 app.use('/wypozyczenie' , wypozyczenieRouter);
 app.use('/egzemplarz_ksiazki',egzemplarz_ksiazkiRoute);
+
+app.use('/api/klient' , klientAPIRouter);
+app.use('/api/wypozyczenie' , wypozyczeniaAPIRouter);
+app.use('/api/egzemplarz_ksiazki', egzemplarz_ksiazkiAPIRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
