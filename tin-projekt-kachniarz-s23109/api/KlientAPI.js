@@ -69,7 +69,7 @@ exports.deleteKlient = (req , res , next) => {
 
   KlientRepository.deleteKlient(kliID)
       .then(result => {
-          res.statusCode(200).json({
+          res.status(200).json({
               message: 'Pomyślnie usunięto klienta o id: ' + kliID
           })
           }

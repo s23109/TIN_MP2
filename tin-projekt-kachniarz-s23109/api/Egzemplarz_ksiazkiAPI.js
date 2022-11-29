@@ -3,7 +3,7 @@ const Egzemplarz_ksiazkiRepository = require('../repository/sequelize/Egzemplarz
 exports.getAllEgzemplarz_ksiazki = (req, res , next) => {
   return Egzemplarz_ksiazkiRepository.getAllEgzemplarz_Ksiazki()
       .then( ksia => {
-          res.statuscode(200).json(ksia);
+          res.status(200).json(ksia);
       })
       .catch( err => {
           console.log(err);
@@ -21,7 +21,7 @@ exports.getEgzemplarz_ksiazkiByID = (req, res, next) => {
               });
           }
           else {
-              res.statusCode(200).json(ksia);
+              res.status(200).json(ksia);
           }
       })
 };
@@ -29,7 +29,7 @@ exports.getEgzemplarz_ksiazkiByID = (req, res, next) => {
 exports.createEgzemplarz_ksiazki = (req, res , next) => {
   Egzemplarz_ksiazkiRepository.createEgzemplarz_Ksiazki(req.body)
       .then(newObj => {
-          res.statusCode(200).json(newObj);
+          res.status(200).json(newObj);
       })
       .catch(err => {
 
@@ -44,7 +44,7 @@ exports.updateEgzemplarz_ksiazki = (req ,res , next) => {
   const bookID = req.params.bookID;
   Egzemplarz_ksiazkiRepository.updateEgzemplarz_Ksiazki(bookID,req.body)
       .then( result => {
-          res.statusCode(200).json({
+          res.status(200).json({
               message: 'Książka o id: ' + bookID + ' pomyślnie zaaktualizowana'
           })
       })
@@ -60,7 +60,7 @@ exports.deleteEgzemplarz_ksiazki = (req, res, next) => {
   const bookID = req.params.bookID;
   Egzemplarz_ksiazkiRepository.deleteEgzemplarz_Ksiazki(bookID)
       .then( result => {
-          res.statusCode(200).json({
+          res.status(200).json({
               message: 'Pomyślnie usunięto książkę o id: ' + bookID
           })
       })
