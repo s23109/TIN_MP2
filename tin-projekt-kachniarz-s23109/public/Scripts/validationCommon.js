@@ -64,10 +64,8 @@ function checkTextLengthRange(value, min, max) {
 }
 
 function checkEmail(value) {
+// uwaga , funkcja sprawdza tylko regex , a nie czy pole zostało podane
 
-    if (!value) {
-        return false;
-    }
 
     value = value.toString().trim();
 

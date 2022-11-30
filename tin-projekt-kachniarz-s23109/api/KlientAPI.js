@@ -55,9 +55,19 @@ exports.updateKlient = (req , res , next) => {
           )
       })
       .catch(err => {
-         if (!err.statusCode){
+
+          if (err == "404"){
+              err.statusCode= 404;
+              err.message = "Nie znaleziono rekordu o id: " + kliID;
+
+          }
+
+         if (!err.statusCode && err != "404"){
              err.statusCode = 500;
          }
+
+
+
          next(err);
       });
 

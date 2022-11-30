@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
 
+const Sequelize = require('sequelize');
 const sequelize = require('../../config/sequelize/sequelize');
 
 const Klient = sequelize.define('Klient', {
@@ -26,6 +26,16 @@ const Klient = sequelize.define('Klient', {
         maxLength :64
     }
 
+
+    // validate: {
+    //   validator(){
+    //
+    //       if (checkRequired(this.name)){
+    //
+    //       }
+    //
+    //   }
+    // }
 
 });
 

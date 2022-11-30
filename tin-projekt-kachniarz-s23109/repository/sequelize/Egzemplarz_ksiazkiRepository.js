@@ -43,6 +43,8 @@ exports.createEgzemplarz_Ksiazki = (newKsiData) => {
 
 exports.updateEgzemplarz_Ksiazki = (ksiID , ksiData) => {
 
+
+
     return Egzemplarz_Ksiazki.update(ksiData , {where: {_id: ksiID}});
 
 }
@@ -50,4 +52,7 @@ exports.updateEgzemplarz_Ksiazki = (ksiID , ksiData) => {
 exports.deleteEgzemplarz_Ksiazki = (ksiID) => {
   return Egzemplarz_Ksiazki.destroy( {where: {_id: ksiID}});
 };
+
+
+
 

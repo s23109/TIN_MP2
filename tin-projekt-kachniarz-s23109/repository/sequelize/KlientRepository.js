@@ -38,13 +38,17 @@ exports.createKlient = (newKlientData) => {
   });
 };
 
-exports.updateKlient = (kliID , kliData) => {
-    // na co jest to przypisywanie danych ??? (skoro wcześniej wymuszamy ,,format'' przez require modelu
-    const imie = kliData.imie;
-    const nazwisko = kliData.nazwisko;
-    const email = kliData.email;
+exports.updateKlient = async (kliID , kliData) => {
 
-    return Klient.update(kliData , {where: {_id: kliID}});
+    var klient = await Klient.findByPk(kliID);
+
+    if (klient == null){
+        throw  "404";
+    }
+    else {
+        //record exists
+        return Klient.update(kliData , {where: {_id: kliID}});
+    }
 
 }
 
