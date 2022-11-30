@@ -16,7 +16,7 @@ exports.getEgzemplarz_ksiazkiByID = (req, res, next) => {
       .then( ksia => {
 
           if (!ksia){
-              res.statusCode(404).json({
+              res.status(404).json({
                   message: 'Nie znaleziono książki o id: ' + bookID
               });
           }
