@@ -65,7 +65,7 @@ exports.updateKlient = (req , res , next) => {
 };
 
 exports.deleteKlient = (req , res , next) => {
-  const kliID = req.param.kliID;
+  const kliID = req.params.kliID;
 
   KlientRepository.deleteKlient(kliID)
       .then(result => {
