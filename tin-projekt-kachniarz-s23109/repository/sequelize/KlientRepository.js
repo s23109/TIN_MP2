@@ -40,15 +40,7 @@ exports.createKlient = (newKlientData) => {
 
 exports.updateKlient = async (kliID , kliData) => {
 
-    var klient = await Klient.findByPk(kliID);
-
-    if (klient == null){
-        throw  "404";
-    }
-    else {
-        //record exists
         return Klient.update(kliData , {where: {_id: kliID}});
-    }
 
 }
 

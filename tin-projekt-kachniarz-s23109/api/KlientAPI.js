@@ -43,51 +43,69 @@ exports.createKlient = (req, res, next) => {
       })
 };
 
-exports.updateKlient = (req , res , next) => {
+exports.updateKlient = async (req , res , next) => {
   const kliID = req.params.kliID;
 
-  KlientRepository.updateKlient(kliID,req.body)
-      .then( result => {
-          res.status(200).json(
-              {
-                  message: 'Klient o id: ' + kliID + ' pomyślnie zaaktualizowany'
+  const kli = await KlientRepository.getKlientByID(kliID);
+
+  if (kli != null) {
+      KlientRepository.updateKlient(kliID, req.body)
+          .then(result => {
+              res.status(200).json(
+                  {
+                      message: 'Klient o id: ' + kliID + ' pomyślnie zaaktualizowany'
+                  }
+              )
+          })
+          .catch(err => {
+
+              if (err == "404") {
+                  err.statusCode = 404;
+                  err.message = "Nie znaleziono rekordu o id: " + kliID;
+
               }
-          )
-      })
-      .catch(err => {
 
-          if (err == "404"){
-              err.statusCode= 404;
-              err.message = "Nie znaleziono rekordu o id: " + kliID;
-
-          }
-
-         if (!err.statusCode && err != "404"){
-             err.statusCode = 500;
-         }
+              if (!err.statusCode) {
+                  err.statusCode = 500;
+              }
 
 
-
-         next(err);
+              next(err);
+          });
+  }
+  else {
+      res.status(404).json({
+          message: "Nie znaleziono klienta o id: " + kliID
       });
+  }
 
 
 };
 
-exports.deleteKlient = (req , res , next) => {
+exports.deleteKlient = async (req , res , next) => {
   const kliID = req.params.kliID;
 
-  KlientRepository.deleteKlient(kliID)
-      .then(result => {
-          res.status(200).json({
-              message: 'Pomyślnie usunięto klienta o id: ' + kliID
-          })
-          }
-      )
-      .catch(err => {
-          if (!err.statusCode){
-              err.statusCode = 500;
-          }
-          next(err);
-      });
+
+    const kli = await KlientRepository.getKlientByID(kliID);
+
+    if (kli != null) {
+        KlientRepository.deleteKlient(kliID)
+            .then(result => {
+                    res.status(200).json({
+                        message: 'Pomyślnie usunięto klienta o id: ' + kliID
+                    });
+                }
+            )
+            .catch(err => {
+                if (!err.statusCode) {
+                    err.statusCode = 500;
+                }
+                next(err);
+            });
+    }
+    else {
+        res.status(404).json({
+            message: "Klient o id: " + kliID + " już nie istnieje"
+        });
+    }
 };

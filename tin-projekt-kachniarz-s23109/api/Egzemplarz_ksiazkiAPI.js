@@ -40,35 +40,54 @@ exports.createEgzemplarz_ksiazki = (req, res , next) => {
       })
 };
 
-exports.updateEgzemplarz_ksiazki = (req ,res , next) => {
+exports.updateEgzemplarz_ksiazki = async (req ,res , next) => {
   const bookID = req.params.bookID;
-  Egzemplarz_ksiazkiRepository.updateEgzemplarz_Ksiazki(bookID,req.body)
-      .then( result => {
-          res.status(200).json({
-              message: 'Książka o id: ' + bookID + ' pomyślnie zaaktualizowana'
+  const book = await Egzemplarz_ksiazkiRepository.getEgzemplarz_KsiazkiByID(bookID);
+
+  if (book != null) {
+      Egzemplarz_ksiazkiRepository.updateEgzemplarz_Ksiazki(bookID, req.body)
+          .then(result => {
+              res.status(200).json({
+                  message: 'Książka o id: ' + bookID + ' pomyślnie zaaktualizowana'
+              })
           })
-      })
-      .catch(err => {
-          if (!err.statusCode){
-              err.statusCode = 500;
-          }
-          next(err);
-      })
+          .catch(err => {
+              if (!err.statusCode) {
+                  err.statusCode = 500;
+              }
+              next(err);
+          })
+
+  }
+  else {
+
+      res.status(404).json({
+          message: "Nie znaleziono książki o id: " + bookID
+      });
+  }
 };
 
-exports.deleteEgzemplarz_ksiazki = (req, res, next) => {
+exports.deleteEgzemplarz_ksiazki = async (req, res, next) => {
   const bookID = req.params.bookID;
-  Egzemplarz_ksiazkiRepository.deleteEgzemplarz_Ksiazki(bookID)
-      .then( result => {
-          res.status(200).json({
-              message: 'Pomyślnie usunięto książkę o id: ' + bookID
-          })
-      })
-      .catch(err => {
-          if (!err.statusCode){
-              err.statusCode = 500;
-          }
-          next(err);
-      })
+    const book = await Egzemplarz_ksiazkiRepository.getEgzemplarz_KsiazkiByID(bookID);
 
+    if (book != null) {
+        Egzemplarz_ksiazkiRepository.deleteEgzemplarz_Ksiazki(bookID)
+            .then(result => {
+                res.status(200).json({
+                    message: 'Pomyślnie usunięto książkę o id: ' + bookID
+                })
+            })
+            .catch(err => {
+                if (!err.statusCode) {
+                    err.statusCode = 500;
+                }
+                next(err);
+            })
+    }
+    else {
+        res.status(404).json({
+            message: "Książka o id: " + bookID + " już nie istnieje"
+        });
+    }
 };

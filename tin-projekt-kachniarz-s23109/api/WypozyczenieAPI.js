@@ -44,43 +44,60 @@ exports.createWypozyczenie = (req, res ,next) => {
 
 };
 
-exports.updateWypozyczenie = (req ,res ,next) => {
+exports.updateWypozyczenie = async (req ,res ,next) => {
     const lendID = req.params.lendID;
 
-    WypozyczenieRepository.updateWypozyczenie(lendID,req.body)
-        .then( result => {
-            res.status(200).json({
-                message: 'Wypożyczenie o id: ' + lendID + ' pomyślnie zaaktualizowane'
-            })
-        })
-        .catch(err => {
-           if (!err.statusCode){
-               err.statusCode=500;
-           }
+    const wypo = await WypozyczenieRepository.getWypozyczenieByID(lendID);
 
-           next(err);
+    if (wypo != null) {
+        WypozyczenieRepository.updateWypozyczenie(lendID, req.body)
+            .then(result => {
+                res.status(200).json({
+                    message: 'Wypożyczenie o id: ' + lendID + ' pomyślnie zaaktualizowane'
+                })
+            })
+            .catch(err => {
+                if (!err.statusCode) {
+                    err.statusCode = 500;
+                }
+
+                next(err);
+            });
+    }
+    else {
+        res.status(404).json({
+            message: "Nie znaleziono wypozyczenia o id: " + lendID
         });
 
+    }
 };
 
-exports.deleteWypozyczenie = (req ,res, next) => {
-
+exports.deleteWypozyczenie = async  (req ,res, next) => {
     const lendID = req.params.lendID;
 
-    WypozyczenieRepository.deleteWypozyczenie(lendID,req.body)
-        .then( result => {
-            res.status(200).json({
-                message: 'Pomyślnie usunięto wypożyczenie o id: ' + lendID
-            })
-        })
-        .catch(err => {
-            if (!err.statusCode){
-                err.statusCode=500;
-            }
+    const wypo = await WypozyczenieRepository.getWypozyczenieByID(lendID);
 
-            next(err);
+    if (wypo != null) {
+        WypozyczenieRepository.deleteWypozyczenie(lendID, req.body)
+            .then(result => {
+                res.status(200).json({
+                    message: 'Pomyślnie usunięto wypożyczenie o id: ' + lendID
+                })
+            })
+            .catch(err => {
+                if (!err.statusCode) {
+                    err.statusCode = 500;
+                }
+
+                next(err);
+            });
+    }
+    else {
+        res.status(404).json({
+            message: "Wypozyczenie o id: " + lendID + " już nie istnieje"
         });
 
+    }
 };
 
 exports.deleteManyWypozyczenie = (req, res, next) => {
