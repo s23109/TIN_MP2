@@ -12,13 +12,17 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
     },
     tytul:{
         type: Sequelize.STRING,
-        maxLength: 64,
         allowNull: false,
-        unique:true
+        unique:true,
+        validate:{
+            len : [2,64]
+        }
+
     },
     data_pozyskania:{
         type: Sequelize.DATE,
         allowNull: false
+
     },
     strony: {
         type: Sequelize.INTEGER,
@@ -27,7 +31,11 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
     uszkodzenia:{
         type:Sequelize.STRING,
         maxLength: 128,
-        allowNull:true
+        allowNull:true,
+        validate: {
+            maxLength: 128
+        }
+
     }
 
 });

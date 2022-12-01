@@ -13,29 +13,28 @@ const Klient = sequelize.define('Klient', {
     imie:{
         type: Sequelize.STRING,
         allowNull: false,
-        maxLength :32
+        maxLength :32,
+        validate: {
+            len : [3,32]
+        }
     },
     nazwisko:{
         type: Sequelize.STRING,
         allowNull: false,
-        maxLength :32
+        maxLength :32,
+        validate: {
+            len: [3,32]
+        }
     },
     email:{
         type: Sequelize.STRING,
         isEmail: true,
-        maxLength :64
+        maxLength :64,
+        validate:{
+            isEmail: true
+        }
     }
 
-
-    // validate: {
-    //   validator(){
-    //
-    //       if (checkRequired(this.name)){
-    //
-    //       }
-    //
-    //   }
-    // }
 
 });
 
