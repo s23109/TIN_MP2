@@ -26,13 +26,50 @@
       <div class="form-buttons">
 
         <p id="errorSummary" class="error-text"></p>
-        <input type="submit" value="Dodaj" class="form-button-submit">
-        <a href="/klient" class="form-button-cancel">Anuluj</a>
+
+        <%if (formMode== 'showDetails') {%>
+          <a href="/Klient/edit/<%= kli._id%>" class="button-edit">
+          <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
+          <span class="button-edit-text">Edytuj</span>
+          </a>
+          <a href="/Klient" class="button-return">
+            <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
+            <span class="button-return-text">Powrót</span>
+          </a>
+
+        <%} else {%>
+          <input type="submit" value=<%=btnLabel%> class="form-button-submit">
+          <a href="/klient" class="form-button-cancel">Powrót</a>
+        <%}%>
+
+
 
       </div>
 
     </form>
 
+    <% if (formMode == 'showDetails' || formMode == 'edit') {%>
+        <table class="table-list">
+          <thead>
+          <tr>
+          <th>Książka</th>
+          <th>Id Książki</th>
+          <th>Data Wypożyczenia</th>
+          <th>Data Zwrotu</th>
+          </tr>
+          </thead>
+          <tbody>
+          <%for (let k of kli.wypozyczenia){%>
+            <tr>
+              <td><a href="/egzemplarz_ksiazki/details/<%=k.ksiazka._id%>" ><%="\""+k.ksiazka.tytul +"\""%></a></td>
+              <td><%=k.ksiazka._id%></td>
+              <td><%=k.data_od.toISOString().split('T')[0]%></td>
+              <td><%=(k.data_do) ? k.data_do.toISOString().split('T')[0] : '' %></td>
+            </tr>
+          <% } %>
+          </tbody>
+        </table>
+    <% } %>
   </main>
 
 <%- include('../../fragments/footer.ejs') %>

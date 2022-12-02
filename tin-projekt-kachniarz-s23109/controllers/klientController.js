@@ -55,3 +55,29 @@ exports.showKlientDetails = (req, res , next) => {
 
 
 }
+
+exports.addKlient = (req, res,next) => {
+    const kliData = {... req.body};
+
+    KlientRepository.createKlient(kliData).then(result => {
+        res.redirect('/klient');
+    })
+
+}
+
+exports.updateKlient = (req, res,next) => {
+    const kliID = req.params.kliID;
+    const kliData = {... req.body};
+
+    KlientRepository.updateKlient(kliID,kliData).then(result => {
+        res.redirect('/klient');
+    });
+}
+
+exports.deleteKlient = (req, res,next) => {
+    const kliID = req.params.kliID;
+
+    KlientRepository.deleteKlient(kliID).then(result => {
+       res.redirect('/klient');
+    });
+}

@@ -10,5 +10,9 @@ router.get('/add' , klientController.showAddKlientForm);
 router.get('/details/:kliID',klientController.showKlientDetails);
 router.get('/edit/:kliID', klientController.showEditKlientForm);
 
+router.post('/add' , klientController.addKlient);
+router.post('/edit' , klientController.updateKlient);
+router.get('/delete/:kliID' , klientController.deleteKlient);
+
 //eksport routera jako obiektu
 module.exports = router;
