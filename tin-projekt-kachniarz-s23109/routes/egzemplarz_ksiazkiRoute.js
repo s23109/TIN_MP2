@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const egzemplarz_ksiazkiController = require('../controllers/egzemplarz_ksiazkiController');
+const egzemplarz_ksiazkiController = require('../controllers/Egzemplarz_ksiazkiController');
 
 router.get('/' , egzemplarz_ksiazkiController.showKsiazkaList);
 router.get('/add' , egzemplarz_ksiazkiController.showAddKsiazkaForm);

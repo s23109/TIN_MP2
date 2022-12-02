@@ -1,5 +1,15 @@
+
+const KlientRepository = require('../repository/sequelize/KlientRepository');
+
 exports.showKlientList = (req, res, next) => {
-    res.render('Subpages/Klient/list',{navLocation:'Klient', docType:'list'});
+    KlientRepository.getAllKlients().then(klis => {
+        res.render('Subpages/Klient/list',{
+            navLocation:'Klient',
+            docType: 'list', //do importów
+            klis : klis
+        });
+    });
+
 }
 
 exports.showAddKlientForm = (req, res , next) => {

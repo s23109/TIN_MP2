@@ -1,3 +1,7 @@
+
+const WypozyczenieRepository = require('../repository/sequelize/WypozyczenieRepository');
+
+
 exports.showWypozyczenieList = (req, res, next) => {
     res.render('Subpages/Wypozyczenie/list',{navLocation:'Wypozyczenie', docType:'list'});
 }
