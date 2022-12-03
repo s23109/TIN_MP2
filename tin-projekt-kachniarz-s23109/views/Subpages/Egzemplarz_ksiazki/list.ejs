@@ -20,115 +20,36 @@
 
       <tbody>
 
-        <!-- Pan Tadeusz -->
-        <tr>
-
-          <td>,,Pan Tadeusz''</td>
-          <td>2000-01-01</td>
-          <td>21</td>
-          <td></td>
-          <td>
-
-            <ul class="list-actions">
-              <li>
-                <a href="/Subpages/Egzemplarz_ksiazki/details.html" class="list-actions-button-details">
-                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
-                  <span class="list-actions-button-details-text">Więcej</span>
-                </a>
-
-              </li>
-
-              <li>
-                <a href="/Subpages/Egzemplarz_ksiazki/form-edit.html" class="list-actions-button-edit">
-                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
-                  <span class="list-actions-button-edit-text">Edytuj</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="" class="list-actions-button-delete">
-                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
-                  <span class="list-actions-button-delete-text">Usuń</span>
-                </a>
-              </li>
-            </ul>
-
-          </td>
-
-        </tr>
-        <!-- 1984 -->
-        <tr>
-
-          <td>,,1984''</td>
-          <td>1999-11-11</td>
-          <td>69</td>
-          <td>Uszkodzona strona tytułowa, porwane niektóre strony</td>
-          <td>
-
-            <ul class="list-actions">
-              <li>
-                <a href="/Subpages/Egzemplarz_ksiazki/details.html" class="list-actions-button-details">
-                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
-                  <span class="list-actions-button-details-text">Więcej</span>
-                </a>
-
-              </li>
-
-              <li>
-                <a href="/Subpages/Egzemplarz_ksiazki/form-edit.html" class="list-actions-button-edit">
-                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
-                  <span class="list-actions-button-edit-text">Edytuj</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="" class="list-actions-button-delete">
-                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
-                  <span class="list-actions-button-delete-text">Usuń</span>
-                </a>
-              </li>
-            </ul>
-
-          </td>
-
-        </tr>
-        <!-- Java - Podstawy -->
-        <tr>
-
-          <td>,,Java - Podstawy''</td>
-          <td>2000-03-27</td>
-          <td>999</td>
-          <td>Ślady zalania kawą</td>
-          <td>
-
-            <ul class="list-actions">
-              <li>
-                <a href="/Subpages/Egzemplarz_ksiazki/details.html" class="list-actions-button-details">
-                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
-                  <span class="list-actions-button-details-text">Więcej</span>
-                </a>
-
-              </li>
-
-              <li>
-                <a href="/Subpages/Egzemplarz_ksiazki/form-edit.html" class="list-actions-button-edit">
-                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
-                  <span class="list-actions-button-edit-text">Edytuj</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="" class="list-actions-button-delete">
-                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
-                  <span class="list-actions-button-delete-text">Usuń</span>
-                </a>
-              </li>
-            </ul>
-
-          </td>
-
-        </tr>
-
+      <%for (let ksi of ksis){%>
+      <tr>
+        <td><%=ksi.tytul%></td>
+        <td><%=ksi.data_pozyskania.toISOString().split('T')[0]%></td>
+        <td><%=ksi.strony%></td>
+        <td><%=ksi.uszkodzenia%></td>
+        <td>
+          <ul class="list-actions">
+            <li>
+              <a class="list-actions-button-details" href="/egzemplarz_ksiazki/details/<%= ksi._id%>">
+                <img src="/Images/icons8-more-details-64.png" class="list-actions-button-details-icon">
+                <span class="list-actions-button-details-text">Więcej</span>
+              </a>
+            </li>
+            <li>
+              <a class="list-actions-button-edit" href="/egzemplarz_ksiazki/edit/<%= ksi._id%>">
+                <img src="/Images/icons8-pencil-64.png" class="list-actions-button-edit-icon">
+                <span class="list-actions-button-edit-text">Edytuj</span>
+              </a>
+            </li>
+            <li>
+              <a class="list-actions-button-delete" href="/egzemplarz_ksiazki/delete/<%= ksi._id%>">
+                <img src="/Images/icons8-remove-64.png" class="list-actions-button-delete-icon">
+                <span class="list-actions-button-delete-text">Usuń</span>
+              </a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <% } %>
       </tbody>
 
 

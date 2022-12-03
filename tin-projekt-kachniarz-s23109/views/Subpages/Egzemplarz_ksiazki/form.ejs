@@ -2,11 +2,11 @@
 
     <main>
 
-        <h2>Dodaj książkę</h2>
+        <h2><%=pageTitle%></h2>
 
 
 
-        <form class="form" novalidate onsubmit="return validateForm();">
+        <form class="form" novalidate method="post" action="<%=formAction%>" onsubmit="return validateForm();">
             <label>Tytuł:<span class="symbol-required">*</span></label>
             <input type="text" name="title" id="title" required>
             <span id="errorTitle" class="error-text"></span>
