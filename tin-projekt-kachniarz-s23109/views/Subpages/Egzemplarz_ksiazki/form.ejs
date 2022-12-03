@@ -11,7 +11,7 @@
             <input type="hidden" name="_id" value="<%=ksi._id%>">
 
             <label>Tytuł:<span class="symbol-required">*</span></label>
-            <input type="text" name="tytul" id="title" required placeholder="2-64 znaków" value="<%=(ksi.tytul)?"\""+ksi.tytul+"\"":ksi.tytul%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <input type="text" name="tytul" id="title" required placeholder="2-64 znaków" value="<%=(ksi.tytul)?("\""+ksi.tytul+"\""):ksi.tytul%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorTitle" class="error-text"></span>
 
             <label>Data pozyskania:<span class="symbol-required">*</span></label>

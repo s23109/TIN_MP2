@@ -48,13 +48,18 @@ exports.createWypozyczenie = (wypoData) => {
         Ksiazka_id: wypoData.Ksiazka_id,
         Klient_id: wypoData.Klient_id,
         data_od: wypoData.data_od,
-        data_do: wypoData.data_do
+        data_do: (wypoData.data_do.length>0) ? wypoData.data_do : null
 
     });
 }
 
 exports.updateWypozyczenie = (wypID , wypoData) => {
-  return Wypozyczenie.update (wypoData , {where: {_id: wypID}});
+  return Wypozyczenie.update ({
+      Ksiazka_id: wypoData.Ksiazka_id,
+      Klient_id: wypoData.Klient_id,
+      data_od: wypoData.data_od,
+      data_do: (wypoData.data_do.length>0) ? wypoData.data_do : null
+  }, {where: {_id: wypID}});
 };
 
 exports.deleteWypozyczenie = (wypID) => {

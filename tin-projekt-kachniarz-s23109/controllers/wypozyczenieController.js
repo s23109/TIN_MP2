@@ -96,7 +96,7 @@ exports.addWypozyczenie = (req, res , next) => {
 }
 
 exports.updateWypozyczenie = (req, res , next) => {
-    const wypID = req.params.lendID;
+    const wypID = req.body._id;
     const wypData = {... req.body};
 
     WypozyczenieRepository.updateWypozyczenie(wypID,wypData).then(result => {

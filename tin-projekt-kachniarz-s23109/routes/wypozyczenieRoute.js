@@ -10,7 +10,7 @@ router.get('/edit/:lendID' , wypozyczenieController.showEditWypozyczenieForm);
 
 router.post('/add' , wypozyczenieController.addWypozyczenie);
 router.post('/edit', wypozyczenieController.updateWypozyczenie);
-router.delete('/delete/:lendID',wypozyczenieController.deleteWypozyczenie);
+router.get('/delete/:lendID',wypozyczenieController.deleteWypozyczenie);
 
 
 module.exports = router;
