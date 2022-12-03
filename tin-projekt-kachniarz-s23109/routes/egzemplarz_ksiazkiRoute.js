@@ -7,7 +7,7 @@ const klientController = require("../controllers/klientController");
 router.get('/' , egzemplarz_ksiazkiController.showKsiazkaList);
 router.get('/add' , egzemplarz_ksiazkiController.showAddKsiazkaForm);
 router.get('/details/:bookID' , egzemplarz_ksiazkiController.showKsiazkaDetails);
-
+router.get('/edit/:bookID' , egzemplarz_ksiazkiController.showEditKsiazkaForm);
 
 
 module.exports = router;

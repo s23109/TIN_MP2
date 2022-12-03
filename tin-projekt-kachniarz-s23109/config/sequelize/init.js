@@ -49,7 +49,7 @@ module.exports = () => {
 
                 return Egzemplarz_ksiazki.bulkCreate([
                     {tytul:'Pan Tadeusz' , data_pozyskania:'2001-01-01' , strony:'21' , uszkodzenia:null},
-                    {tytul:'1984' , data_pozyskania:'1999-11-11' , strony:'69' , uszkodzenia:'Uszkodzona strona tytulowa, porwane niektore strony'},
+                    {tytul:'1984' , data_pozyskania:'1999-11-11' , strony:'69' , uszkodzenia:'Uszkodzona strona tytulowa'},
                     {tytul:'Java - Podstawy', data_pozyskania:'2000-03-27' , strony:'999' , uszkodzenia:'Slady zalania kawa'}
                 ])
                     .then( () => {
