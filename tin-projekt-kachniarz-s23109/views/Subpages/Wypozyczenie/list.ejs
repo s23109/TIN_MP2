@@ -18,120 +18,38 @@
           <th>Akcje</th>
         </tr>
       </thead>
-
+      <% for( let wyp of wyps){%>
+      <tr>
+        <td><%="\""+ wyp.ksiazka.tytul + "\""%></td>
+        <td><%=wyp.klient.imie + " " + wyp.klient.nazwisko%></td>
+        <td class="cut-detail"><%= wyp.klient.email%></td>
+        <td><%=wyp.data_od.toISOString().split('T')[0]%></td>
+        <td><%= (wyp.data_do) ? wyp.data_do.toISOString().split('T')[0]: ''%></td>
+        <td>
+          <ul class="list-actions">
+            <li>
+              <a class="list-actions-button-details" href="/wypozyczenie/details/<%= wyp._id%>">
+                <img src="/Images/icons8-more-details-64.png" class="list-actions-button-details-icon">
+                <span class="list-actions-button-details-text">Więcej</span>
+              </a>
+            </li>
+            <li>
+              <a class="list-actions-button-edit" href="/wypozyczenie/edit/<%= wyp._id%>">
+                <img src="/Images/icons8-pencil-64.png" class="list-actions-button-edit-icon">
+                <span class="list-actions-button-edit-text">Edytuj</span>
+              </a>
+            </li>
+            <li>
+              <a class="list-actions-button-delete" href="/wypozyczenie/delete/<%= wyp._id%>">
+                <img src="/Images/icons8-remove-64.png" class="list-actions-button-delete-icon">
+                <span class="list-actions-button-delete-text">Usuń</span>
+              </a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <% } %>
       <tbody>
-
-
-        <tr>
-
-          <td>,,Pan Tadeusz''</td>
-          <td>Adam Małysz</td>
-          <td class="cut-detail">AM@ttt.pl</td>
-          <td>2001-01-01</td>
-          <td>2001-02-19</td>
-          <td>
-
-            <ul class="list-actions">
-              <li>
-                <a href="/Subpages/Wypozyczenie/details.html" class="list-actions-button-details">
-                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
-                  <span class="list-actions-button-details-text">Więcej</span>
-                </a>
-
-              </li>
-
-              <li>
-                <a href="/Subpages/Wypozyczenie/form-edit.html" class="list-actions-button-edit">
-                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
-                  <span class="list-actions-button-edit-text">Edytuj</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="" class="list-actions-button-delete">
-                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
-                  <span class="list-actions-button-delete-text">Usuń</span>
-                </a>
-              </li>
-            </ul>
-
-          </td>
-
-        </tr>
-
-        <tr>
-
-          <td>,,Java - Podstawy''</td>
-          <td>Adam Małysz</td>
-          <td class="cut-detail">AM@ttt.pl</td>
-          <td>2001-03-22</td>
-          <td></td>
-          <td>
-
-            <ul class="list-actions">
-              <li>
-                <a href="/Subpages/Wypozyczenie/details.html" class="list-actions-button-details">
-                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
-                  <span class="list-actions-button-details-text">Więcej</span>
-                </a>
-
-              </li>
-
-              <li>
-                <a href="/Subpages/Wypozyczenie/form-edit.html" class="list-actions-button-edit">
-                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
-                  <span class="list-actions-button-edit-text">Edytuj</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="" class="list-actions-button-delete">
-                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
-                  <span class="list-actions-button-delete-text">Usuń</span>
-                </a>
-              </li>
-            </ul>
-
-          </td>
-
-        </tr>
-
-        <tr>
-
-          <td>,,1984''</td>
-          <td>Mariusz Pudzianowski</td>
-          <td class="cut-detail">MP_MP@mp.pl</td>
-          <td>1999-12-01</td>
-          <td>2000-01-14</td>
-          <td>
-
-            <ul class="list-actions">
-              <li>
-                <a href="/Subpages/Wypozyczenie/details.html" class="list-actions-button-details">
-                  <img src="/Images/icons8-more-details-64.png" alt="DETAILS" class="list-actions-button-details-icon">
-                  <span class="list-actions-button-details-text">Więcej</span>
-                </a>
-
-              </li>
-
-              <li>
-                <a href="/Subpages/Wypozyczenie/form-edit.html" class="list-actions-button-edit">
-                  <img src="/Images/icons8-pencil-64.png" alt="EDIT" class="list-actions-button-edit-icon">
-                  <span class="list-actions-button-edit-text">Edytuj</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="" class="list-actions-button-delete">
-                  <img src="/Images/icons8-remove-64.png" alt="DELETE" class="list-actions-button-delete-icon">
-                  <span class="list-actions-button-delete-text">Usuń</span>
-                </a>
-              </li>
-            </ul>
-
-          </td>
-
-        </tr>
 
       </tbody>
 

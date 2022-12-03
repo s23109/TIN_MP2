@@ -3,7 +3,14 @@ const WypozyczenieRepository = require('../repository/sequelize/WypozyczenieRepo
 
 
 exports.showWypozyczenieList = (req, res, next) => {
-    res.render('Subpages/Wypozyczenie/list',{navLocation:'Wypozyczenie', docType:'list'});
+    WypozyczenieRepository.getAllWypozyczenie().then(wyps => {
+        res.render('Subpages/Wypozyczenie/list',{
+            navLocation:'Wypozyczenie',
+            docType:'list',
+            wyps : wyps
+        });
+    });
+
 }
 
 exports.showAddWypozyczenieForm = (req, res , next) => {
@@ -13,3 +20,4 @@ exports.showAddWypozyczenieForm = (req, res , next) => {
 exports.showWypozyczenieDetails = (req, res , next) => {
     res.render('Subpages/Wypozyczenie/details',{navLocation:'Wypozyczenie', docType:'details'});
 }
+

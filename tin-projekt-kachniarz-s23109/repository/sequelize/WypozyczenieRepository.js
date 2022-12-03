@@ -5,9 +5,22 @@ const Wypozyczenie = require("../../model/sequelize/Wypozyczenie");
 // w aso trzeba do multi usunięcia importu sequelize
 
 const Sequelize = require('sequelize');
-
+// bo w aso nieczytelne byłby by same klucze, dlatego import też danych
 exports.getAllWypozyczenie = () => {
-    return Wypozyczenie.findAll();
+    return Wypozyczenie.findAll({
+        include: [
+            {
+                model: Klient,
+                as: 'klient'
+            },
+            {
+                model: Egzemplarz_Ksiazki,
+                as: 'ksiazka'
+            }
+
+
+        ]
+    });
 };
 
 exports.getWypozyczenieByID = (wypID) => {
