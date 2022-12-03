@@ -51,8 +51,19 @@
 
             <div class="form-buttons">
                 <span id="errorSummary" class="error-text"></span>
-                <input type="submit" value="Dodaj" class="form-button-submit">
-                <a href="/wypozyczenie" class="form-button-cancel">Anuluj</a>
+                <%if (formMode== 'showDetails') {%>
+                    <a href="/wypozyczenie/edit/<%= wyp._id%>" class="button-edit">
+                        <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
+                        <span class="button-edit-text">Edytuj</span>
+                    </a>
+                    <a href="/wypozyczenie" class="button-return">
+                        <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
+                        <span class="button-return-text">Powrót</span>
+                    </a>
+                <% } else {%>
+                <input type="submit" value=<%=btnLabel%> class="form-button-submit">
+                <a href="/wypozyczenie" class="form-button-cancel">Powrót</a>
+                <% } %>
             </div>
 
 
