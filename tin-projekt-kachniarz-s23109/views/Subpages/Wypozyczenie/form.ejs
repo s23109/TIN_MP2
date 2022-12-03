@@ -2,12 +2,12 @@
 
     <main>
 
-        <h2>Dodaj wypożyczenie</h2>
+        <h2><%=pageTitle%></h2>
 
 
 
 
-        <form class="form" novalidate onsubmit="return validateForm();">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
 
             <label for="ksiazka">Książka: <span class="symbol-required">*</span></label>
             <select name="ksiazka" id="ksiazka" required>

@@ -1,6 +1,7 @@
 
 const WypozyczenieRepository = require('../repository/sequelize/WypozyczenieRepository');
-
+const KlientRepository = require('../repository/sequelize/KlientRepository');
+const Egzemplarz_KsiazkiRepository = require('../repository/sequelize/Egzemplarz_ksiazkiRepository');
 
 exports.showWypozyczenieList = (req, res, next) => {
     WypozyczenieRepository.getAllWypozyczenie().then(wyps => {
@@ -14,24 +15,51 @@ exports.showWypozyczenieList = (req, res, next) => {
 }
 
 exports.showAddWypozyczenieForm = (req, res , next) => {
-    res.render('Subpages/Wypozyczenie/form',{
-        navLocation:'Wypozyczenie' ,
-        docType:'form',
-        wyp : {},
-        formMode : 'createNew',
-        btnLabel : 'Dodaj wypożyczenie',
-        formAction: '/wypozyczenie/add',
-        pageTitle: 'Dodaj Wypożyczenie'
-    });
+    let allKli , allKsi ;
+
+    KlientRepository.getAllKlients().then(kli => {
+        allKli = kli;
+        return Egzemplarz_KsiazkiRepository.getAllEgzemplarz_Ksiazki();
+    })
+        .then(ksi => {
+            allKsi = ksi;
+
+            res.render('Subpages/Wypozyczenie/form',{
+                navLocation:'Wypozyczenie' ,
+                docType:'form',
+                wyp : {},
+                allKli : allKli,
+                allKsi : allKsi,
+                formMode : 'createNew',
+                btnLabel : 'Dodaj wypożyczenie',
+                formAction: '/wypozyczenie/add',
+                pageTitle: 'Dodaj Wypożyczenie'
+            });
+        })
+
+
 }
 
 exports.showEditWypozyczenieForm = (req, res ,next) => {
+    let allKli , allKsi ;
     const wypID = req.params.lendID;
-    WypozyczenieRepository.getWypozyczenieByID(wypID).then(wyp => {
+
+    KlientRepository.getAllKlients()
+        .then(kli => {
+        allKli = kli;
+        return Egzemplarz_KsiazkiRepository.getAllEgzemplarz_Ksiazki();
+         })
+        .then( ksi => {
+            allKsi = ksi;
+            return WypozyczenieRepository.getWypozyczenieByID(wypID);
+        })
+        .then(wyp => {
         res.render('Subpages/Wypozyczenie/form',{
             navLocation:'Wypozyczenie' ,
             docType:'form',
             wyp : wyp,
+            allKli : allKli,
+            allKsi : allKsi,
             formMode : 'edit',
             btnLabel : 'Edytuj wypożyczenie',
             formAction: '/wypozyczenie/edit',
