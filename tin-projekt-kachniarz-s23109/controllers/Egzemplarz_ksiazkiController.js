@@ -30,7 +30,7 @@ exports.showEditKsiazkaForm = (req, res , next) => {
     Egzemplarz_ksiazkiRepository.getEgzemplarz_KsiazkiByID(bookID).then( ksi => {
         res.render('Subpages/Egzemplarz_ksiazki/form',{
             navLocation:'Egzemplarz_Ksiazki',
-            docType:'details',
+            docType:'form',
             ksi: ksi,
             formMode: 'edit',
             btnLabel: 'Edytuj książkę',
@@ -64,7 +64,7 @@ exports.addKsiazka = (req, res , next) => {
 }
 
 exports.updateKsiazka = (req, res , next) => {
-    const bookID = req.params.bookID;
+    const bookID = req.body._id;
     const ksiData = {... req.body};
 
     Egzemplarz_ksiazkiRepository.updateEgzemplarz_Ksiazki(bookID,ksiData).then( result => {

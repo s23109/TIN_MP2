@@ -30,10 +30,10 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
     },
     uszkodzenia:{
         type:Sequelize.STRING,
-        maxLength: 128,
+
         allowNull:true,
         validate: {
-            maxLength: 128
+            len: [0,128]
         }
 
     }

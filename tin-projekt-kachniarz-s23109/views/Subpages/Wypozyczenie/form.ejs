@@ -9,6 +9,8 @@
 
         <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
 
+            <input type="hidden" name="_id" value="<%=wyp._id%>">
+
             <label for="ksiazka">Książka: <span class="symbol-required">*</span></label>
             <select name="Ksiazka_id" id="ksiazka" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
 
