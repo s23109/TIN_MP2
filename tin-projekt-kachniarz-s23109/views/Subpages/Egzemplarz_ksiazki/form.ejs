@@ -11,20 +11,20 @@
             <input type="hidden" name="_id" value="<%=ksi._id%>">
 
             <label>Tytuł:<span class="symbol-required">*</span></label>
-            <input type="text" name="title" id="title" required placeholder="2-64 znaków" value="<%=(ksi.tytul)?"\""+ksi.tytul+"\"":ksi.tytul%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <input type="text" name="tytul" id="title" required placeholder="2-64 znaków" value="<%=(ksi.tytul)?"\""+ksi.tytul+"\"":ksi.tytul%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorTitle" class="error-text"></span>
 
             <label>Data pozyskania:<span class="symbol-required">*</span></label>
-            <input type="date" name="date" id="date" required value="<%=(ksi.data_pozyskania) ? ksi.data_pozyskania.toISOString().split('T')[0] : ksi.data_pozyskania %>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <input type="date" name="data_pozyskania" id="date" required value="<%=(ksi.data_pozyskania) ? ksi.data_pozyskania.toISOString().split('T')[0] : ksi.data_pozyskania %>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorDate" class="error-text"></span>
 
             <label>Strony:<span class="symbol-required">*</span></label>
-            <input type="number" name="pages" id="pages" required value="<%=ksi.strony%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <input type="number" name="strony" id="pages" required value="<%=ksi.strony%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorPages" class="error-text"></span>
 
 
             <label>Uszkodzenia:</label>
-            <input type="text" name="damage" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%> value="<%=ksi.uszkodzenia%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <input type="text" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%> value="<%=ksi.uszkodzenia%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorDamage" class="error-text"></span>
 
             <div class="form-buttons">

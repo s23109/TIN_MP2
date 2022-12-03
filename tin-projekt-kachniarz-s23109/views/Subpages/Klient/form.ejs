@@ -11,11 +11,11 @@
       <input type="hidden" name="_id" value="<%=kli._id%>">
 
       <label>Imie:<span class="symbol-required">*</span></label>
-      <input type="text" name="firstName" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+      <input type="text" name="imie" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorFirstName" class="error-text"></span>
 
       <label>Nazwisko:<span class="symbol-required">*</span></label>
-      <input type="text" name="lastName" id="lastName" required placeholder="2-32 znaków" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+      <input type="text" name="nazwisko" id="lastName" required placeholder="2-32 znaków" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorLastName" class="error-text"></span>
 
       <label>Email:</label>

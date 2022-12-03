@@ -64,7 +64,7 @@ exports.addKlient = (req, res,next) => {
 }
 
 exports.updateKlient = (req, res,next) => {
-    const kliID = req.params.kliID;
+    const kliID = req.body._id;
     const kliData = {... req.body};
     KlientRepository.updateKlient(kliID,kliData).then(result => {
         res.redirect('/klient');

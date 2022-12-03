@@ -30,9 +30,9 @@ const Klient = sequelize.define('Klient', {
         type: Sequelize.STRING,
         isEmail: true,
         maxLength :64,
-        validate:{
-            isEmail: true
-        }
+        // validate:{
+        //     isEmail: true
+        // }
     }
 
 

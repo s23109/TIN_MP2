@@ -10,7 +10,7 @@
         <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
 
             <label for="ksiazka">Książka: <span class="symbol-required">*</span></label>
-            <select name="ksiazka" id="ksiazka" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <select name="Ksiazka_id" id="ksiazka" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
 
                 <% if (formMode != 'showDetails' ) {%>
                 <% /* Przypadek gdzie się nie wczytuje reszty tabel */%>
@@ -27,7 +27,7 @@
             <span id="errorKsiazka" class="error-text"></span>
 
             <label for="klient">Klient: <span class="symbol-required">*</span></label>
-            <select name="klient" id="klient" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <select name="Klient_id" id="klient" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 <% if (formMode != 'showDetails' ) {%>
                     <% /* Przypadek gdzie się nie wczytuje reszty tabel */%>
                 <option  <%=(formMode == 'createNew') ? 'selected' : ''%> disabled hidden value="default">--Wybierz Klienta--</option>
@@ -42,11 +42,11 @@
             <span id="errorKlient" class="error-text"></span>
 
             <label>Data wypożyczenia: <span class="symbol-required">*</span></label>
-            <input type="date" name="dateFrom" id="dateFrom" required value="<%= (wyp != null) ? ((wyp.data_od != null)? wyp.data_od.toISOString().split('T')[0] : '' ) : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <input type="date" name="data_od" id="dateFrom" required value="<%= (wyp != null) ? ((wyp.data_od != null)? wyp.data_od.toISOString().split('T')[0] : '' ) : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorDateFrom" class="error-text"></span>
 
             <label>Data zwrotu:</label>
-            <input type="date" name="dateTo" id="dateTo" value="<%= (wyp != null) ? ((wyp.data_do != null)? wyp.data_do.toISOString().split('T')[0] : '' ) : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <input type="date" name="data_do" id="dateTo" value="<%= (wyp != null) ? ((wyp.data_do != null)? wyp.data_do.toISOString().split('T')[0] : '' ) : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorDateTo" class="error-text"></span>
 
             <div class="form-buttons">
