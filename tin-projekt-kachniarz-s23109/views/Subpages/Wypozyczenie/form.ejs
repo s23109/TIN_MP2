@@ -52,7 +52,7 @@
             <span id="errorDateTo" class="error-text"></span>
 
             <div class="form-buttons">
-                <span id="errorSummary" class="error-text"></span>
+                <span id="errorSummary" class="error-text"><%= (validationErrors.length  > 0) ? 'Formularz zawiera błędy' : ''%></span>
                 <%if (formMode== 'showDetails') {%>
                     <a href="/wypozyczenie/edit/<%= wyp._id%>" class="button-edit">
                         <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">

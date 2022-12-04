@@ -69,6 +69,8 @@ exports.addKlient = (req, res,next) => {
         //     console.log(JSON.stringify(er));
         // }
         // console.log("\n}");
+
+        //console.log(JSON.stringify(kliData));
         res.render('Subpages/Klient/form', {
             navLocation:'Klient' ,
             docType:'form',

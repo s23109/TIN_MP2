@@ -33,7 +33,8 @@ exports.showAddWypozyczenieForm = (req, res , next) => {
                 formMode : 'createNew',
                 btnLabel : 'Dodaj',
                 formAction: '/wypozyczenie/add',
-                pageTitle: 'Dodaj Wypożyczenie'
+                pageTitle: 'Dodaj Wypożyczenie',
+                validationErrors: []
             });
         })
 
@@ -63,7 +64,8 @@ exports.showEditWypozyczenieForm = (req, res ,next) => {
             formMode : 'edit',
             btnLabel : 'Zmień',
             formAction: '/wypozyczenie/edit',
-            pageTitle: 'Edytuj Wypożyczenie'
+            pageTitle: 'Edytuj Wypożyczenie',
+            validationErrors: []
         });
 
     })
@@ -79,7 +81,8 @@ exports.showWypozyczenieDetails = (req, res , next) => {
             wyp : wyp,
             formMode : 'showDetails',
             formAction: '',
-            pageTitle: 'Szczegóły Wypożyczenia'
+            pageTitle: 'Szczegóły Wypożyczenia',
+            validationErrors: []
         });
 
     })
@@ -91,6 +94,28 @@ exports.addWypozyczenie = (req, res , next) => {
     const wypData = {... req.body};
     WypozyczenieRepository.createWypozyczenie(wypData).then(result => {
         res.redirect('/wypozyczenie');
+    }).catch(err => {
+        let allKli , allKsi ;
+        KlientRepository.getAllKlients().then(kli => {
+            allKli = kli;
+            return Egzemplarz_KsiazkiRepository.getAllEgzemplarz_Ksiazki();
+        }).then(ksi => {
+            allKsi = ksi;
+
+            res.render('Subpages/Wypozyczenie/form',{
+                navLocation:'Wypozyczenie' ,
+                docType:'form',
+                wyp : wypData,
+                allKli : allKli,
+                allKsi : allKsi,
+                formMode : 'createNew',
+                btnLabel : 'Dodaj',
+                formAction: '/wypozyczenie/add',
+                pageTitle: 'Dodaj Wypożyczenie',
+                validationErrors: err.errors
+            });
+        })
+
     });
 
 }
@@ -101,6 +126,27 @@ exports.updateWypozyczenie = (req, res , next) => {
 
     WypozyczenieRepository.updateWypozyczenie(wypID,wypData).then(result => {
         res.redirect('/wypozyczenie');
+    }).catch(err => {
+        let allKli , allKsi ;
+        KlientRepository.getAllKlients().then(kli => {
+            allKli = kli;
+            return Egzemplarz_KsiazkiRepository.getAllEgzemplarz_Ksiazki();
+        }).then(ksi => {
+            allKsi = ksi;
+
+            res.render('Subpages/Wypozyczenie/form',{
+                navLocation:'Wypozyczenie' ,
+                docType:'form',
+                wyp : wypData,
+                allKli : allKli,
+                allKsi : allKsi,
+                formMode : 'edit',
+                btnLabel : 'Zmień',
+                formAction: '/wypozyczenie/edit',
+                pageTitle: 'Edytuj Wypożyczenie',
+                validationErrors: err.errors
+            });
+        })
     });
 
 }
@@ -110,5 +156,8 @@ exports.deleteWypozyczenie = (req, res , next) => {
 
     WypozyczenieRepository.deleteWypozyczenie(wypID).then(result => {
         res.redirect('/wypozyczenie');
-    })
+    }).catch(err => {
+        alert("Nieznany błąd:" + JSON.stringify(err));
+        res.redirect('/klient');
+    });
 }
