@@ -11,24 +11,40 @@
             <input type="hidden" name="_id" value="<%=ksi._id%>">
 
             <label>Tytuł:<span class="symbol-required">*</span></label>
-            <input type="text" name="tytul" id="title" required placeholder="2-64 znaków" value="<%=(ksi.tytul)?("\""+ksi.tytul+"\""):ksi.tytul%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-            <span id="errorTitle" class="error-text"></span>
+            <input class="<%=(validationErrors.find(e => e.path.includes('tytul')) )?'error-input' : ''%>" type="text" name="tytul" id="title" required placeholder="2-64 znaków" value="<%=(ksi.tytul)?("\""+ksi.tytul+"\""):ksi.tytul%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <span id="errorTitle" class="error-text">
+                <% if (validationErrors.find(e => e.path.includes('tytul')) ) {%>
+                    <%= validationErrors.find(e => e.path.includes('tytul')).message%>
+                <% } %>
+            </span>
 
             <label>Data pozyskania:<span class="symbol-required">*</span></label>
-            <input type="date" name="data_pozyskania" id="date" required value="<%=(ksi.data_pozyskania) ? ksi.data_pozyskania.toISOString().split('T')[0] : ksi.data_pozyskania %>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-            <span id="errorDate" class="error-text"></span>
+            <input class="<%=(validationErrors.find(e => e.path.includes('data_pozyskania')) )?'error-input' : ''%>" type="date" name="data_pozyskania" id="date" required value="<%=(ksi.data_pozyskania) ? ksi.data_pozyskania.toISOString().split('T')[0] : ksi.data_pozyskania %>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <span id="errorDate" class="error-text">
+                <% if (validationErrors.find(e => e.path.includes('data_pozyskania')) ) {%>
+                    <%= validationErrors.find(e => e.path.includes('data_pozyskania')).message%>
+                <% } %>
+            </span>
 
             <label>Strony:<span class="symbol-required">*</span></label>
-            <input type="number" name="strony" id="pages" required value="<%=ksi.strony%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-            <span id="errorPages" class="error-text"></span>
+            <input class="<%=(validationErrors.find(e => e.path.includes('strony')) )?'error-input' : ''%>" type="number" name="strony" id="pages" required value="<%=ksi.strony%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <span id="errorPages" class="error-text">
+                <% if (validationErrors.find(e => e.path.includes('strony')) ) {%>
+                    <%= validationErrors.find(e => e.path.includes('strony')).message%>
+                <% } %>
+            </span>
 
 
             <label>Uszkodzenia:</label>
-            <input type="text" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%> value="<%=ksi.uszkodzenia%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-            <span id="errorDamage" class="error-text"></span>
+            <input class="<%=(validationErrors.find(e => e.path.includes('uszkodzenia')) )?'error-input' : ''%>" type="text" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%> value="<%=ksi.uszkodzenia%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <span id="errorDamage" class="error-text">
+                <% if (validationErrors.find(e => e.path.includes('uszkodzenia')) ) {%>
+                    <%= validationErrors.find(e => e.path.includes('uszkodzenia')).message%>
+                <% } %>
+            </span>
 
             <div class="form-buttons">
-                <p id="errorSummary" class="error-text"></p>
+                <p id="errorSummary" class="error-text"><%=(validationErrors.length  > 0 ) ? 'Formularz zawiera błędy' : ''%></p>
                 <%if (formMode== 'showDetails') {%>
                     <a href="/egzemplarz_ksiazki/edit/<%= ksi._id%>" class="button-edit">
                         <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
