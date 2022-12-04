@@ -19,7 +19,7 @@ exports.showAddKsiazkaForm = (req, res , next) => {
         docType:'form',
         ksi: {},
         formMode: 'createNew',
-        btnLabel: 'Dodaj książkę',
+        btnLabel: 'Dodaj',
         formAction: '/egzemplarz_ksiazki/add',
         pageTitle: 'Dodaj Książkę'
     });
@@ -33,7 +33,7 @@ exports.showEditKsiazkaForm = (req, res , next) => {
             docType:'form',
             ksi: ksi,
             formMode: 'edit',
-            btnLabel: 'Edytuj książkę',
+            btnLabel: 'Zmień',
             formAction: '/egzemplarz_ksiazki/edit',
             pageTitle: 'Edytuj Książkę'
         });

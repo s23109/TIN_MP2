@@ -31,7 +31,7 @@ exports.showAddWypozyczenieForm = (req, res , next) => {
                 allKli : allKli,
                 allKsi : allKsi,
                 formMode : 'createNew',
-                btnLabel : 'Dodaj wypożyczenie',
+                btnLabel : 'Dodaj',
                 formAction: '/wypozyczenie/add',
                 pageTitle: 'Dodaj Wypożyczenie'
             });
@@ -61,7 +61,7 @@ exports.showEditWypozyczenieForm = (req, res ,next) => {
             allKli : allKli,
             allKsi : allKsi,
             formMode : 'edit',
-            btnLabel : 'Edytuj wypożyczenie',
+            btnLabel : 'Zmień',
             formAction: '/wypozyczenie/edit',
             pageTitle: 'Edytuj Wypożyczenie'
         });

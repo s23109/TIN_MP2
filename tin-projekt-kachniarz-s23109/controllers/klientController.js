@@ -18,7 +18,7 @@ exports.showAddKlientForm = (req, res , next) => {
         docType:'form',
         kli: {},
         formMode: 'createNew',
-        btnLabel: 'Dodaj klienta',
+        btnLabel: 'Dodaj',
         formAction: '/klient/add',
         pageTitle: 'Dodaj Klienta'
     });
@@ -32,7 +32,7 @@ exports.showEditKlientForm= (req, res, next) => {
             docType:'form',
             kli: kli,
             formMode: 'edit',
-            btnLabel: 'Edytuj klienta',
+            btnLabel: 'Zmień',
             formAction: '/klient/edit',
             pageTitle: 'Edytuj Klienta'
         });
