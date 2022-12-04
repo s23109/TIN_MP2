@@ -19,7 +19,7 @@
             </span>
 
             <label>Data pozyskania:<span class="symbol-required">*</span></label>
-            <input class="<%=(validationErrors.find(e => e.path.includes('data_pozyskania')) )?'error-input' : ''%>" type="date" name="data_pozyskania" id="date" required value="<%=(ksi.data_pozyskania) ? ksi.data_pozyskania.toISOString().split('T')[0] : ksi.data_pozyskania %>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <input class="<%=(validationErrors.find(e => e.path.includes('data_pozyskania')) )?'error-input' : ''%>" type="date" name="data_pozyskania" id="date" required value="<%=fmt.formatDate(ksi.data_pozyskania)%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorDate" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('data_pozyskania')) ) {%>
                     <%= validationErrors.find(e => e.path.includes('data_pozyskania')).message%>
@@ -81,8 +81,8 @@
             <tr>
                 <td><a href="/klient/details/<%=b.klient._id%>"><%= b.klient.imie + " " +  b.klient.nazwisko%></a> </td>
                 <td><%= b.klient.email%></td>
-                <td><%= b.data_od.toISOString().split('T')[0]%></td>
-                <td><%= (b.data_do)? b.data_do.toISOString().split('T')[0]: ''%></td>
+                <td><%= fmt.formatDate(b.data_od)%></td>
+                <td><%= (b.data_do)? fmt.formatDate(b.data_do): ''%></td>
             </tr>
             <% } %>
             </tbody>

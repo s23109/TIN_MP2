@@ -78,8 +78,8 @@
             <tr>
               <td><a href="/egzemplarz_ksiazki/details/<%=k.ksiazka._id%>" ><%="\""+k.ksiazka.tytul +"\""%></a></td>
               <td><%=k.ksiazka._id%></td>
-              <td><%=k.data_od.toISOString().split('T')[0]%></td>
-              <td><%=(k.data_do) ? k.data_do.toISOString().split('T')[0] : '' %></td>
+              <td><%=fmt.formatDate(k.data_od)%></td>
+              <td><%=fmt.formatDate(k.data_do)%></td>
             </tr>
           <% } %>
           </tbody>

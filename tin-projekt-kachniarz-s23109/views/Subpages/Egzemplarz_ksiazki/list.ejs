@@ -23,7 +23,7 @@
       <%for (let ksi of ksis){%>
       <tr>
         <td><%="\"" + ksi.tytul + "\""%></td>
-        <td><%=ksi.data_pozyskania.toISOString().split('T')[0]%></td>
+        <td><%=fmt.formatDate(ksi.data_pozyskania)%></td>
         <td><%=ksi.strony%></td>
         <td><%=ksi.uszkodzenia%></td>
         <td>

@@ -12,9 +12,11 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
     },
     Ksiazka_id:{
         type: Sequelize.INTEGER,
+        allowNull: false,
         validate:{
+
             checkIfNotDefault(){
-                if (this.Ksiazka_id == "default"){
+                if (this.Ksiazka_id == -1 || this.Ksiazka_id == null){
                     throw new Error("Pole musi mieć wybraną wartość")
                 }
             }
@@ -23,9 +25,10 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
     },
     Klient_id:{
         type: Sequelize.INTEGER,
+        allowNull: false,
         validate:{
             checkIfNotDefault(){
-                if (this.Klient_id == "default"){
+                if (this.Klient_id == -1 || this.Klient_id == null){
                     throw new Error("Pole musi mieć wybraną wartość")
                 }
             }
@@ -33,6 +36,7 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
     },
     data_od:{
         type: Sequelize.DATE,
+        allowNull: false,
         validate:{
             notEmpty:{
                 msg :"Pole jest wymagane"
@@ -52,7 +56,7 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
         type: Sequelize.DATE,
         validate:{
             checkIfNotFromFuture(){
-                if (this.data_do.length > 0){
+                if (this.data_do != null ){
 
                     let nowDate = new Date();
 
@@ -63,7 +67,7 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
                 }
             },
             checkIfNotBeforeData_od(){
-                if (this.data_do.length > 0){
+                if (this.data_do != null){
 
                     if (this.data_od>this.data_do){
                         throw new Error("Data zwrotu nie może być przed datą wypożyczenia");
