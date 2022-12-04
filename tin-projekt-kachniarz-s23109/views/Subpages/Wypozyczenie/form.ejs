@@ -32,12 +32,12 @@
             <select name="Klient_id" id="klient" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 <% if (formMode != 'showDetails' ) {%>
                     <% /* Przypadek gdzie się nie wczytuje reszty tabel */%>
-                <option  <%=(formMode == 'createNew') ? 'selected' : ''%> disabled hidden value="default">--Wybierz Klienta--</option>
+                <option <%=(formMode == 'createNew') ? 'selected' : ''%> disabled hidden value="default">--Wybierz Klienta--</option>
                 <% for (let kli of allKli){%>
                     <option value="<%= kli._id%>" <%=(wyp != null)? ((wyp.Klient_id == kli._id) ? 'selected' : '' ) : ''%>><%= kli.imie + " " + kli.nazwisko + " ID:" + kli._id%></option>
                 <% } %>
                 <% } else {%>
-                <option  selected hidden ><%=wyp.klient.imie + " " + wyp.klient.nazwisko + " ID:" + wyp.klient._id %></option>
+                <option selected hidden ><%=wyp.klient.imie + " " + wyp.klient.nazwisko + " ID:" + wyp.klient._id %></option>
                 <% } %>
 
             </select>

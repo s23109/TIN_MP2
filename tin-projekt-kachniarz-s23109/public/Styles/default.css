@@ -327,7 +327,8 @@ textarea {
 .form input[type="text"]:disabled,
 .form input[type="number"]:disabled,
 .form input[type="date"]:disabled,
-.form input[type="email"]:disabled {
+.form input[type="email"]:disabled,
+.form select:disabled{
     border: 1px solid #8d7f7f;
     background-color: #ffd2ae;
     border-radius: 5px;
