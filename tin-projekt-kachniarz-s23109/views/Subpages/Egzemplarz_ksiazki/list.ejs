@@ -22,7 +22,7 @@
 
       <%for (let ksi of ksis){%>
       <tr>
-        <td><%="\"" + ksi.tytul + "\""%></td>
+        <td><%=fmt.addQuoteIfNotExist(ksi.tytul)%></td>
         <td><%=fmt.formatDate(ksi.data_pozyskania)%></td>
         <td><%=ksi.strony%></td>
         <td><%=ksi.uszkodzenia%></td>

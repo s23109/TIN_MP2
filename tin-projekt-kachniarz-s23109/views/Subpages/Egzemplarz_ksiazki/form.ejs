@@ -11,7 +11,9 @@
             <input type="hidden" name="_id" value="<%=ksi._id%>">
 
             <label>Tytuł:<span class="symbol-required">*</span></label>
-            <input class="<%=(validationErrors.find(e => e.path.includes('tytul')) )?'error-input' : ''%>" type="text" name="tytul" id="title" required placeholder="2-64 znaków" value="<%=(ksi.tytul)?("\""+ksi.tytul+"\""):ksi.tytul%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <input class="<%=(validationErrors.find(e => e.path.includes('tytul')) )?'error-input' : ''%>" type="text" name="tytul" id="title" required placeholder="2-64 znaków"
+                   value="<%=(ksi.tytul)?((formMode == 'createNew' || formMode == 'edit') ? fmt.removeQuoteIfExist(ksi.tytul) : fmt.addQuoteIfNotExist(ksi.tytul) ):ksi.tytul%>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorTitle" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('tytul')) ) {%>
                     <%= validationErrors.find(e => e.path.includes('tytul')).message%>

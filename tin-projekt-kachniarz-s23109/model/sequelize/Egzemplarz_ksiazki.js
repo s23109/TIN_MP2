@@ -59,7 +59,7 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
                 }
             },
             checkIfPositive(){
-                if (this.strony > 0){
+                if (this.strony <= 0){
                     throw new Error("Pole musi być większą od 0");
                 }
             },

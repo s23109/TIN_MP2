@@ -15,7 +15,7 @@ var egzemplarz_ksiazkiAPIRouter = require('./routes/api/Egzemplarz_ksiazkiAPIRou
 
 const sequelizeInit = require('./config/sequelize/init');
 
-const fmt = require('./utils/dateFormatting');
+const fmt = require('./utils/formatting');
 
 sequelizeInit().catch(err => {
   console.log(err);
