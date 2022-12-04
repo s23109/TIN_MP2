@@ -15,6 +15,8 @@ var egzemplarz_ksiazkiAPIRouter = require('./routes/api/Egzemplarz_ksiazkiAPIRou
 
 const sequelizeInit = require('./config/sequelize/init');
 
+const fmt = require('./utils/dateFormatting');
+
 sequelizeInit().catch(err => {
   console.log(err);
 })
@@ -30,6 +32,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req,res,next) => {
+  res.locals.fmt = fmt;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/klient',klientRouter);

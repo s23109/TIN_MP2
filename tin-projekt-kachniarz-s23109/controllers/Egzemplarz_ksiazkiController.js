@@ -72,7 +72,7 @@ exports.addKsiazka = (req, res , next) => {
         res.render('Subpages/Egzemplarz_ksiazki/form',{
             navLocation:'Egzemplarz_Ksiazki' ,
             docType:'form',
-            ksi: {},
+            ksi: ksiData,
             formMode: 'createNew',
             btnLabel: 'Dodaj',
             formAction: '/egzemplarz_ksiazki/add',
@@ -92,7 +92,7 @@ exports.updateKsiazka = (req, res , next) => {
         res.render('Subpages/Egzemplarz_ksiazki/form',{
             navLocation:'Egzemplarz_Ksiazki',
             docType:'form',
-            ksi: ksi,
+            ksi: ksiData,
             formMode: 'edit',
             btnLabel: 'Zmień',
             formAction: '/egzemplarz_ksiazki/edit',
