@@ -47,11 +47,13 @@
         </form>
 
     <% if (formMode == 'showDetails' || formMode== 'edit'){%>
-        <h2>Wypożyczone przez</h2>
+
+        <%if (ksi.wypozyczenia.length > 0 ) {%>
+        <h2>Wypożyczenia książki</h2>
         <table class="table-list">
             <thead>
             <tr>
-                <th>Imię</th>
+                <th>Klient</th>
                 <th>Email</th>
                 <th>Data Wypożyczenia</th>
                 <th>Data Zwrotu</th>
@@ -69,6 +71,9 @@
             <% } %>
             </tbody>
         </table>
+        <% } else {%>
+            <h2>Brak przypisanych wypożyczeń książki</h2>
+        <% } %>
     <% } %>
 
     </main>

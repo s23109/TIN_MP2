@@ -68,6 +68,7 @@ header a{
 }
 
 
+
 header a:hover ,
 footer a:hover {
  color: #ffffff;
@@ -137,6 +138,23 @@ main h2 {
     margin-bottom: 0.5rem;
 }
 
+.table-list th{
+    font-weight: bolder;
+}
+
+.table-list a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bolder;
+    font-style: italic;
+
+}
+
+.table-list a:hover{
+    filter: drop-shadow(1px 1px 3px #ffffff);
+
+}
+
 .table-list,
 .table-list th,
 .table-list td {
@@ -152,7 +170,7 @@ main h2 {
 
 .table-list td {
     text-shadow: #cccccc 0px 1px 1px;
-    
+
 }
 
 .table-list th,
@@ -161,7 +179,6 @@ main h2 {
 }
 
 .table-list th {
-    
     text-shadow: #979594 0px 1px 1px;
 }
 
@@ -421,6 +438,14 @@ nav ul  {
     50% {filter: drop-shadow(0px 0px 10px #ccc34879);}
     75% { filter: drop-shadow(0px 0px 10px #ccc348b4);}
     100% { filter: drop-shadow(0px 0px 10px #ccc348);}
+}
+
+@keyframes hover-table-link {
+    0% {filter: unset}
+    25% {filter: drop-shadow(0px 0px 10px rgba(255, 3, 0, 0.24));}
+    50% {filter: drop-shadow(0px 0px 10px rgba(255, 3, 0, 0.49));}
+    75% { filter: drop-shadow(0px 0px 10px rgba(255, 3, 0, 0.74));}
+    100% { filter: drop-shadow(0px 0px 10px #ff0300);}
 }
 
 @keyframes button-hover {

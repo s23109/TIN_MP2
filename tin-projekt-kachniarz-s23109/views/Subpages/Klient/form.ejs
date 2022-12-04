@@ -49,6 +49,8 @@
     </form>
 
     <% if (formMode == 'showDetails' || formMode == 'edit') {%>
+
+    <%if (kli.wypozyczenia.length > 0 ) {%>
       <h2>Wypożyczenia klienta</h2>
         <table class="table-list">
           <thead>
@@ -70,6 +72,9 @@
           <% } %>
           </tbody>
         </table>
+    <%} else {%>
+      <h2>Brak wypożyczeń klienta</h2>
+      <% } %>
     <% } %>
   </main>
 
