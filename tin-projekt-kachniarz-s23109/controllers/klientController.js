@@ -20,7 +20,8 @@ exports.showAddKlientForm = (req, res , next) => {
         formMode: 'createNew',
         btnLabel: 'Dodaj',
         formAction: '/klient/add',
-        pageTitle: 'Dodaj Klienta'
+        pageTitle: 'Dodaj Klienta',
+        validationErrors:[]
     });
 }
 
@@ -34,7 +35,8 @@ exports.showEditKlientForm= (req, res, next) => {
             formMode: 'edit',
             btnLabel: 'Zmień',
             formAction: '/klient/edit',
-            pageTitle: 'Edytuj Klienta'
+            pageTitle: 'Edytuj Klienta',
+            validationErrors:[]
         });
     });
 
@@ -49,7 +51,8 @@ exports.showKlientDetails = (req, res , next) => {
             kli: kli,
             formMode: 'showDetails',
             formAction: '',
-            pageTitle: 'Szczegóły Klienta'
+            pageTitle: 'Szczegóły Klienta',
+            validationErrors:[]
         });
     });
 
@@ -60,7 +63,23 @@ exports.addKlient = (req, res,next) => {
     const kliData = {... req.body};
     KlientRepository.createKlient(kliData).then(result => {
         res.redirect('/klient');
-    })
+    }).catch(err => {
+        // console.log("ERR {\n");
+        // for (let er of err.errors){
+        //     console.log(JSON.stringify(er));
+        // }
+        // console.log("\n}");
+        res.render('Subpages/Klient/form', {
+            navLocation:'Klient' ,
+            docType:'form',
+            kli: kliData,
+            formMode: 'createNew',
+            btnLabel: 'Dodaj',
+            formAction: '/klient/add',
+            pageTitle: 'Dodaj Klienta',
+            validationErrors: err.errors
+        });
+    });
 }
 
 exports.updateKlient = (req, res,next) => {
@@ -68,6 +87,17 @@ exports.updateKlient = (req, res,next) => {
     const kliData = {... req.body};
     KlientRepository.updateKlient(kliID,kliData).then(result => {
         res.redirect('/klient');
+    }).catch(err => {
+        res.render('Subpages/Klient/form', {
+            navLocation:'Klient' ,
+            docType:'form',
+            kli: kliData,
+            formMode: 'edit',
+            btnLabel: 'Zmień',
+            formAction: '/klient/edit',
+            pageTitle: 'Edytuj Klienta',
+            validationErrors:err.errors
+        });
     });
 }
 
@@ -75,5 +105,9 @@ exports.deleteKlient = (req, res,next) => {
     const kliID = req.params.kliID;
     KlientRepository.deleteKlient(kliID).then(result => {
        res.redirect('/klient');
+    }).catch(err => {
+        //failsafe
+        alert("Nieznany błąd:" + JSON.stringify(err));
+        res.redirect('/klient');
     });
 }

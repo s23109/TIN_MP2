@@ -15,7 +15,13 @@ const Klient = sequelize.define('Klient', {
         allowNull: false,
         maxLength :32,
         validate: {
-            len : [3,32]
+            notEmpty:{
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args: [3,32],
+                msg: "Pole powinno zawierać od 3 do 32 znaków"
+            }
         }
     },
     nazwisko:{
@@ -23,16 +29,29 @@ const Klient = sequelize.define('Klient', {
         allowNull: false,
         maxLength :32,
         validate: {
-            len: [3,32]
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len:{
+                args: [3,32],
+                msg: "Pole powinno zawierać od 3 do 32 znaków"
+            }
         }
     },
     email:{
         type: Sequelize.STRING,
         isEmail: true,
         maxLength :64,
-        // validate:{
-        //     isEmail: true
-        // }
+        validate:{
+            checkIfEmail(){
+                if(this.email.length>0){
+                    //jeśli nie puste, bo pole opcjonalne
+                    if (!this.email.isEmail){
+                        throw new Error("Pole musi być adresem Email");
+                    }
+                }
+            }
+        }
     }
 
 

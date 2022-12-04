@@ -12,20 +12,32 @@
 
       <label>Imie:<span class="symbol-required">*</span></label>
       <input type="text" name="imie" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-      <span id="errorFirstName" class="error-text"></span>
+      <span id="errorFirstName" class="error-text">
+        <% if (validationErrors.find(e => e.path.includes('imie')) ) {%>
+          <%= validationErrors.find(e => e.path.includes('imie')).message%>
+        <% } %>
+      </span>
 
       <label>Nazwisko:<span class="symbol-required">*</span></label>
       <input type="text" name="nazwisko" id="lastName" required placeholder="2-32 znaków" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-      <span id="errorLastName" class="error-text"></span>
+      <span id="errorLastName" class="error-text">
+        <% if (validationErrors.find(e => e.path.includes('nazwisko')) ) {%>
+          <%= validationErrors.find(e => e.path.includes('nazwisko')).message%>
+        <% } %>
+      </span>
 
       <label>Email:</label>
       <input type="email" name="email" id="email" placeholder=<%= (formMode == 'showDetails')? "Brak" : "ABC@DE.FG"%> value="<%=kli.email%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
-      <span id="errorEmail" class="error-text"></span>
+      <span id="errorEmail" class="error-text">
+        <% if (validationErrors.find(e => e.path.includes('email')) ) {%>
+          <%= validationErrors.find(e => e.path.includes('email')).message%>
+        <% } %>
+      </span>
 
       <!-- Buttons end form -->
       <div class="form-buttons">
 
-        <p id="errorSummary" class="error-text"></p>
+        <p id="errorSummary" class="error-text"><%=(validationErrors.length  > 0 ) ? 'Formularz zawiera błędy' : ''%></p>
 
         <%if (formMode== 'showDetails') {%>
           <a href="/Klient/edit/<%= kli._id%>" class="button-edit">
