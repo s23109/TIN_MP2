@@ -316,7 +316,8 @@ textarea {
 .form input[type="text"],
 .form input[type="number"],
 .form input[type="date"],
-.form input[type="email"] {
+.form input[type="email"],
+.form textarea{
     border: 1px solid #8d7f7f;
     background-color: #ffffff;
     border-radius: 5px;
@@ -324,11 +325,17 @@ textarea {
     text-indent: 2.5%;
 }
 
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
 .form input[type="text"]:disabled,
 .form input[type="number"]:disabled,
 .form input[type="date"]:disabled,
 .form input[type="email"]:disabled,
-.form select:disabled{
+.form select:disabled,
+.form textarea:disabled{
     border: 1px solid #8d7f7f;
     background-color: #ffd2ae;
     border-radius: 5px;

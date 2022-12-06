@@ -38,7 +38,7 @@
 
 
             <label>Uszkodzenia:</label>
-            <input class="<%=(validationErrors.find(e => e.path.includes('uszkodzenia')) )?'error-input' : ''%>" type="text" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%> value="<%=ksi.uszkodzenia%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+            <textarea  class="<%=(validationErrors.find(e => e.path.includes('uszkodzenia')) )?'error-input' : ''%>" rows="3" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%>  <%= (formMode == 'showDetails') ? 'disabled' : ''%>><%=ksi.uszkodzenia%></textarea>
             <span id="errorDamage" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('uszkodzenia')) ) {%>
                     <%= validationErrors.find(e => e.path.includes('uszkodzenia')).message%>
