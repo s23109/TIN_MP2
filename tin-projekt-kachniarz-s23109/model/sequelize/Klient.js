@@ -1,6 +1,7 @@
 
 const Sequelize = require('sequelize');
 const sequelize = require('../../config/sequelize/sequelize');
+const validation = require('../../utils/validation');
 
 const Klient = sequelize.define('Klient', {
 
@@ -21,6 +22,16 @@ const Klient = sequelize.define('Klient', {
             len: {
                 args: [3,32],
                 msg: "Pole powinno zawierać od 3 do 32 znaków"
+            },
+            containZnaki(){
+                if (validation.containsSpecialChar(this.imie)){
+                    throw new Error ("Pole nie może zawierać znaków specjalnych ");
+                }
+                // w środku pozwala (tak zostawić ?)
+                if (validation.containsWhiteChar(this.imie)){
+                    throw new Error("Pole nie może zawierać białych znaków")
+                }
+
             }
         }
     },
@@ -45,11 +56,9 @@ const Klient = sequelize.define('Klient', {
             checkIfEmail(){
                 if(this.email.length>0){
                     //jeśli nie puste, bo pole opcjonalne
-
                     //bo buguje się przy ,,zwykłym isEmail''
-                    const regex = /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
-
-                    if (!regex.test(this.email)){
+                    // negacja bo przejdzie tylko jak jest mailem
+                    if (!validation.isEmail(this.email)){
                         throw new Error("Pole musi być adresem Email");
                     }
 
