@@ -71,6 +71,14 @@ exports.addKlient = (req, res,next) => {
         // console.log("\n}");
 
         //console.log(JSON.stringify(kliData));
+        //Do unique email - wtedy ręcznie message
+        // err.errors.forEach(e => {
+        //    if (e.path.includes('email') && e.type == 'unique violation'){
+        //        e.message = "Podany adres email już jest używany";
+        //    }
+        //
+        // });
+
         res.render('Subpages/Klient/form', {
             navLocation:'Klient' ,
             docType:'form',

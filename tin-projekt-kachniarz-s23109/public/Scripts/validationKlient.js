@@ -10,8 +10,7 @@ function validateForm() {
     const errorSummary = document.getElementById('errorSummary');
 
     resetErrors([firstNameInput, lastNameInput, emailInput], [errorFirstName, errorLastName, errorEmail], errorSummary);
-    let whiteChar = [false,false];
-    let validMail = true;
+    let whiteChar = [false,false,false];
     let valid = true;
 
     if (!checkRequired(firstNameInput.value)) {
@@ -71,7 +70,11 @@ function validateForm() {
 
         if (!checkEmail(emailInput.value)) {
             //bad regex
-            validMail = false;
+            valid = false;
+            emailInput.classList.add("error-input");
+            errorEmail.innerText = "Pole musi zawierać poprawny adres Email";
+        } else if (containsWhiteChar(emailInput.value)){
+            whiteChar[2]=true;
             valid = false;
             emailInput.classList.add("error-input");
             errorEmail.innerText = "Pole musi zawierać poprawny adres Email";
@@ -88,10 +91,12 @@ function validateForm() {
         }
 
         if (whiteChar[1]){
-                if (whiteChar[0]){
-                    errorText+= ", ";
-                }
-            errorText+= "Nazwisko";
+
+            errorText+= "Nazwisko ";
+        }
+
+        if (whiteChar[2]){
+            errorText+= "Email ";
         }
 
         if (confirm("Wykryto białe znaki w na początku lub końcu pól: " + errorText + ".\nCzy chcesz je usunąć przed wysłaniem?")){
@@ -107,8 +112,14 @@ function validateForm() {
                 errorLastName.innerText = "";
             }
 
-            if (!whiteChar.includes(false) && validMail){
-                //git mail, wszystkie błędy przez białe znaki
+            if (whiteChar[2]){
+                emailInput.value = emailInput.value.trim();
+                emailInput.classList.remove("error-input");
+                errorEmail.innerText="";
+            }
+
+            if (!whiteChar.includes(false)){
+                //wszystkie błędy przez białe znaki
                 valid = true;
             }
         };
