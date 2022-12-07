@@ -10,7 +10,8 @@ function validateForm() {
     const errorSummary = document.getElementById('errorSummary');
 
     resetErrors([firstNameInput, lastNameInput, emailInput], [errorFirstName, errorLastName, errorEmail], errorSummary);
-
+    let whiteChar = [false,false];
+    let validMail = true;
     let valid = true;
 
     if (!checkRequired(firstNameInput.value)) {
@@ -29,6 +30,15 @@ function validateForm() {
         firstNameInput.classList.add("error-input");
         errorFirstName.innerText = "Pole nie może zawierać liczb";
 
+    } else if (containsSpecialChar(firstNameInput.value)){
+        valid = false;
+        firstNameInput.classList.add("error-input");
+        errorFirstName.innerText = "Pole nie może zawierać znaków specjalnych";
+    } else if (containsWhiteChar(firstNameInput.value)){
+        whiteChar[0]=true;
+        valid = false;
+        firstNameInput.classList.add("error-input");
+        errorFirstName.innerText = "Pole nie może zawierać białych znaków w polach kluczowych";
     }
 
     if (!checkRequired(lastNameInput.value)) {
@@ -44,6 +54,15 @@ function validateForm() {
         valid = false;
         lastNameInput.classList.add("error-input");
         errorLastName.innerText = "Pole nie może zawierać liczb";
+    } else  if (containsSpecialChar(lastNameInput.value)){
+        valid = false;
+        lastNameInput.classList.add("error-input");
+        errorLastName.innerText = "Pole nie może zawierać znaków specjalnych";
+    } else if (containsWhiteChar(lastNameInput.value)){
+        whiteChar[1]=true;
+        valid = false;
+        lastNameInput.classList.add("error-input");
+        errorLastName.innerText = "Pole nie może zawierać białych znaków w polach kluczowych";
     }
 
 
@@ -52,11 +71,47 @@ function validateForm() {
 
         if (!checkEmail(emailInput.value)) {
             //bad regex
+            validMail = false;
             valid = false;
             emailInput.classList.add("error-input");
             errorEmail.innerText = "Pole musi zawierać poprawny adres Email";
         }
 
+
+    }
+
+    if (whiteChar.includes(true)){
+        var errorText = "";
+
+        if (whiteChar[0]){
+            errorText+= "Imie ";
+        }
+
+        if (whiteChar[1]){
+                if (whiteChar[0]){
+                    errorText+= ", ";
+                }
+            errorText+= "Nazwisko";
+        }
+
+        if (confirm("Wykryto białe znaki w na początku lub końcu pól: " + errorText + ".\nCzy chcesz je usunąć przed wysłaniem?")){
+            if (whiteChar[0]){
+                firstNameInput.value = firstNameInput.value.trim();
+                firstNameInput.classList.remove("error-input");
+                errorFirstName.innerText = "";
+            }
+
+            if (whiteChar[1]){
+                lastNameInput.value = lastNameInput.value.trim();
+                lastNameInput.classList.remove("error-input");
+                errorLastName.innerText = "";
+            }
+
+            if (!whiteChar.includes(false) && validMail){
+                //git mail, wszystkie błędy przez białe znaki
+                valid = true;
+            }
+        };
     }
 
     if (!valid) {

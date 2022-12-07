@@ -65,8 +65,8 @@
         </form>
 
     <% if (formMode == 'showDetails' || formMode== 'edit'){%>
-
-        <%if (ksi.wypozyczenia != null ) {%>
+        <%if (ksi.wypozyczenia != null) {%>
+        <%if (ksi.wypozyczenia.length > 0 ) {%>
         <h2>Wypożyczenia książki</h2>
         <table class="table-list">
             <thead>
@@ -92,7 +92,7 @@
         <% } else {%>
             <h2>Brak przypisanych wypożyczeń książki</h2>
         <% } %>
-    <% } %>
+    <% } } %>
 
     </main>
 <%- include('../../fragments/footer.ejs') %>
