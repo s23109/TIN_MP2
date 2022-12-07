@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-
+const validate = require('../../utils/validation');
 const sequelize = require('../../config/sequelize/sequelize');
 
 const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
@@ -22,6 +22,12 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
             len : {
                 args: [2,64],
                 msg: "Pole powinno zawierać od 2 do 64 znaków"
+            },
+
+            checkWhiteChar(){
+                if (validate.containsWhiteChar(this.tytul)){
+                    throw new Error("Pole nie może zawierać białych znaków na początku i końcu");
+                }
             }
         }
 

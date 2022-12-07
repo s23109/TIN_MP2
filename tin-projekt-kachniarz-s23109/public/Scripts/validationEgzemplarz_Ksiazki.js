@@ -15,6 +15,8 @@ function validateForm() {
 
     resetErrors([titleInput, dateInput, pagesInput, damageInput], [errorTitle, errorDate, errorPages, errorDamage], errorSummary);
 
+    let whiteChar = false;
+
     //today date
     let nowDate = new Date(),
         month = '' + (nowDate.getMonth() + 1),
@@ -47,6 +49,12 @@ function validateForm() {
         titleInput.classList.add('error-input');
         errorTitle.innerText = "Nazwa musi mieć długość z przedziału 2 - 64";
 
+    } else if (containsWhiteChar(titleInput.value)){
+        whiteChar= true;
+        // w confirmie valid
+        //   valid = false;
+        titleInput.classList.add('error-input');
+        errorTitle.innerText = "Pole nie może zawierać białych znaków na początku i końcu";
     }
 
     if (!checkRequired(dateInput.value)) {
@@ -66,6 +74,7 @@ function validateForm() {
         valid = false;
         dateInput.classList.add('error-input');
         errorDate.innerText = "Data jest zbyt wczesna";
+
 
     }
 
@@ -100,6 +109,19 @@ function validateForm() {
             errorPages.innerText = "Liczba nie może być większa niż " + maxPages;
         }
 
+
+    }
+
+    if (whiteChar){
+
+        if (confirm("Wykryto białe znaki w na początku lub końcu pola Tytuł.\nCzy chcesz je usunąć przed wysłaniem?")){
+            titleInput.value = titleInput.value.trim();
+            titleInput.classList.remove('error-input');
+            errorTitle.innerText = " "
+        }
+        else {
+            valid=false;
+        }
 
     }
 
