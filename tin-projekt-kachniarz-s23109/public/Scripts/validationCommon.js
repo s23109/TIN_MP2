@@ -197,3 +197,30 @@ function checkIfContainsNumbers(value) {
     return /\d/.test(value);
 
 }
+
+//=======================
+//Zabrane z utils/validation , przez jakieś bugi co do modułów
+
+const containsZnaki = (znaki, wyraz) => {
+    for (let ch of wyraz) {
+        if (znaki.contains(ch)){
+            return true;
+        };
+    };
+
+    return false;
+};
+
+
+const containsWhiteChar = (wyraz) => {
+    let before = wyraz.length;
+    let after = wyraz.trim().length;
+
+    return !(before===after);
+}
+
+const containsSpecialChar = (wyraz) => {
+    let regex = /[~|`|!|@|#|$|%|^|&|*|(|)|_|-|=|+|[|{|}|\]|;|:|'|"|,|<|.|>|/|?|\\|\|]/i;
+
+    return regex.test(wyraz);
+}

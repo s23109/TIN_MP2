@@ -29,8 +29,15 @@ const containsSpecialChar = (wyraz) => {
     return regex.test(wyraz);
 }
 
+const containsNumbers = (wyraz) => {
+  let regex = /[0-9]/i ;
+
+  return regex.test(wyraz);
+};
+
 let fun = {};
 fun.isEmail = isEmail;
 fun.containsWhiteChar = containsWhiteChar;
 fun.containsSpecialChar = containsSpecialChar;
+fun.containsNumbers = containsNumbers;
 module.exports = fun;
