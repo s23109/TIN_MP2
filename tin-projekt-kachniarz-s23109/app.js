@@ -46,6 +46,17 @@ app.use(session(
     }
 ));
 
+app.use((req,res,next)=>{
+    const loggedUser = req.session.loggedUser;
+
+    res.locals.loggedUser = loggedUser;
+
+    if (res.locals.loginError){
+        res.locals.loginError = undefined;
+    }
+    next();
+})
+
 app.use('/', indexRouter);
 app.use('/klient',klientRouter);
 app.use('/wypozyczenie' , wypozyczenieRouter);
