@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var klientRouter = require('./routes/klientRoute');
@@ -37,6 +38,13 @@ app.use((req,res,next) => {
   res.locals.fmt = fmt;
   next();
 });
+
+app.use(session(
+    {
+      secret: "aMoGuS_hueHUEhue",
+      resave: false
+    }
+));
 
 app.use('/', indexRouter);
 app.use('/klient',klientRouter);

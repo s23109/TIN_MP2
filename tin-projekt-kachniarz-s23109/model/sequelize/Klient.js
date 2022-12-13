@@ -89,7 +89,15 @@ const Klient = sequelize.define('Klient', {
             }
         }
     }
-
+    ,
+    login : {
+        type: Sequelize.STRING,
+        unique : true
+    },
+    password:{
+        type: Sequelize.STRING,
+        minLength: 3
+    }
 
 });
 
