@@ -1,18 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const session = require('express-session');
 
-var indexRouter = require('./routes/index');
-var klientRouter = require('./routes/klientRoute');
-var wypozyczenieRouter = require('./routes/wypozyczenieRoute');
-var egzemplarz_ksiazkiRouter = require('./routes/egzemplarz_ksiazkiRoute');
+const indexRouter = require('./routes/index');
+const klientRouter = require('./routes/klientRoute');
+const wypozyczenieRouter = require('./routes/wypozyczenieRoute');
+const egzemplarz_ksiazkiRouter = require('./routes/egzemplarz_ksiazkiRoute');
 
-var klientAPIRouter = require('./routes/api/KlientAPIRoute');
-var wypozyczeniaAPIRouter = require('./routes/api/WypozyczenieAPIRoute');
-var egzemplarz_ksiazkiAPIRouter = require('./routes/api/Egzemplarz_ksiazkiAPIRoute');
+const klientAPIRouter = require('./routes/api/KlientAPIRoute');
+const wypozyczeniaAPIRouter = require('./routes/api/WypozyczenieAPIRoute');
+const egzemplarz_ksiazkiAPIRouter = require('./routes/api/Egzemplarz_ksiazkiAPIRoute');
 
 const sequelizeInit = require('./config/sequelize/init');
 
@@ -22,7 +22,7 @@ sequelizeInit().catch(err => {
   console.log(err);
 })
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
