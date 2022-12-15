@@ -10,5 +10,6 @@ router.get('/', function(req, res, next) {
 router.post('/login',AuthRepo.login);
 router.get('/logout',AuthRepo.logout);
 
+router.get('/loginForm',  )
 
 module.exports = router;

@@ -35,7 +35,28 @@
     <a href="/">
         <img src="/Images/Logo.png" alt="Biblioteka Logo">
     </a>
+
 </header>
+
+<div class="login-container">
+
+    <% if (!locals.loggedUser  ) {%>
+        <div class="login-container-info">
+        <a href=""><h4>Nie zalogowano</h4></a>
+        </div>
+        <div class="login-container-form">
+            <label>Login</label>
+            <input type="text" >
+            <label>Hasło</label>
+            <input type="password" >
+            <input type="submit" value="Zaloguj">
+        </div>
+        <span class="error-text">Złe hasło lub login</span>
+    <% } else {%>
+        <a href=""><h3>Zalogowano</h3></a>
+    <% } %>
+
+</div>
 
 <nav>
 
