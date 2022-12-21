@@ -25,9 +25,9 @@ module.exports = () => {
             if (!klie || klie.length == 0){
                 //jak nie ma nic przy start upie, to wklej dane startowe
                 return Klient.bulkCreate([
-                    {imie:'Adam' , nazwisko:'Małysz' ,email:'AM@ttt.pl',login:'AMDN',password:'1111'},
-                    {imie:'Mariusz' , nazwisko:'Pudzianowski' ,email:'MP_MP@mp.pl',login:'MP_MP',password:'MP4L'},
-                    {imie:'Test' , nazwisko:'Testowy' ,email:'Test@te.st',login:'TEST',password:'TEST'}
+                    {imie:'Adam' , nazwisko:'Małysz' ,email:'AM@ttt.pl'},
+                    {imie:'Mariusz' , nazwisko:'Pudzianowski' ,email:'MP_MP@mp.pl'},
+                    {imie:'Test' , nazwisko:'Testowy' ,email:'Test@te.st'}
                 ])
                     .then( () => {
                         return Klient.findAll();

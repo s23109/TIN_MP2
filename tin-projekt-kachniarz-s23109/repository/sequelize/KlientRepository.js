@@ -48,11 +48,5 @@ exports.deleteKlient = (kliID) => {
 
     return Klient.destroy({where: {_id: kliID}});
 
-};
-
-exports.getKlientByLogin = (kliLogin) => {
-    return Klient.findOne(
-        {where:{
-            login: kliLogin}}
-    );
 }
+
