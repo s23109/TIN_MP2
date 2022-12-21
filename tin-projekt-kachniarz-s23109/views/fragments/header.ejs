@@ -41,17 +41,17 @@
 <div class="login-container">
 
     <% if (!locals.loggedUser  ) {%>
-        <div class="login-container-info">
-        <a href=""><h4>Nie zalogowano</h4></a>
-        </div>
+
+        <h5>Logowanie :</h5>
+
         <div class="login-container-form">
-            <label>Login</label>
+            <label>Login :</label>
             <input type="text" >
-            <label>Hasło</label>
+            <label>Hasło :</label>
             <input type="password" >
             <input type="submit" value="Zaloguj">
         </div>
-        <span class="error-text">Złe hasło lub login</span>
+        <h5 class="error-text" >a</h5>
     <% } else {%>
         <a href=""><h3>Zalogowano</h3></a>
     <% } %>

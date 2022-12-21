@@ -20,7 +20,8 @@ body {
 
 header,
 footer,
-nav {
+nav ,
+.login-container{
     font-family: 'Fira Sans' ,  sans-serif ;
     color: black;
     
@@ -104,6 +105,8 @@ nav ,
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
+    align-content: center;
+
 }
 
  .login-container-form label,
@@ -115,6 +118,35 @@ nav ,
 .login-container-form input {
     width: 6rem;
 }
+
+.login-container input,
+.login-container label,
+.login-container h5{
+    margin: unset;
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.login-container-form input,
+.login-container-form label{
+    height: 1rem;
+    font-size: 0.85rem;
+}
+
+.login-container-form input[type="submit"]{
+    width: 3rem;
+    height: 1rem;
+    font-size: x-small;
+}
+
+.login-container-form{
+    display: flex;
+    align-items:center ;
+}
+
 
 nav ul li a {
     display: inline-block;
