@@ -45,6 +45,9 @@ exports.showEditKlientForm= (req, res, next) => {
 exports.showKlientDetails = (req, res , next) => {
     const kliID = req.params.kliID;
     KlientRepository.getKlientByID(kliID).then(kli => {
+
+        console.log(JSON.stringify(kli));
+
         res.render('Subpages/Klient/form',{
             navLocation:'Klient' ,
             docType:'form',

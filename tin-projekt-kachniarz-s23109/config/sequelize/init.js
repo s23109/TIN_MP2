@@ -4,6 +4,8 @@ const Klient = require('../../model/sequelize/Klient');
 const Egzemplarz_ksiazki = require('../../model/sequelize/Egzemplarz_ksiazki');
 const Wypozyczenie = require('../../model/sequelize/Wypozyczenie');
 
+const Mongo = require('../../repository/mongodb/AccountRepository');
+
 module.exports = () => {
     //podpięcie klient - wypozyczenie
     Klient.hasMany(Wypozyczenie, {as: 'wypozyczenia', foreignKey:{name:'Klient_id' , allowNull:false}, constraints:true, onDelete:'CASCADE'});
@@ -12,6 +14,11 @@ module.exports = () => {
     // podpięcie egzemplarz - wypozyczenie
     Egzemplarz_ksiazki.hasMany(Wypozyczenie , {as: 'wypozyczenia' , foreignKey:{name:'Ksiazka_id', allowNull:false}, constraints:true , onDelete:'CASCADE'});
     Wypozyczenie.belongsTo(Egzemplarz_ksiazki, {as: 'ksiazka' , foreignKey:{name:'Ksiazka_id' , allowNull:false}});
+    // var oof = {
+    //     name: 1,
+    //     a : 2
+    // }
+    // Mongo.createAccount(oof);
 
     let allKlient , allEgzemplarz;
     // jeśli force = true , to zawsze podmieni

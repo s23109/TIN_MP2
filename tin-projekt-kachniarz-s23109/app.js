@@ -19,13 +19,15 @@ const mongoInit = require('./config/mongodb/mongoInit');
 
 const fmt = require('./utils/formatting');
 
+
+mongoInit.init().catch(err => {
+    console.log(err)
+})
+
 sequelizeInit().catch(err => {
   console.log(err);
 })
 
-mongoInit().catch(err => {
-    console.log(err)
-})
 
 const app = express();
 
