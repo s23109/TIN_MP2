@@ -15,11 +15,16 @@ const wypozyczeniaAPIRouter = require('./routes/api/WypozyczenieAPIRoute');
 const egzemplarz_ksiazkiAPIRouter = require('./routes/api/Egzemplarz_ksiazkiAPIRoute');
 
 const sequelizeInit = require('./config/sequelize/init');
+const mongoInit = require('./config/mongoInit');
 
 const fmt = require('./utils/formatting');
 
 sequelizeInit().catch(err => {
   console.log(err);
+})
+
+mongoInit().catch(err => {
+    console.log(err)
 })
 
 const app = express();
