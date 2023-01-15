@@ -106,7 +106,12 @@ nav ,
     flex-wrap: nowrap;
     justify-content: space-around;
     align-content: center;
+    min-height: 1.25rem;
+}
 
+.login-container-form {
+    align-content: center;
+    margin: 0.1rem;
 }
 
  .login-container-form form label,
@@ -121,7 +126,9 @@ nav ,
 
 .login-container input,
 .login-container label,
-.login-container h5{
+.login-container h5,
+.login-container span,
+.login-container a{
     margin: unset;
     margin-right: 0.5rem;
     display: flex;
@@ -131,9 +138,36 @@ nav ,
 
 
 .login-container-form form input,
-.login-container-form form label{
+.login-container-form form label {
     height: 1rem;
     font-size: 0.85rem;
+}
+
+.login-container span,
+.login-container a{
+    height: 1rem;
+    font-size: 0.85rem;
+    margin: 0.1rem;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.login-container a:hover  {
+    text-decoration: none;
+    color: white;
+    filter: drop-shadow(0px 0px 5px black);
+    animation-name: hover-header;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    text-shadow: #707070 1px 1px 1px;
+}
+
+.login-container span span {
+    font-weight: bold;
+    color: inherit;
 }
 
 .login-container-form form input[type="submit"]{

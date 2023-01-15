@@ -53,7 +53,7 @@
         </div>
         <h5 class="error-text" ><%=loginError? loginError: ''%></h5>
     <% } else {%>
-        <span>Jesteś zalogowany jako: <%=locals.loggedUser.imie + " " + locals.loggedUser.nazwisko%> </span>
+        <span>Jesteś zalogowany jako: <span> <%=locals.loggedUser.imie + " " + locals.loggedUser.nazwisko%> </span> </span>
         <a href="/logout">Wyloguj się</a>
     <% } %>
 </div>
