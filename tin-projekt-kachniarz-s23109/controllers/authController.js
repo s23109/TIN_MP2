@@ -10,19 +10,19 @@ exports.login = (req,res,next) => {
         .then(kli => {
             if (!kli){
                 // not found kli
-                res.render('/',{
+                res.render('index',{
                     navLocation: 'Main' , docType:'index', loginError: 'Zły Login lub hasło'
                 })
 
             }else if (kli.password === password){
                 //git - zwracamy nie dane logowania a dane konta
-                let kliData = KlientRepo.getKlientByID(kli.kliID);
+                let kliData = KlientRepo.getOnlyKlientByID(kli.kliID);
                 res.session.loggedUser = kliData;
                 res.redirect('/');
             }else {
                 //złe hasło
 
-                res.render('/',{
+                res.render('index',{
                     navLocation: 'Main' , docType:'index', loginError: 'Zły login lub Hasło'
                 })
             }

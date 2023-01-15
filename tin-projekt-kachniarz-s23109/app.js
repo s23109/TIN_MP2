@@ -52,7 +52,7 @@ app.use(session(
       resave: false
     }
 ));
-
+// aby dane usera były dostępne w szablonach
 app.use((req,res,next)=>{
     const loggedUser = req.session.loggedUser;
 
