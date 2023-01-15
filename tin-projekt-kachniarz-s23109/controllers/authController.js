@@ -1,4 +1,5 @@
 const KlientRepo = require('../repository/sequelize/KlientRepository');
+const AccountRepo = require('../repository/mongodb/AccountRepository');
 // błędy logowania różne (uppercase - zły param)
 
 exports.login = (req,res,next) => {
