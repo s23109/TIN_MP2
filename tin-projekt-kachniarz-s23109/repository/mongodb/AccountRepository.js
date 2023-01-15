@@ -4,7 +4,7 @@ const account = require('../../model/mongodb/Account')
 
 const db = client.collection('LoginData');
 
-exports.createAccount = async (acc) => {
+exports.createAccountUnsafe = async (acc) => {
     await db.insertOne(acc);
 }
 
@@ -18,6 +18,15 @@ exports.accountExists = async (id) => {
     }
 
     return false;
+}
+
+exports.createAccount = async (acc) => {
+    if (await this.accountExists(acc.kliID)){
+        throw new Error("Login Already Used");
+    }
+    else {
+        this.createAccountUnsafe(acc);
+    }
 }
 
 exports.deleteAccount = async (id) => {

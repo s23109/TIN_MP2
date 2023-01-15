@@ -18,7 +18,7 @@ module.exports = () => {
     //     name: 1,
     //     a : 2
     // }
-    // Mongo.createAccount(oof);
+    // Mongo.createAccountUnsafe(oof);
 
     let allKlient , allEgzemplarz;
     // jeśli force = true , to zawsze podmieni
