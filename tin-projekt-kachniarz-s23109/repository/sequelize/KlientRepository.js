@@ -16,9 +16,9 @@ exports.getAllKlients = () => {
     return Klient.findAll();
 };
 
-exports.getOnlyKlientByID = (kliID) => {
+exports.getOnlyKlientByID = async (kliID) => {
     return Klient.findByPk(kliID);
-}
+};
 
 //w teorii oba potrzeba z tej strony - return wszystkich danych powiązanych , potem wybór co potrzebne
 exports.getKlientByID = (kliID) => {

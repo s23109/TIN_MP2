@@ -39,21 +39,19 @@
 </header>
 
 <div class="login-container">
-
+    <%console.log("LOGGED USER DATA: " + JSON.stringify(loggedUser))%>
     <% if (!loggedUser) {%>
-
         <h5>Logowanie :</h5>
-
         <div class="login-container-form">
             <form method="post" action="/login" novalidate>
             <label>Login :</label>
-            <input type="text" id="login">
+            <input type="text" id="login" name="login">
             <label>Hasło :</label>
-            <input type="password" id="password">
+            <input type="password" id="password" name="password">
             <input type="submit" value="Zaloguj">
             </form>
         </div>
-        <h5 class="error-text" ><%=locals.loginError? locals.loginError: ''%></h5>
+        <h5 class="error-text" ><%=loginError? loginError: ''%></h5>
     <% } else {%>
         <span>Jesteś zalogowany jako: <%=loggedUser.imie + " " + loggedUser.nazwisko%> </span>
         <a href="/logout">Wyloguj się</a>

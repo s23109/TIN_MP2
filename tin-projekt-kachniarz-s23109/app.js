@@ -18,6 +18,7 @@ const sequelizeInit = require('./config/sequelize/init');
 const mongoInit = require('./config/mongodb/mongoInit');
 
 const fmt = require('./utils/formatting');
+const {log} = require("debug");
 
 
 mongoInit.init().catch(err => {
@@ -49,18 +50,20 @@ app.use((req,res,next) => {
 app.use(session(
     {
       secret: "aMoGuS_hueHUEhue",
-      resave: false
+      resave: false,
     }
 ));
 // aby dane usera były dostępne w szablonach
 app.use((req,res,next)=>{
     const loggedUser = req.session.loggedUser;
-
     res.locals.loggedUser = loggedUser;
 
-    if (res.locals.loginError){
+    if (!res.locals.loginError){
         res.locals.loginError = undefined;
     }
+
+    
+
     next();
 })
 

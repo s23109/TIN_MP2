@@ -2,23 +2,29 @@ const KlientRepo = require('../repository/sequelize/KlientRepository');
 const AccountRepo = require('../repository/mongodb/AccountRepository');
 // błędy logowania różne (uppercase - zły param)
 
-exports.login = (req,res,next) => {
+exports.login =  (req,res,next) => {
     const login = req.body.login;
     const password = req.body.password;
+    //console.log(JSON.stringify(req.body));
 
     AccountRepo.getByLogin(login)
-        .then(kli => {
-            if (!kli){
-                // not found kli
+        .then(acc => {
+            console.log("Log in attempt for data:");
+            console.log(JSON.stringify(acc));
+            if (!acc){
+                // not found acc
                 res.render('index',{
                     navLocation: 'Main' , docType:'index', loginError: 'Zły Login lub hasło'
                 })
 
-            }else if (kli.password === password){
+            }else if (acc.password === password){
                 //git - zwracamy nie dane logowania a dane konta
-                let kliData = KlientRepo.getOnlyKlientByID(kli.kliID);
-                res.session.loggedUser = kliData;
-                res.redirect('/');
+                KlientRepo.getOnlyKlientByID(acc.kliID).then(kliData => {
+                    console.log("Trying to assign to loggedUser : " + JSON.stringify(kliData));
+                    res.locals.loggedUser = kliData ;
+                    res.redirect('/');
+                });
+
             }else {
                 //złe hasło
 
@@ -33,6 +39,6 @@ exports.login = (req,res,next) => {
 }
 
 exports.logout = (req,res,next) => {
-res.session.loggedUser = undefined;
+res.locals.loggedUser = undefined;
 res.redirect('/');
 }
