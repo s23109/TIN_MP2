@@ -21,7 +21,8 @@ exports.login =  (req,res,next) => {
                 //git - zwracamy nie dane logowania a dane konta
                 KlientRepo.getOnlyKlientByID(acc.kliID).then(kliData => {
                     console.log("Trying to assign to loggedUser : " + JSON.stringify(kliData));
-                    res.locals.loggedUser = kliData ;
+                    req.session.loggedUser = kliData ;
+                    console.log(JSON.stringify(res.locals.loggedUser));
                     res.redirect('/');
                 });
 
@@ -39,6 +40,6 @@ exports.login =  (req,res,next) => {
 }
 
 exports.logout = (req,res,next) => {
-res.locals.loggedUser = undefined;
+req.session.loggedUser = undefined;
 res.redirect('/');
 }
