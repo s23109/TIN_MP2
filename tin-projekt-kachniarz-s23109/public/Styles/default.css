@@ -109,13 +109,13 @@ nav ,
 
 }
 
- .login-container-form label,
- .login-container-form input,
- .login-container span {
+ .login-container-form form label,
+ .login-container-form form input,
+ .login-container  span {
      margin-right: 0.5rem;
  }
 
-.login-container-form input {
+.login-container-form form input {
     width: 6rem;
 }
 
@@ -130,19 +130,19 @@ nav ,
 
 
 
-.login-container-form input,
-.login-container-form label{
+.login-container-form form input,
+.login-container-form form label{
     height: 1rem;
     font-size: 0.85rem;
 }
 
-.login-container-form input[type="submit"]{
+.login-container-form form input[type="submit"]{
     width: 3rem;
     height: 1rem;
     font-size: x-small;
 }
 
-.login-container-form{
+.login-container-form form{
     display: flex;
     align-items:center ;
 }
