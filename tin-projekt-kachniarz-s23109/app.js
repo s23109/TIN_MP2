@@ -18,6 +18,8 @@ const sequelizeInit = require('./config/sequelize/init');
 const mongoInit = require('./config/mongodb/mongoInit');
 
 const fmt = require('./utils/formatting');
+const authUtil = require('./utils/authUtil');
+
 const {log} = require("debug");
 
 
@@ -68,9 +70,9 @@ app.use((req,res,next)=>{
 })
 
 app.use('/', indexRouter);
-app.use('/klient',klientRouter);
-app.use('/wypozyczenie' , wypozyczenieRouter);
-app.use('/egzemplarz_ksiazki',egzemplarz_ksiazkiRouter);
+app.use('/klient',authUtil.permitAuthenticated,klientRouter);
+app.use('/wypozyczenie',authUtil.permitAuthenticated , wypozyczenieRouter);
+app.use('/egzemplarz_ksiazki',authUtil.permitAuthenticated,egzemplarz_ksiazkiRouter);
 
 app.use('/api/klient' , klientAPIRouter);
 app.use('/api/wypozyczenie' , wypozyczeniaAPIRouter);
