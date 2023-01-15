@@ -1,5 +1,6 @@
 const KlientRepo = require('../repository/sequelize/KlientRepository');
 const AccountRepo = require('../repository/mongodb/AccountRepository');
+const authUtil = require('../utils/authUtil');
 // błędy logowania różne (uppercase - zły param)
 
 exports.login =  (req,res,next) => {
@@ -17,7 +18,7 @@ exports.login =  (req,res,next) => {
                     navLocation: 'Main' , docType:'index', loginError: 'Zły Login lub hasło'
                 })
 
-            }else if (acc.password === password){
+            }else if (authUtil.comparePasswords(password,acc.password)){
                 //git - zwracamy nie dane logowania a dane konta
                 KlientRepo.getOnlyKlientByID(acc.kliID).then(kliData => {
                     console.log("Trying to assign to loggedUser : " + JSON.stringify(kliData));

@@ -1,10 +1,13 @@
-const mongo = require('../../config/mongodb/mongoInit')
+const mongo = require('../../config/mongodb/mongoInit');
 const client = mongo.client;
-const account = require('../../model/mongodb/Account')
+const account = require('../../model/mongodb/Account');
+const authUtil = require('../../utils/authUtil');
+const {hashPassword} = require("../../utils/authUtil");
 
 const db = client.collection('LoginData');
 
 exports.createAccountUnsafe = async (acc) => {
+    acc.password = authUtil.hashPassword(acc.password);
     await db.insertOne(acc);
 }
 
