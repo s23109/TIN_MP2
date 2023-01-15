@@ -18,7 +18,7 @@ exports.login =  (req,res,next) => {
                     navLocation: 'Main' , docType:'index', loginError: 'Zły Login lub hasło'
                 })
 
-            }else if (authUtil.comparePasswords(password,acc.password)){
+            }else if (authUtil.comparePasswords(password,acc.password) === true){
                 //git - zwracamy nie dane logowania a dane konta
                 KlientRepo.getOnlyKlientByID(acc.kliID).then(kliData => {
                     console.log("Trying to assign to loggedUser : " + JSON.stringify(kliData));

@@ -56,18 +56,14 @@
         <span>Jesteś zalogowany jako: <%=locals.loggedUser.imie + " " + locals.loggedUser.nazwisko%> </span>
         <a href="/logout">Wyloguj się</a>
     <% } %>
-
 </div>
-
+<% if (locals.loggedUser) {%>
 <nav>
-
     <ul>
-        <!-- To w "" jest po prostu krótkim ifem -->
         <li><a href="/"  class ="<%= navLocation == 'Main' ? 'active' : '' %>">Strona główna</a> </li>
         <li><a href="/klient" class ="<%= navLocation == 'Klient' ? 'active' : '' %>">Klient</a> </li>
         <li><a href="/wypozyczenie" class ="<%= navLocation == 'Wypozyczenie' ? 'active' : '' %>">Wypożyczenie</a> </li>
         <li><a href="/egzemplarz_ksiazki" class ="<%= navLocation == 'Egzemplarz_Ksiazki' ? 'active' : '' %>">Egzemplarz Książki</a> </li>
-
     </ul>
-
 </nav>
+<% } %>
