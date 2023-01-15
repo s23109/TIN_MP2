@@ -52,5 +52,9 @@ exports.getByLogin = async (login) => {
             kliID:query.kliID
         };
     }
-    throw new Error("Account Not Found");
+    return null;
+}
+
+exports.getAmount = async () => {
+    return await db.countDocuments();
 }

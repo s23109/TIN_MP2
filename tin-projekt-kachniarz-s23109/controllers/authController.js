@@ -6,7 +6,7 @@ exports.login = (req,res,next) => {
     const login = req.body.login;
     const password = req.body.password;
 
-    KlientRepo.getKlientByLogin(login)
+    AccountRepo.getByLogin(login)
         .then(kli => {
             if (!kli){
                 // not found kli
@@ -15,8 +15,9 @@ exports.login = (req,res,next) => {
                 })
 
             }else if (kli.password === password){
-                //git
-                res.session.loggedUser = kli;
+                //git - zwracamy nie dane logowania a dane konta
+                let kliData = KlientRepo.getKlientByID(kli.kliID);
+                res.session.loggedUser = kliData;
                 res.redirect('/');
             }else {
                 //złe hasło

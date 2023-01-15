@@ -1,4 +1,5 @@
 const {MongoClient} = require('mongodb');
+const Mongo = require("../../repository/mongodb/AccountRepository");
 const serverUrl = `mongodb://localhost:27017`
 const cli = new MongoClient(serverUrl);
 // schemat na db
@@ -31,6 +32,16 @@ const init = async () => {
         cli.db('AccountInfo').createCollection('LoginData');
     }
 
+
+    let num = await Mongo.getAmount();
+    if (num == 0 ){
+        console.log("No account data found- creating");
+        Mongo.createAccount({kliID:1,login:"aaa",password:"aaaa"});
+        Mongo.createAccount({kliID:2,login:"aaa",password:"aaaa"});
+        Mongo.createAccount({kliID:3,login:"aaa",password:"aaaa"});
+    }else {
+        console.log("Account data found");
+    }
 
 }
 
