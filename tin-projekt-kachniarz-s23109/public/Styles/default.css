@@ -147,9 +147,7 @@ nav ,
 }
 
 .login-container span{
-    height: 1rem;
     font-size: 0.85rem;
-    margin: 0.1rem;
     text-decoration: none;
     color: black;
 }
@@ -166,20 +164,33 @@ nav ,
 .login-container-log-out{
     text-decoration: none;
     margin: 0.2rem;
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
     font-size: 0.8rem;
     color: black;
     min-width: 4rem;
     font-size: x-small;
-
+    min-height: 0.9rem;
     text-align: center;
     border: none;
     border-radius: 2rem;
-    background:red;
+
 
 }
 
+.login-container-log-in{
+    background: #84d027;
+}
 
+.login-container-log-out{
+    background: #ef6814;
+}
 
+.login-container-register{
+    background: #145bde;
+}
+
+.login-container-log-in:hover,
 .login-container-register:hover,
 .login-container-log-out:hover{
     text-decoration: none;
