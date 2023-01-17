@@ -13,13 +13,10 @@ exports.comparePasswords = (plainPass , hashPass) => {
 
 exports.permitAuthenticated = (req,res,next) => {
     const loggedUser = req.session.loggedUser;
-
     if (loggedUser) {
         next();
     }else {
-
         res.redirect(403,'/');
     }
-
-
 }
+

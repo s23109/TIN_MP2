@@ -48,13 +48,15 @@
             <input type="text" id="login" name="login">
             <label>Hasło :</label>
             <input type="password" id="password" name="password">
-            <input type="submit" value="Zaloguj">
+            <input type="submit" value="Zaloguj" class="login-container-log-in">
+            <a href="" class="login-container-register">Zarejestruj</a>
             </form>
+
         </div>
         <h5 class="error-text" ><%=loginError? loginError: ''%></h5>
     <% } else {%>
         <span>Jesteś zalogowany jako: <span> <%=locals.loggedUser.imie + " " + locals.loggedUser.nazwisko%> </span> </span>
-        <a href="/logout">Wyloguj się</a>
+        <a href="/logout" class="login-container-log-out">Wyloguj</a>
     <% } %>
 </div>
 <% if (locals.loggedUser) {%>

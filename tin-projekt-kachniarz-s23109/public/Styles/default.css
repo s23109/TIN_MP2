@@ -106,7 +106,7 @@ nav ,
     flex-wrap: nowrap;
     justify-content: space-around;
     align-content: center;
-    min-height: 1.25rem;
+    min-height: 1.3rem;
 }
 
 .login-container-form {
@@ -115,12 +115,16 @@ nav ,
 }
 
  .login-container-form form label,
- .login-container-form form input,
+ .login-container-form form input[type="text"],
+ .login-container-form form input[type="password"],
  .login-container  span {
      margin-right: 0.5rem;
  }
 
-.login-container-form form input {
+
+.login-container-form form input[type="text"],
+.login-container-form form input[type="password"],
+.login-container-form form a {
     width: 6rem;
 }
 
@@ -137,14 +141,14 @@ nav ,
 
 
 
-.login-container-form form input,
-.login-container-form form label {
+.login-container-form form input[type="text"],
+.login-container-form form input[type="password"],
+.login-container-form form label{
     height: 1rem;
     font-size: 0.85rem;
 }
 
-.login-container span,
-.login-container a{
+.login-container span{
     height: 1rem;
     font-size: 0.85rem;
     margin: 0.1rem;
@@ -170,11 +174,17 @@ nav ,
     color: inherit;
 }
 
-.login-container-form form input[type="submit"]{
-    width: 3rem;
-    height: 1rem;
-    font-size: x-small;
+.login-container-register,
+.login-container-log-in,
+.login-container-log-out{
+    text-decoration: none;
+    align-self: center;
+    margin: 0.2rem;
+    font-size: 0.8rem;
+    color: black;
 }
+
+
 
 .login-container-form form{
     display: flex;
