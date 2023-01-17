@@ -123,16 +123,14 @@ nav ,
 
 
 .login-container-form form input[type="text"],
-.login-container-form form input[type="password"],
-.login-container-form form a {
+.login-container-form form input[type="password"]{
     width: 6rem;
 }
 
 .login-container input,
 .login-container label,
 .login-container h5,
-.login-container span,
-.login-container a{
+.login-container span{
     margin: unset;
     margin-right: 0.5rem;
     display: flex;
@@ -158,17 +156,6 @@ nav ,
 
 
 
-.login-container a:hover  {
-    text-decoration: none;
-    color: white;
-    filter: drop-shadow(0px 0px 5px black);
-    animation-name: hover-header;
-    animation-duration: 0.5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    text-shadow: #707070 1px 1px 1px;
-}
-
 .login-container span span {
     font-weight: bold;
     color: inherit;
@@ -178,12 +165,32 @@ nav ,
 .login-container-log-in,
 .login-container-log-out{
     text-decoration: none;
-    align-self: center;
     margin: 0.2rem;
     font-size: 0.8rem;
     color: black;
+    min-width: 4rem;
+    font-size: x-small;
+
+    text-align: center;
+    border: none;
+    border-radius: 2rem;
+    background:red;
+
 }
 
+
+
+.login-container-register:hover,
+.login-container-log-out:hover{
+    text-decoration: none;
+    color: white;
+    filter: drop-shadow(0px 0px 5px black);
+    animation-name: hover-header;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    text-shadow: #707070 1px 1px 1px;
+}
 
 
 .login-container-form form{
