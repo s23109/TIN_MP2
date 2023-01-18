@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const AuthRepo = require('../controllers/authController');
+const AccountController = require('../controllers/accountController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,18 +10,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/login',AuthRepo.login);
 router.get('/logout',AuthRepo.logout);
-router.get('/register', function (req,res,next) {
-  res.render('Subpages/Account/register_form',{
-    navLocation:'Register' ,
-    docType:'form',
-    kli: {},
-    formMode: 'createNew',
-    btnLabel: 'Dodaj',
-    formAction: '/klient/add',
-    pageTitle: 'Utwórz Konto',
-    validationErrors:[]
-  })
-})
+router.get('/register', );
+
+
 
 
 module.exports = router;
