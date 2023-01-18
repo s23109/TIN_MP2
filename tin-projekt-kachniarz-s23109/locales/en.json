@@ -66,7 +66,8 @@
       "title": "Title",
       "date": "Date of Acquirement",
       "pages": "Pages",
-      "damages": "Damages"
+      "damages": "Damages",
+      "id": "Book ID"
     },
     "list": {
       "pageTitle": "Book Copy",

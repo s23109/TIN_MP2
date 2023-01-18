@@ -4,13 +4,13 @@
 
     <h2><%switch(formMode){
       case 'createNew': %>
-      aaa
+      <%=__('client.form.add.pageTitle')%>
       <%break;%>
       <%case 'edit':%>
-      bbb
+      <%=__('client.form.edit.pageTitle')%>
       <%break;%>
       <%case 'showDetails':%>
-      ccc
+      <%=__('client.form.details.pageTitle')%>
       <%break;%>
       <%default:%>
       Error in determining form type, see respective form.ejs
@@ -24,7 +24,7 @@
 
       <input type="hidden" name="_id" value="<%=kli._id%>">
 
-      <label>Imie:<span class="symbol-required">*</span></label>
+      <label><%=__('client.fields.first-name')%>:<span class="symbol-required">*</span></label>
       <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorFirstName" class="error-text">
         <% if (validationErrors.find(e => e.path.includes('imie')) ) {%>
@@ -32,7 +32,7 @@
         <% } %>
       </span>
 
-      <label>Nazwisko:<span class="symbol-required">*</span></label>
+      <label><%=__('client.fields.last-name')%>:<span class="symbol-required">*</span></label>
       <input class="<%=(validationErrors.find(e => e.path.includes('nazwisko')) )?'error-input' : ''%>" type="text" name="nazwisko" id="lastName" required placeholder="2-32 znaków" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorLastName" class="error-text">
         <% if (validationErrors.find(e => e.path.includes('nazwisko')) ) {%>
@@ -40,7 +40,7 @@
         <% } %>
       </span>
 
-      <label>Email:</label>
+      <label><%=__('client.fields.email')%>:</label>
       <input class="<%=(validationErrors.find(e => e.path.includes('email')) )?'error-input' : ''%>" type="email" name="email" id="email" placeholder=<%= (formMode == 'showDetails')? "Brak" : "ABC@DE.FG"%> value="<%=kli.email%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorEmail" class="error-text">
         <% if (validationErrors.find(e => e.path.includes('email')) ) {%>
@@ -56,29 +56,29 @@
         <%if (formMode== 'showDetails') {%>
           <a href="/Klient/edit/<%= kli._id%>" class="button-edit">
           <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
-          <span class="button-edit-text">Edytuj</span>
+          <span class="button-edit-text"><%=__('client.form.details.btnLabel')%></span>
           </a>
           <a href="/Klient" class="button-return">
             <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
-            <span class="button-return-text">Powrót</span>
+            <span class="button-return-text"><%=__('form.actions.return')%></span>
           </a>
 
         <%} else {%>
           <input type="submit"  class="form-button-submit" value="<%switch(formMode){
           case 'createNew': %>
-<%=__('book.form.add.btnLabel')%>
+<%=__('client.form.add.btnLabel')%>
                         <%break;%>
                         <%case 'edit':%>
-<%=__('book.form.edit.btnLabel')%>
+<%=__('client.form.edit.btnLabel')%>
                         <%break;%>
                         <%case 'showDetails':%>
-<%=__('book.form.details.btnLabel')%>
+<%=__('client.form.details.btnLabel')%>
                         <%break;%>
                         <%default:%>
 Error in determining form type, see respective form.ejs
                         <%break;%>
                         <% } %>">
-          <a href="/klient" class="form-button-cancel">Powrót</a>
+          <a href="/klient" class="form-button-cancel"><%=__('form.actions.cancel')%></a>
         <%}%>
 
 
@@ -95,10 +95,10 @@ Error in determining form type, see respective form.ejs
         <table class="table-list">
           <thead>
           <tr>
-          <th>Książka</th>
-          <th>Id Książki</th>
-          <th>Data Wypożyczenia</th>
-          <th>Data Zwrotu</th>
+          <th><%=__('lend.fields.book-title')%></th>
+          <th><%=__('book.fields.id')%></th>
+          <th><%=__('lend.fields.date-from')%></th>
+          <th><%=__('lend.fields.date-to')%></th>
           </tr>
           </thead>
           <tbody>
@@ -113,7 +113,7 @@ Error in determining form type, see respective form.ejs
           </tbody>
         </table>
     <%} else {%>
-      <h2>Brak wypożyczeń klienta</h2>
+      <h2><%=__('client.form.no-data')%></h2>
       <% } %>
     <% } } %>
   </main>

@@ -2,7 +2,7 @@
 
     <main>
 
-        <h2>Lista Klientów</h2>
+        <h2><%=__('client.list.title')%></h2>
 
 
 
@@ -10,10 +10,10 @@
 
             <thead>
                 <tr>
-                    <th>Imie</th>
-                    <th>Nazwisko</th>
-                    <th>Email</th>
-                    <th>Akcje</th>
+                    <th><%=__('client.fields.first-name')%></th>
+                    <th><%=__('client.fields.last-name')%></th>
+                    <th><%=__('client.fields.email')%></th>
+                    <th><%=__('list.actions')%></th>
                 </tr>
             </thead>
 
@@ -30,19 +30,19 @@
                         <li>
                             <a class="list-actions-button-details" href="/Klient/details/<%= kli._id%>">
                                 <img src="/Images/icons8-more-details-64.png" class="list-actions-button-details-icon">
-                                <span class="list-actions-button-details-text">Więcej</span>
+                                <span class="list-actions-button-details-text"><%=__('list.details')%></span>
                             </a>
                         </li>
                         <li>
                             <a class="list-actions-button-edit" href="/Klient/edit/<%= kli._id%>">
                                 <img src="/Images/icons8-pencil-64.png" class="list-actions-button-edit-icon">
-                                <span class="list-actions-button-edit-text">Edytuj</span>
+                                <span class="list-actions-button-edit-text"><%=__('list.edit')%></span>
                             </a>
                         </li>
                         <li>
                             <a class="list-actions-button-delete" href="/Klient/delete/<%= kli._id%>" onclick="return confirmDelete(<%="\"klienta : " + kli.imie +" "+ kli.nazwisko + "\""%>);">
                                 <img src="/Images/icons8-remove-64.png" class="list-actions-button-delete-icon">
-                                <span class="list-actions-button-delete-text">Usuń</span>
+                                <span class="list-actions-button-delete-text"><%=__('list.delete')%></span>
                             </a>
                         </li>
                     </ul>
@@ -57,7 +57,7 @@
 
         </table>
 
-        <p><a href="/klient/add" class="button-add">Dodaj nowego klienta</a> </p>
+        <p><a href="/klient/add" class="button-add"><%=__('client.list.addNew')%></a> </p>
     </main>
 
 <%- include('../../fragments/footer.ejs') %>

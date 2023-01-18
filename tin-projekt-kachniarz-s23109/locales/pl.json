@@ -66,7 +66,8 @@
 			"title": "Tytuł",
 			"date": "Data Pozyskania",
 			"pages": "Strony",
-			"damages": "Uszkodzenia"
+			"damages": "Uszkodzenia",
+			"id": "ID Książki"
 		},
 		"list": {
 			"pageTitle": "Egzemplarz Książki",
