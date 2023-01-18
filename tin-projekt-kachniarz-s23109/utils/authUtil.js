@@ -18,5 +18,15 @@ exports.permitAuthenticated = (req,res,next) => {
     }else {
         res.redirect(403,'/');
     }
-}
+};
+
+exports.permitAuthenticatedStrict = (req,res,next) => {
+    const kliID = req.params.kliID;
+    const loggedUser = req.session.loggedUser;
+    if (loggedUser && loggedUser.kliID === kliID) {
+        next();
+    }else {
+        res.redirect(403,'/');
+    }
+};
 

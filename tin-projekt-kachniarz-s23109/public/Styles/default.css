@@ -433,6 +433,7 @@ textarea {
 .form input[type="number"],
 .form input[type="date"],
 .form input[type="email"],
+.form input[type="password"],
 .form textarea{
     border: 1px solid #8d7f7f;
     background-color: #ffffff;

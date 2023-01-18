@@ -10,6 +10,23 @@
 
         <input type="hidden" name="_id" value="<%=kli._id%>">
 
+        <label>Login:<span class="symbol-required">*</span></label>
+        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="text" name="login" id="login" required value="<%=kli.login%>" placeholder="2-32 znaków"  <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <span id="errorLogin" class="error-text">
+            <% if (validationErrors.find(e => e.path.includes('login')) ) {%>
+                <%= validationErrors.find(e => e.path.includes('login')).message%>
+            <% } %>
+        </span>
+
+        <label>Hasło:<span class="symbol-required">*</span></label>
+        <% /*Tu specjalnie bez value,bo hasło? nwm */%>
+        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="password" name="password" id="password" placeholder=<%= (formMode == 'edit') ? "Leave blank if not want to change" : "2-32 znaków"%> >
+        <span id="errorPassword" class="error-text">
+            <% if (validationErrors.find(e => e.path.includes('password')) ) {%>
+                <%= validationErrors.find(e => e.path.includes('password')).message%>
+            <% } %>
+        </span>
+
         <label>Imie:<span class="symbol-required">*</span></label>
         <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
         <span id="errorFirstName" class="error-text">
