@@ -1,120 +1,122 @@
 {
   "main-page": {
-    "header-title": ""
+    "header-title": "Biblioteka"
   },
   "nav": {
-    "main-page": "",
-    "client": "",
-    "book": "",
-    "lend": ""
+    "main-page": "Strona Główna",
+    "client": "Klient",
+    "book": "Egzemplarz Książki",
+    "lend": "Wypożyczenie"
   },
   "login-bar": {
-    "login-title": "",
-    "login-label": "",
-    "password-label": "",
-    "button-login": "",
-    "button-register": "",
-    "button-logout": "",
-    "button-account": "",
-    "after-login-title": ""
+    "login-title": "Logowanie",
+    "login-label": "Login",
+    "password-label": "Hasło",
+    "button-login": "Zaloguj",
+    "button-register": "Rejestracja",
+    "button-logout": "Wyloguj",
+    "button-account": "Konto",
+    "after-login-title": "Zalogowano jako"
   },
   "list": {
-    "actions" : "",
-    "details": "",
-    "edit": "",
-    "delete": ""
+    "actions" : "Akcje",
+    "details": "Więcej",
+    "edit": "Edytuj",
+    "delete": "Usuń"
   },
   "form": {
     "actions": {
-    "return": "",
-    "edit": "",
-    "cancel": ""
+    "return": "Powrót",
+    "edit": "Edytuj",
+    "cancel": "Anuluj"
     }
   },
   "client": {
     "fields": {
-      "first-name": "",
-      "last-name": "",
-      "email": ""
+      "first-name": "Imie",
+      "last-name": "Nazwisko",
+      "email": "Email"
     },
     "list": {
-      "pageTitle": "",
-      "addNew": "",
-      "noData": "",
-      "title": ""
+      "pageTitle": "Klient",
+      "addNew": "Dodaj nowego klienta",
+      "noData": "Brak klientów w bazie",
+      "title": "Lista klientów"
     },
     "form": {
-    "client-lends": "",
+    "client-lends": "Wypożyczenia klienta",
+      "no-data": "Brak wypożyczeń klienta",
       "add": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Nowy klient",
+        "btnLabel": "Dodaj"
       },
       "details": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Szczegóły Klients",
+        "btnLabel": "Edytuj"
       },
       "edit": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Edycja Klienta",
+        "btnLabel": "Zapisz"
       }
     }
   },
   "book": {
     "fields": {
-      "title": "",
-      "date": "",
-      "pages": "",
-      "damages": ""
+      "title": "Tytuł",
+      "date": "Data Pozyskania",
+      "pages": "Strony",
+      "damages": "Uszkodzenia"
     },
     "list": {
-      "pageTitle": "",
-      "addNew": "",
-      "noData": "",
-      "title": ""
+      "pageTitle": "Egzemplarz Książki",
+      "addNew": "Dodaj nową książkę",
+      "noData": "Brak książek w bazie",
+      "title": "Lista książek"
     },
     "form": {
-      "lend-by": "",
+      "lend-by": "Wypożyczenia książki",
+      "no-data": "Brak wypożyczeń książki",
       "add": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Nowa książka",
+        "btnLabel": "Dodaj"
       },
       "details": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Szczegóły Książki",
+        "btnLabel": "Edytuj"
       },
       "edit": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Edycja książki",
+        "btnLabel": "Zapisz"
       }
     }
 
   },
   "lend": {
     "fields": {
-      "book-title": "",
-      "client": "",
-      "email": "",
-      "date-from": "",
-      "date-to": ""
+      "book-title": "Książka",
+      "client": "Klient",
+      "email": "Email",
+      "date-from": "Data Wypożyczenia",
+      "date-to": "Data Zwrotu"
     },
     "list": {
-      "pageTitle": "",
-      "addNew": "",
-      "noData": "",
-      "title": ""
+      "pageTitle": "Wypożycznia",
+      "addNew": "Dodaj Wypożycznie",
+      "noData": "Brak wypożyczeń w bazie",
+      "title": "Lista wypożyczeń"
     },
     "form": {
       "add": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Nowe wypożyczenie",
+        "btnLabel": "Dodaj"
       },
       "details": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Szczegóły wypożyczenia",
+        "btnLabel": "Edytuj"
       },
       "edit": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Edycja wypożyczenia",
+        "btnLabel": "Zapisz"
       }
     }
   }
