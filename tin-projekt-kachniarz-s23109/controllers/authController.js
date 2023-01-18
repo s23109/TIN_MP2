@@ -15,7 +15,7 @@ exports.login =  (req,res,next) => {
             if (!acc){
                 // not found acc
                 res.render('index',{
-                    navLocation: 'Main' , docType:'index', loginError: 'Zły Login lub hasło'
+                    navLocation: 'Main' , docType:'index', loginError: 'Zły Login'
                 })
 
             }else if (authUtil.comparePasswords(password,acc.password) === true){
@@ -31,7 +31,7 @@ exports.login =  (req,res,next) => {
                 //złe hasło
 
                 res.render('index',{
-                    navLocation: 'Main' , docType:'index', loginError: 'Zły login lub Hasło'
+                    navLocation: 'Main' , docType:'index', loginError: 'Złe Hasło'
                 })
             }
         })

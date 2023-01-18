@@ -104,7 +104,7 @@ nav ,
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-content: center;
     min-height: 1.3rem;
 }
@@ -112,6 +112,7 @@ nav ,
 .login-container-form {
     align-content: center;
     margin: 0.1rem;
+    padding: 0.3rem;
 }
 
  .login-container-form form label,
@@ -158,6 +159,8 @@ nav ,
     font-weight: bold;
     color: inherit;
 }
+
+
 
 .login-container-register,
 .login-container-log-in,

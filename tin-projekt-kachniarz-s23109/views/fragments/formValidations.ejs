@@ -1,7 +1,10 @@
     <script type="application/javascript" src="/Scripts/validationCommon.js"></script>
 <% switch (navLocation) {
-    case 'Klient', 'Register' : %>
+    case 'Klient' : %>
     <script type="application/javascript" src="/Scripts/validationKlient.js"></script>
+    <% break;%>
+    <% case 'Register' : %>
+    <script type="application/javascript" src="/Scripts/validationAccount.js"></script>
     <% break;%>
     <% case 'Wypozyczenie' :%>
     <script type="application/javascript" src="/Scripts/validationWypozyczenie.js"></script>
