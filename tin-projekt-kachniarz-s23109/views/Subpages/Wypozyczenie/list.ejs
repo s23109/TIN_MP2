@@ -2,7 +2,7 @@
 
   <main>
 
-    <h2>Lista Wypożyczeń</h2>
+    <h2><%=__('lend.list.title')%></h2>
 
 
 
@@ -10,12 +10,12 @@
 
       <thead>
         <tr>
-          <th>Nazwa Książki</th>
-          <th>Klient</th>
-          <th class="cut-detail">Email</th>
-          <th>Data Wypożyczenia</th>
-          <th>Data Zwrotu</th>
-          <th>Akcje</th>
+          <th><%=__('lend.fields.book-title')%></th>
+          <th><%=__('lend.fields.client')%></th>
+          <th class="cut-detail"><%=__('lend.fields.email')%></th>
+          <th><%=__('lend.fields.date-from')%></th>
+          <th><%=__('lend.fields.date-to')%></th>
+          <th><%=__('list.actions')%></th>
         </tr>
       </thead>
       <% for( let wyp of wyps){%>
@@ -30,20 +30,20 @@
             <li>
               <a class="list-actions-button-details" href="/wypozyczenie/details/<%= wyp._id%>">
                 <img src="/Images/icons8-more-details-64.png" class="list-actions-button-details-icon">
-                <span class="list-actions-button-details-text">Więcej</span>
+                <span class="list-actions-button-details-text"><%=__('list.details')%></span>
               </a>
             </li>
             <li>
               <a class="list-actions-button-edit" href="/wypozyczenie/edit/<%= wyp._id%>">
                 <img src="/Images/icons8-pencil-64.png" class="list-actions-button-edit-icon">
-                <span class="list-actions-button-edit-text">Edytuj</span>
+                <span class="list-actions-button-edit-text"><%=__('list.edit')%></span>
               </a>
             </li>
             <li>
                                                                                                                                              <% /* Zabawy z // i /" , polecam DK :) */%>
               <a class="list-actions-button-delete" href="/wypozyczenie/delete/<%= wyp._id%>" onclick="return confirmDelete(<%="\"wypożyczenie: \\"+ "\""+ wyp.ksiazka.tytul +"\\"+"\" przez " + wyp.klient.imie + " "+ wyp.klient.nazwisko +"\""%>);">
                 <img src="/Images/icons8-remove-64.png" class="list-actions-button-delete-icon">
-                <span class="list-actions-button-delete-text">Usuń</span>
+                <span class="list-actions-button-delete-text"><%=__('list.delete')%></span>
               </a>
             </li>
           </ul>
@@ -58,7 +58,7 @@
 
     </table>
 
-    <p><a href="/wypozyczenie/add" class="button-add">Dodaj nowe wypożyczenie</a> </p>
+    <p><a href="/wypozyczenie/add" class="button-add"><%=__('lend.list.addNew')%></a> </p>
 
   </main>
 

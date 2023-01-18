@@ -4,13 +4,13 @@
 
         <h2><%switch(formMode){
             case 'createNew': %>
-            aaa
+            <%=__('lend.form.add.pageTitle')%>
             <%break;%>
             <%case 'edit':%>
-            bbb
+            <%=__('lend.form.edit.pageTitle')%>
             <%break;%>
             <%case 'showDetails':%>
-            ccc
+            <%=__('lend.form.details.pageTitle')%>
             <%break;%>
             <%default:%>
             Error in determining form type, see respective form.ejs
@@ -25,7 +25,7 @@
 
             <input type="hidden" name="_id" value="<%=wyp._id%>">
 
-            <label for="ksiazka">Książka: <span class="symbol-required">*</span></label>
+            <label for="ksiazka"><%=__('lend.fields.book-title')%>: <span class="symbol-required">*</span></label>
             <select class="<%=(validationErrors.find(e => e.path.includes('Ksiazka_id')))? 'error-input':'' %>" name="Ksiazka_id" id="ksiazka" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
 
                 <% if (formMode != 'showDetails' ) {%>
@@ -46,7 +46,7 @@
                 <% } %>
             </span>
 
-            <label for="klient">Klient: <span class="symbol-required">*</span></label>
+            <label for="klient"><%=__('lend.fields.client')%>: <span class="symbol-required">*</span></label>
             <select class="<%=(validationErrors.find(e => e.path.includes('Klient_id')))? 'error-input':'' %>" name="Klient_id" id="klient" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 <% if (formMode != 'showDetails' ) {%>
                     <% /* Przypadek gdzie się nie wczytuje reszty tabel */%>
@@ -65,7 +65,7 @@
                 <% } %>
             </span>
 
-            <label>Data wypożyczenia: <span class="symbol-required">*</span></label>
+            <label><%=__('lend.fields.date-from')%>: <span class="symbol-required">*</span></label>
             <input class="<%=(validationErrors.find(e => e.path.includes('data_od')))? 'error-input':'' %>" type="date" name="data_od" id="dateFrom" required value="<%= (wyp != null) ? (fmt.formatDate(wyp.data_od)) : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorDateFrom" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('data_od')) ) {%>
@@ -73,7 +73,7 @@
                 <% } %>
             </span>
 
-            <label>Data zwrotu:</label>
+            <label><%=__('lend.fields.date-to')%>:</label>
             <input class="<%=(validationErrors.find(e => e.path.includes('data_do')))? 'error-input':'' %>" type="date" name="data_do" id="dateTo" value="<%= (wyp != null) ? (fmt.formatDate(wyp.data_do)) : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorDateTo" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('data_do')) ) {%>
@@ -86,28 +86,28 @@
                 <%if (formMode== 'showDetails') {%>
                     <a href="/wypozyczenie/edit/<%= wyp._id%>" class="button-edit">
                         <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
-                        <span class="button-edit-text">Edytuj</span>
+                        <span class="button-edit-text"><%=__('lend.form.details.btnLabel')%></span>
                     </a>
                     <a href="/wypozyczenie" class="button-return">
                         <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
-                        <span class="button-return-text">Powrót</span>
+                        <span class="button-return-text"><%=__('form.actions.return')%></span>
                     </a>
                 <% } else {%>
                 <input type="submit" class="form-button-submit" value="<%switch(formMode){
                 case 'createNew': %>
-<%=__('book.form.add.btnLabel')%>
+<%=__('lend.form.add.btnLabel')%>
                         <%break;%>
                         <%case 'edit':%>
-<%=__('book.form.edit.btnLabel')%>
+<%=__('lend.form.edit.btnLabel')%>
                         <%break;%>
                         <%case 'showDetails':%>
-<%=__('book.form.details.btnLabel')%>
+<%=__('lend.form.details.btnLabel')%>
                         <%break;%>
                         <%default:%>
 Error in determining form type, see respective form.ejs
                         <%break;%>
                         <% } %>">
-                <a href="/wypozyczenie" class="form-button-cancel">Powrót</a>
+                <a href="/wypozyczenie" class="form-button-cancel"><%=__('form.actions.cancel')%></a>
                 <% } %>
             </div>
 
