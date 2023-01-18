@@ -1,0 +1,94 @@
+<%- include('../../fragments/header.ejs') %>
+
+<main>
+
+    <h2><%=pageTitle%></h2>
+
+
+
+    <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+
+        <input type="hidden" name="_id" value="<%=kli._id%>">
+
+        <label>Imie:<span class="symbol-required">*</span></label>
+        <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <span id="errorFirstName" class="error-text">
+            <% if (validationErrors.find(e => e.path.includes('imie')) ) {%>
+                <%= validationErrors.find(e => e.path.includes('imie')).message%>
+            <% } %>
+        </span>
+
+        <label>Nazwisko:<span class="symbol-required">*</span></label>
+        <input class="<%=(validationErrors.find(e => e.path.includes('nazwisko')) )?'error-input' : ''%>" type="text" name="nazwisko" id="lastName" required placeholder="2-32 znaków" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <span id="errorLastName" class="error-text">
+            <% if (validationErrors.find(e => e.path.includes('nazwisko')) ) {%>
+                <%= validationErrors.find(e => e.path.includes('nazwisko')).message%>
+            <% } %>
+        </span>
+
+        <label>Email:</label>
+        <input class="<%=(validationErrors.find(e => e.path.includes('email')) )?'error-input' : ''%>" type="email" name="email" id="email" placeholder=<%= (formMode == 'showDetails')? "Brak" : "ABC@DE.FG"%> value="<%=kli.email%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <span id="errorEmail" class="error-text">
+            <% if (validationErrors.find(e => e.path.includes('email')) ) {%>
+                <%= validationErrors.find(e => e.path.includes('email')).message%>
+            <% } %>
+        </span>
+
+        <!-- Buttons end form -->
+        <div class="form-buttons">
+
+            <p id="errorSummary" class="error-text"><%=(validationErrors.length  > 0 ) ? 'Formularz zawiera błędy' : ''%></p>
+
+            <%if (formMode== 'showDetails') {%>
+                <a href="/Klient/edit/<%= kli._id%>" class="button-edit">
+                    <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
+                    <span class="button-edit-text">Edytuj</span>
+                </a>
+                <a href="/Klient" class="button-return">
+                    <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
+                    <span class="button-return-text">Powrót</span>
+                </a>
+
+            <%} else {%>
+            <input type="submit" value=<%=btnLabel%> class="form-button-submit">
+            <a href="/klient" class="form-button-cancel">Powrót</a>
+            <%}%>
+
+
+
+        </div>
+
+    </form>
+
+    <% if (formMode == 'showDetails' || formMode == 'edit') {%>
+
+        <% if (kli.wypozyczenia != null) {%>
+        <%if (kli.wypozyczenia.length > 0 ) {%>
+        <h2>Wypożyczenia klienta</h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Książka</th>
+                <th>Id Książki</th>
+                <th>Data Wypożyczenia</th>
+                <th>Data Zwrotu</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%for (let k of kli.wypozyczenia){%>
+            <tr>
+                <td><a href="/egzemplarz_ksiazki/details/<%=k.ksiazka._id%>" ><%="\""+k.ksiazka.tytul +"\""%></a></td>
+                <td><%=k.ksiazka._id%></td>
+                <td><%=fmt.formatDate(k.data_od)%></td>
+                <td><%=fmt.formatDate(k.data_do)%></td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <%} else {%>
+            <h2>Brak wypożyczeń klienta</h2>
+        <% } %>
+    <% } } %>
+</main>
+
+<%- include('../../fragments/footer.ejs') %>
