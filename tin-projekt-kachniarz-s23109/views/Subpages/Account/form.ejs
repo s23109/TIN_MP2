@@ -11,7 +11,7 @@
         <input type="hidden" name="_id" value="<%=kli._id%>">
 
         <label>Login:<span class="symbol-required">*</span></label>
-        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="text" name="login" id="login" required value="<%=kli.login%>" placeholder="2-32 znaków"  <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="text" name="login" id="accName" required value="<%=kli.login%>" placeholder="2-32 znaków"  <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
         <span id="errorLogin" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('login')) ) {%>
                 <%= validationErrors.find(e => e.path.includes('login')).message%>
@@ -20,7 +20,7 @@
 
         <label>Hasło:<span class="symbol-required">*</span></label>
         <% /*Tu specjalnie bez value,bo hasło? nwm */%>
-        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="password" name="password" id="password" placeholder=<%= (formMode == 'edit') ? "Leave blank if not want to change" : "2-32 znaków"%> >
+        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="password" name="password" id="accPass" placeholder=<%= (formMode == 'edit') ? "Leave blank if not want to change" : "2-32 znaków"%> >
         <span id="errorPassword" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('password')) ) {%>
                 <%= validationErrors.find(e => e.path.includes('password')).message%>
@@ -68,7 +68,7 @@
 
             <%} else {%>
             <input type="submit" value=<%=btnLabel%> class="form-button-submit">
-            <a href="/klient" class="form-button-cancel">Powrót</a>
+            <a href="/" class="form-button-cancel">Powrót</a>
             <%}%>
 
 
@@ -76,36 +76,6 @@
         </div>
 
     </form>
-
-    <% if (formMode == 'showDetails' || formMode == 'edit') {%>
-
-        <% if (kli.wypozyczenia != null) {%>
-        <%if (kli.wypozyczenia.length > 0 ) {%>
-        <h2>Wypożyczenia klienta</h2>
-        <table class="table-list">
-            <thead>
-            <tr>
-                <th>Książka</th>
-                <th>Id Książki</th>
-                <th>Data Wypożyczenia</th>
-                <th>Data Zwrotu</th>
-            </tr>
-            </thead>
-            <tbody>
-            <%for (let k of kli.wypozyczenia){%>
-            <tr>
-                <td><a href="/egzemplarz_ksiazki/details/<%=k.ksiazka._id%>" ><%="\""+k.ksiazka.tytul +"\""%></a></td>
-                <td><%=k.ksiazka._id%></td>
-                <td><%=fmt.formatDate(k.data_od)%></td>
-                <td><%=fmt.formatDate(k.data_do)%></td>
-            </tr>
-            <% } %>
-            </tbody>
-        </table>
-        <%} else {%>
-            <h2>Brak wypożyczeń klienta</h2>
-        <% } %>
-    <% } } %>
 </main>
 
 <%- include('../../fragments/footer.ejs') %>

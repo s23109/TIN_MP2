@@ -1,10 +1,10 @@
 function validateForm() {
-    console.log("Klient- validateForm");
+    console.log("Account - validateForm");
     const firstNameInput = document.getElementById('firstName');
     const lastNameInput = document.getElementById('lastName');
     const emailInput = document.getElementById('email');
-    const loginInput = document.getElementById('login');
-    const passwordInput = document.getElementById('password');
+    const loginInput = document.getElementById('accName');
+    const passwordInput = document.getElementById('accPass');
 
 
     const errorFirstName = document.getElementById('errorFirstName');
@@ -18,13 +18,9 @@ function validateForm() {
     let whiteChar = [false,false,false];
     let valid = true;
 
-    if (!checkRequired(loginInput.value)) {
-        valid = false;
-        loginInput.classList.add("error-input");
-        errorLogin.innerText = "Pole jest wymagane";
-    } else {
 
-    }
+
+
 
     if (!checkRequired(firstNameInput.value)) {
         // brak wartości
@@ -94,6 +90,25 @@ function validateForm() {
         }
 
 
+    }
+
+    if (!checkRequired(loginInput.value)) {
+        valid = false;
+        loginInput.classList.add("error-input");
+        errorLogin.innerText = "Pole jest wymagane";
+    } else if (!checkTextLengthRange(loginInput.value, 2, 32)) {
+        valid = false;
+        loginInput.classList.add("error-input");
+        errorLogin.innerText = "Pole musi mieć długość z przedziału 2-32 znaki";
+    }
+
+    if (passwordInput.value.toString().length > 0) {
+        //if not empty
+        if (!checkTextLengthRange(passwordInput.value, 2, 32)) {
+            valid = false;
+            passwordInput.classList.add("error-input");
+            errorPassword.innerText= "Pole musi mieć długość z przedziału 2-32 znaki";
+        }
     }
 
 
