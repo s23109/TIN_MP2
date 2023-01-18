@@ -1,16 +1,29 @@
 <%- include('../../fragments/header.ejs') %>
 
     <main>
-
-        <h2><%=pageTitle%></h2>
-
+        <%/*  'createNew' , 'edit' , 'showDetails'   */%>
+        <h2><%switch(formMode){
+                case 'createNew': %>
+                <%=__('book.form.add.pageTitle')%>
+                <%break;%>
+                <%case 'edit':%>
+                <%=__('book.form.edit.pageTitle')%>
+                <%break;%>
+                <%case 'showDetails':%>
+                <%=__('book.form.details.pageTitle')%>
+                <%break;%>
+                <%default:%>
+                Error in determining form type, see respective form.ejs
+                <%break;%>
+            <% } %>
+        </h2>
 
 
         <form class="form" novalidate method="post" action="<%=formAction%>" onsubmit="return validateForm();">
 
             <input type="hidden" name="_id" value="<%=ksi._id%>">
 
-            <label>Tytuł:<span class="symbol-required">*</span></label>
+            <label><%=__('book.fields.title')%>:<span class="symbol-required">*</span></label>
             <input class="<%=(validationErrors.find(e => e.path.includes('tytul')) )?'error-input' : ''%>" type="text" name="tytul" id="title" required placeholder="2-64 znaków"
                    value="<%=(ksi.tytul)?((formMode == 'createNew' || formMode == 'edit') ? fmt.removeQuoteIfExist(ksi.tytul) : fmt.addQuoteIfNotExist(ksi.tytul) ):ksi.tytul%>"
                     <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
@@ -20,7 +33,7 @@
                 <% } %>
             </span>
 
-            <label>Data pozyskania:<span class="symbol-required">*</span></label>
+            <label><%=__('book.fields.date')%>:<span class="symbol-required">*</span></label>
             <input class="<%=(validationErrors.find(e => e.path.includes('data_pozyskania')) )?'error-input' : ''%>" type="date" name="data_pozyskania" id="date" required value="<%=fmt.formatDate(ksi.data_pozyskania)%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorDate" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('data_pozyskania')) ) {%>
@@ -28,7 +41,7 @@
                 <% } %>
             </span>
 
-            <label>Strony:<span class="symbol-required">*</span></label>
+            <label><%=__('book.fields.pages')%>:<span class="symbol-required">*</span></label>
             <input class="<%=(validationErrors.find(e => e.path.includes('strony')) )?'error-input' : ''%>" type="number" name="strony" id="pages" required value="<%=ksi.strony%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorPages" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('strony')) ) {%>
@@ -37,7 +50,7 @@
             </span>
 
 
-            <label>Uszkodzenia:</label>
+            <label><%=__('book.fields.damages')%>:</label>
             <textarea  class="<%=(validationErrors.find(e => e.path.includes('uszkodzenia')) )?'error-input' : ''%>" rows="3" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%>  <%= (formMode == 'showDetails') ? 'disabled' : ''%>><%=ksi.uszkodzenia%></textarea>
             <span id="errorDamage" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('uszkodzenia')) ) {%>
@@ -50,15 +63,28 @@
                 <%if (formMode== 'showDetails') {%>
                     <a href="/egzemplarz_ksiazki/edit/<%= ksi._id%>" class="button-edit">
                         <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
-                        <span class="button-edit-text">Edytuj</span>
+                        <span class="button-edit-text"><%=__('book.form.details.btnLabel')%></span>
                     </a>
                     <a href="/egzemplarz_ksiazki" class="button-return">
                         <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
-                        <span class="button-return-text">Powrót</span>
+                        <span class="button-return-text"><%=__('form.actions.return')%></span>
                     </a>
                 <% } else { %>
-                    <input type="submit" value="<%=btnLabel%>" class="form-button-submit">
-                    <a href="/egzemplarz_ksiazki" class="form-button-cancel">Powrót</a>
+                    <input type="submit" class="form-button-submit" value="<%switch(formMode){
+                        case 'createNew': %>
+<%=__('book.form.add.btnLabel')%>
+                        <%break;%>
+                        <%case 'edit':%>
+<%=__('book.form.edit.btnLabel')%>
+                        <%break;%>
+                        <%case 'showDetails':%>
+<%=__('book.form.details.btnLabel')%>
+                        <%break;%>
+                        <%default:%>
+Error in determining form type, see respective form.ejs
+                        <%break;%>
+                        <% } %>">
+                    <a href="/egzemplarz_ksiazki" class="form-button-cancel"><%=__('form.actions.cancel')%></a>
                 <% } %>
             </div>
 
@@ -67,14 +93,14 @@
     <% if (formMode == 'showDetails' || formMode== 'edit'){%>
         <%if (ksi.wypozyczenia != null) {%>
         <%if (ksi.wypozyczenia.length > 0 ) {%>
-        <h2>Wypożyczenia książki</h2>
+        <h2><%=__('book.form.lend-by')%></h2>
         <table class="table-list">
             <thead>
             <tr>
-                <th>Klient</th>
-                <th>Email</th>
-                <th>Data Wypożyczenia</th>
-                <th>Data Zwrotu</th>
+                <th><%=__('lend.fields.client')%></th>
+                <th><%=__('lend.fields.email')%></th>
+                <th><%=__('lend.fields.date-from')%></th>
+                <th><%=__('lend.fields.date-to')%></th>
             </tr>
             </thead>
             <tbody>
@@ -90,7 +116,7 @@
             </tbody>
         </table>
         <% } else {%>
-            <h2>Brak przypisanych wypożyczeń książki</h2>
+            <h2><%=__('client.form.no-data')%></h2>
         <% } %>
     <% } } %>
 

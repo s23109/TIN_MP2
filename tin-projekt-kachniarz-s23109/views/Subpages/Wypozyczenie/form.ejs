@@ -2,7 +2,21 @@
 
     <main>
 
-        <h2><%=pageTitle%></h2>
+        <h2><%switch(formMode){
+            case 'createNew': %>
+            aaa
+            <%break;%>
+            <%case 'edit':%>
+            bbb
+            <%break;%>
+            <%case 'showDetails':%>
+            ccc
+            <%break;%>
+            <%default:%>
+            Error in determining form type, see respective form.ejs
+            <%break;%>
+            <% } %>
+        </h2>
 
 
 
@@ -79,7 +93,20 @@
                         <span class="button-return-text">Powrót</span>
                     </a>
                 <% } else {%>
-                <input type="submit" value=<%=btnLabel%> class="form-button-submit">
+                <input type="submit" class="form-button-submit" value="<%switch(formMode){
+                case 'createNew': %>
+<%=__('book.form.add.btnLabel')%>
+                        <%break;%>
+                        <%case 'edit':%>
+<%=__('book.form.edit.btnLabel')%>
+                        <%break;%>
+                        <%case 'showDetails':%>
+<%=__('book.form.details.btnLabel')%>
+                        <%break;%>
+                        <%default:%>
+Error in determining form type, see respective form.ejs
+                        <%break;%>
+                        <% } %>">
                 <a href="/wypozyczenie" class="form-button-cancel">Powrót</a>
                 <% } %>
             </div>

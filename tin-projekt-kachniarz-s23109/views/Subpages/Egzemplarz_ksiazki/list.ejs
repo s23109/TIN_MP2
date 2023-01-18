@@ -2,7 +2,7 @@
 
   <main>
 
-    <h2>Lista Książek</h2>
+    <h2><%=__('book.list.title')%></h2>
 
 
 
@@ -10,11 +10,11 @@
 
       <thead>
         <tr>
-          <th>Tytuł</th>
-          <th>Data Pozyskania</th>
-          <th>Strony</th>
-          <th>Uszkodzenia</th>
-          <th>Akcje</th>
+          <th><%=__('book.fields.title')%></th>
+          <th><%=__('book.fields.date')%></th>
+          <th><%=__('book.fields.pages')%></th>
+          <th><%=__('book.fields.damages')%></th>
+          <th><%=__('list.actions')%></th>
         </tr>
       </thead>
 
@@ -31,19 +31,19 @@
             <li>
               <a class="list-actions-button-details" href="/egzemplarz_ksiazki/details/<%= ksi._id%>">
                 <img src="/Images/icons8-more-details-64.png" class="list-actions-button-details-icon">
-                <span class="list-actions-button-details-text">Więcej</span>
+                <span class="list-actions-button-details-text"><%=__('list.details')%></span>
               </a>
             </li>
             <li>
               <a class="list-actions-button-edit" href="/egzemplarz_ksiazki/edit/<%= ksi._id%>">
                 <img src="/Images/icons8-pencil-64.png" class="list-actions-button-edit-icon">
-                <span class="list-actions-button-edit-text">Edytuj</span>
+                <span class="list-actions-button-edit-text"><%=__('list.edit')%></span>
               </a>
             </li>
             <li>
               <a class="list-actions-button-delete" href="/egzemplarz_ksiazki/delete/<%= ksi._id%>" onclick="return confirmDelete(<%="\"książkę : " + ksi.tytul + "\""%>);">
                 <img src="/Images/icons8-remove-64.png" class="list-actions-button-delete-icon">
-                <span class="list-actions-button-delete-text">Usuń</span>
+                <span class="list-actions-button-delete-text"><%=__('list.delete')%></span>
               </a>
             </li>
           </ul>
@@ -56,7 +56,7 @@
 
     </table>
 
-    <p><a href="/egzemplarz_ksiazki/add" class="button-add">Dodaj nową książkę</a> </p>
+    <p><a href="/egzemplarz_ksiazki/add" class="button-add"><%=__('book.list.addNew')%></a> </p>
 
   </main>
 
