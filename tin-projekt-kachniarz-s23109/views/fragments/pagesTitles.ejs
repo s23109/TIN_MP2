@@ -1,18 +1,18 @@
     <% switch (navLocation) {
 case 'Main' : %>
-    <title>Biblioteka</title>
+    <title><%=__('main-page.header-title')%></title>
 <% break;%>
 <% case 'Wypozyczenie' :%>
-    <title>Wypozyczenie</title>
+    <title><%=__('nav.lend')%></title>
 <% break;%>
 <%case 'Egzemplarz_Ksiazki' :%>
-    <title>Egzemplarz_Ksiazki</title>
+    <title><%=__('nav.book')%></title>
 <% break;%>
 <%case 'Klient' :%>
-    <title>Klient</title>
+    <title><%=__('nav.client')%></title>
 <% break;%>
 <%case 'Register' :%>
-    <title>Konto</title>
+    <title><%=__('nav.account')%></title>
 <% break;%>
 <%default :%>
 <!-- PAGE NAME NOT IMPLEMENTED , check /fragments/pagesTitles.ejs-->

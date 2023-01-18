@@ -6,7 +6,8 @@
     "main-page": "Strona Główna",
     "client": "Klient",
     "book": "Egzemplarz Książki",
-    "lend": "Wypożyczenie"
+    "lend": "Wypożyczenie",
+    "account": "Konto"
   },
   "login-bar": {
     "login-title": "Logowanie",

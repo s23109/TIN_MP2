@@ -6,7 +6,8 @@
     "main-page": "Main Page",
     "client": "Client",
     "book": "Book Copy",
-    "lend": "Book Lend"
+    "lend": "Book Lend",
+    "account": "Account"
   },
   "login-bar": {
     "login-title": "Login",
