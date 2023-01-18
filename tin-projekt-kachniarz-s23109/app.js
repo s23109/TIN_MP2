@@ -4,6 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const i18n = require('i18n');
+
+i18n.configure({
+    locales: ['pl','en'], //języki
+    directory: path.join(__dirname,'locales'), //dir do słowników
+    objectNotation: true, // do zagnieżdzonych kluczy w notacji obiektowej
+    cookie: 'lang' //nazwa cookie do przechowywania info o curr-języku
+})
 
 const indexRouter = require('./routes/index');
 const klientRouter = require('./routes/klientRoute');
@@ -43,6 +51,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(i18n.init);
 
 app.use((req,res,next) => {
   res.locals.fmt = fmt;

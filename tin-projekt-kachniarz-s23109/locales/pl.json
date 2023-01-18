@@ -1,0 +1,122 @@
+{
+  "main-page": {
+    "header-title": ""
+  },
+  "nav": {
+    "main-page": "",
+    "client": "",
+    "book": "",
+    "lend": ""
+  },
+  "login-bar": {
+    "login-title": "",
+    "login-label": "",
+    "password-label": "",
+    "button-login": "",
+    "button-register": "",
+    "button-logout": "",
+    "button-account": "",
+    "after-login-title": ""
+  },
+  "list": {
+    "actions" : "",
+    "details": "",
+    "edit": "",
+    "delete": ""
+  },
+  "form": {
+    "actions": {
+    "return": "",
+    "edit": "",
+    "cancel": ""
+    }
+  },
+  "client": {
+    "fields": {
+      "first-name": "",
+      "last-name": "",
+      "email": ""
+    },
+    "list": {
+      "pageTitle": "",
+      "addNew": "",
+      "noData": "",
+      "title": ""
+    },
+    "form": {
+    "client-lends": "",
+      "add": {
+        "pageTitle": "",
+        "btnLabel": ""
+      },
+      "details": {
+        "pageTitle": "",
+        "btnLabel": ""
+      },
+      "edit": {
+        "pageTitle": "",
+        "btnLabel": ""
+      }
+    }
+  },
+  "book": {
+    "fields": {
+      "title": "",
+      "date": "",
+      "pages": "",
+      "damages": ""
+    },
+    "list": {
+      "pageTitle": "",
+      "addNew": "",
+      "noData": "",
+      "title": ""
+    },
+    "form": {
+      "lend-by": "",
+      "add": {
+        "pageTitle": "",
+        "btnLabel": ""
+      },
+      "details": {
+        "pageTitle": "",
+        "btnLabel": ""
+      },
+      "edit": {
+        "pageTitle": "",
+        "btnLabel": ""
+      }
+    }
+
+  },
+  "lend": {
+    "fields": {
+      "book-title": "",
+      "client": "",
+      "email": "",
+      "date-from": "",
+      "date-to": ""
+    },
+    "list": {
+      "pageTitle": "",
+      "addNew": "",
+      "noData": "",
+      "title": ""
+    },
+    "form": {
+      "add": {
+        "pageTitle": "",
+        "btnLabel": ""
+      },
+      "details": {
+        "pageTitle": "",
+        "btnLabel": ""
+      },
+      "edit": {
+        "pageTitle": "",
+        "btnLabel": ""
+      }
+    }
+  }
+
+}
