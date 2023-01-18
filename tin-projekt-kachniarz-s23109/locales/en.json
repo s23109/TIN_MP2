@@ -1,122 +1,122 @@
 {
   "main-page": {
-    "header-title": ""
+    "header-title": "Library"
   },
   "nav": {
-    "main-page": "",
-    "client": "",
-    "book": "",
-    "lend": ""
+    "main-page": "Main Page",
+    "client": "Client",
+    "book": "Book Copy",
+    "lend": "Book Lend"
   },
   "login-bar": {
-    "login-title": "",
-    "login-label": "",
-    "password-label": "",
-    "button-login": "",
-    "button-register": "",
-    "button-logout": "",
-    "button-account": "",
-    "after-login-title": ""
+    "login-title": "Login",
+    "login-label": "Login",
+    "password-label": "Password",
+    "button-login": "Login",
+    "button-register": "Register",
+    "button-logout": "Logout",
+    "button-account": "Account",
+    "after-login-title": "Logged As"
   },
   "list": {
-    "actions" : "",
-    "details": "",
-    "edit": "",
-    "delete": ""
+    "actions" : "Actions",
+    "details": "Details",
+    "edit": "Edit",
+    "delete": "Delete"
   },
   "form": {
     "actions": {
-      "return": "",
-      "edit": "",
-      "cancel": ""
+      "return": "Return",
+      "edit": "Edit",
+      "cancel": "Cancel"
     }
   },
   "client": {
     "fields": {
-      "first-name": "",
-      "last-name": "",
-      "email": ""
+      "first-name": "Name",
+      "last-name": "Surname",
+      "email": "Email"
     },
     "list": {
-      "pageTitle": "",
-      "addNew": "",
-      "noData": "",
-      "title": ""
+      "pageTitle": "Client",
+      "addNew": "Add new client",
+      "noData": "No clients in database",
+      "title": "Client list"
     },
     "form": {
-      "client-lends": "",
-      "no-data": "",
+      "client-lends": "Client lend",
+      "no-data": "No client lend",
       "add": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "New client",
+        "btnLabel": "Add"
       },
       "details": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Client details",
+        "btnLabel": "Edit"
       },
       "edit": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Client edit",
+        "btnLabel": "Save"
       }
     }
   },
   "book": {
     "fields": {
-      "title": "",
-      "date": "",
-      "pages": "",
-      "damages": ""
+      "title": "Title",
+      "date": "Date of Acquirement",
+      "pages": "Pages",
+      "damages": "Damages"
     },
     "list": {
-      "pageTitle": "",
-      "addNew": "",
-      "noData": "",
-      "title": ""
+      "pageTitle": "Book Copy",
+      "addNew": "Add new book",
+      "noData": "No books in database",
+      "title": "Book list"
     },
     "form": {
-      "lend-by": "",
-      "no-data": "",
+      "lend-by": "Book lend",
+      "no-data": "No book lend",
       "add": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "New book",
+        "btnLabel": "Add"
       },
       "details": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Book details",
+        "btnLabel": "Edit"
       },
       "edit": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Book edit",
+        "btnLabel": "Save"
       }
     }
 
   },
   "lend": {
     "fields": {
-      "book-title": "",
-      "client": "",
-      "email": "",
-      "date-from": "",
-      "date-to": ""
+      "book-title": "Book",
+      "client": "Client",
+      "email": "Email",
+      "date-from": "Date From",
+      "date-to": "Date To"
     },
     "list": {
-      "pageTitle": "",
-      "addNew": "",
-      "noData": "",
-      "title": ""
+      "pageTitle": "Lends",
+      "addNew": "Add lend",
+      "noData": "No lends in database",
+      "title": "Lend list"
     },
     "form": {
       "add": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "New lend",
+        "btnLabel": "Add"
       },
       "details": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Lend details",
+        "btnLabel": "Edit"
       },
       "edit": {
-        "pageTitle": "",
-        "btnLabel": ""
+        "pageTitle": "Lend edit",
+        "btnLabel": "Save"
       }
     }
   }
