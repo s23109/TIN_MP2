@@ -67,6 +67,27 @@ exports.getByLogin = async (login) => {
     return null;
 }
 
+exports.getByKliID = async (kliID) => {
+    // Does not return password hash
+
+    // console.log("KliID:" + kliID);
+    const qbe = {kliID:kliID};
+
+    //undefined?
+    //const test = await db.find();
+    // console.log("Pierwszy z " + JSON.stringify(test[0]));
+
+    const query= await db.findOne(qbe, {_id:0,login:1,password:0,kliID:1});
+
+    console.log("Object from MDB:" + JSON.stringify(query));
+
+    if (query){
+
+        return query;
+    }
+    return null;
+}
+
 exports.getAmount = async () => {
     return await db.countDocuments();
 }

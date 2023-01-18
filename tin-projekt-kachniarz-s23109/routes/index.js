@@ -11,11 +11,14 @@ router.get('/', function(req, res, next) {
 router.post('/login',AuthRepo.login);
 router.get('/logout',AuthRepo.logout);
 
+/*
+//dropped due to mongo foch
 router.get('/register', AccountController.showCreateAccountForm);
 //non safe
 router.get('/account/:kliID',AccountController.showDetailsAccountForm);
 router.get('/account_edit/:kliID',AccountController.showEditAccountForm);
 
+*/
 
 // router.post('/createAccount',);
 // router.post('/editAccount',);
