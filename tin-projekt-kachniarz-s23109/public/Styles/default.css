@@ -164,7 +164,9 @@ nav ,
 
 .login-container-register,
 .login-container-log-in,
-.login-container-log-out{
+.login-container-log-out,
+.login-container-edit-acc{
+    display: inline-block;
     text-decoration: none;
     margin: 0.2rem;
     padding-top: 0.05rem;
@@ -193,9 +195,14 @@ nav ,
     background: #145bde;
 }
 
+.login-container-edit-acc {
+    background: #ccc348;
+}
+
 .login-container-log-in:hover,
 .login-container-register:hover,
-.login-container-log-out:hover{
+.login-container-log-out:hover,
+.login-container-edit-acc:hover{
     text-decoration: none;
     color: white;
     filter: drop-shadow(0px 0px 5px black);
