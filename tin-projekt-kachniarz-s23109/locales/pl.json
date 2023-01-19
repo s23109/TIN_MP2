@@ -120,5 +120,23 @@
 				"btnLabel": "Zapisz"
 			}
 		}
+	},
+	"err": {
+		"unique": "Pole musi być unikatowe",
+		"len_2-32": "Pole musi mieć długość z zakresu 2-32",
+		"len_2-64": "Pole musi mieć długość z zakresu 2-64",
+		"required": "Pole jest wymagane",
+		"contains_numbers": "Pole nie może zawierać liczb",
+		"contains_special-char": "Pole nie może zawierać znaków specjalnych",
+		"contains_white-char": "Pole nie może zawierać białych znaków",
+		"notEmail": "Pole nie jest adresem Email",
+		"isAfterDate": "Pole nie może być po",
+		"isBeforeDate": "Pole nie może być przed",
+		"isNotANumber": "Pole nie jest liczbą",
+		"isNegative": "Pole jest ujemne",
+		"isBiggerThan": "Pole jest większe niż",
+		"selectDefault": "Należy wybrać wartość",
+		"isNotDate": "Pole nie jest datą",
+		"isDateAfterLimit": "Pole jest po "
 	}
 }

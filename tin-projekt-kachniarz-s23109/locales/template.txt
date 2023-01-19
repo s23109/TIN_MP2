@@ -121,6 +121,24 @@
         "btnLabel": ""
       }
     }
-  }
+  },
+  	"err": {
+  		"unique": "",
+  		"len_2-32": "",
+  		"len_2-64": "",
+  		"required": "",
+  		"contains_numbers": "",
+  		"contains_special-char": "",
+  		"contains_white-char": "",
+  		"notEmail": "",
+  		"isAfterDate": "",
+  		"isBeforeDate": "",
+  		"isNotANumber": "",
+  		"isNegative": "",
+  		"isBiggerThan": "",
+  		"selectDefault": "",
+  		"isNotDate": "",
+  		"isDateAfterLimit": ""
+  	}
 
 }
