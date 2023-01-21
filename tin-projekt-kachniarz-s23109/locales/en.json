@@ -129,6 +129,7 @@
   "err": {
     "unique": "Field must be unique",
     "len_2-32": "Field must contain between 2-32 characters",
+    "len_3-32": "Field must contain between 3-32 characters",
     "len_2-64": "Field must contain between 2-64 characters",
     "len_max_128": "Field must be shorter than 128 characters",
     "required": "Field is required",

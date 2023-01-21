@@ -128,6 +128,7 @@
 	"err": {
 		"unique": "Pole musi być unikatowe",
 		"len_2-32": "Pole musi mieć długość z zakresu 2-32",
+		"len_3-32": "Pole musi mieć długość z zakresu 3-32",
 		"len_2-64": "Pole musi mieć długość z zakresu 2-64",
 		"len_max_128": "Pole nie może być dłuższe niż 128 znaków",
 		"required": "Pole jest wymagane",

@@ -17,23 +17,23 @@ const Klient = sequelize.define('Klient', {
         maxLength :32,
         validate: {
             notEmpty:{
-                msg: "Pole jest wymagane"
+                msg: "err.required"
             },
             len: {
                 args: [3,32],
-                msg: "Pole powinno zawierać od 3 do 32 znaków"
+                msg: "err.len_3-32"
             },
             containZnaki(){
                 if (validation.containsSpecialChar(this.imie)){
-                    throw new Error ("Pole nie może zawierać znaków specjalnych ");
+                    throw new Error ("err.contains_special-char");
                 }
                 // w środku pozwala (tak zostawić ?)
                 if (validation.containsWhiteChar(this.imie)){
-                    throw new Error("Pole nie może zawierać białych znaków");
+                    throw new Error("err.contains_white-char");
                 }
 
                 if (validation.containsNumbers(this.imie)){
-                    throw new Error("Pole nie może zawierać liczb");
+                    throw new Error("err.contains_numbers");
                 }
 
             }
@@ -45,23 +45,23 @@ const Klient = sequelize.define('Klient', {
         maxLength :32,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "err.required"
             },
             len:{
                 args: [3,32],
-                msg: "Pole powinno zawierać od 3 do 32 znaków"
+                msg: "err.len_3-32"
             },
             containZnaki(){
                 if (validation.containsSpecialChar(this.nazwisko)){
-                    throw new Error ("Pole nie może zawierać znaków specjalnych ");
+                    throw new Error ("err.contains_special-char");
                 }
                 // w środku pozwala (tak zostawić ?)
                 if (validation.containsWhiteChar(this.nazwisko)){
-                    throw new Error("Pole nie może zawierać białych znaków");
+                    throw new Error("err.contains_white-char");
                 }
 
                 if (validation.containsNumbers(this.nazwisko)){
-                    throw new Error("Pole nie może zawierać liczb");
+                    throw new Error("err.contains_numbers");
                 }
 
             }
@@ -77,11 +77,11 @@ const Klient = sequelize.define('Klient', {
                     //bo buguje się przy ,,zwykłym isEmail''
                     // negacja bo przejdzie tylko jak jest mailem
                     if (!validation.isEmail(this.email)){
-                        throw new Error("Pole musi być adresem Email");
+                        throw new Error("err.notEmail");
                     }
 
                     if (validation.containsWhiteChar(this.email)){
-                        throw new Error("Pole nie może zawierać białych znaków");
+                        throw new Error("err.contains_white-char");
                     }
 
                     //opcjonalnie tu od czy już jest unikalny ? (choć bardziej w kontrolerze)
