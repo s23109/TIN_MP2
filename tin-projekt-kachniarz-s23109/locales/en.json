@@ -130,6 +130,7 @@
     "unique": "Field must be unique",
     "len_2-32": "Field must contain between 2-32 characters",
     "len_2-64": "Field must contain between 2-64 characters",
+    "len_max_128": "Field must be shorter than 128 characters",
     "required": "Field is required",
     "contains_numbers": "Field cannot contain numbers",
     "contains_special-char": "Field cannot contain special characters",

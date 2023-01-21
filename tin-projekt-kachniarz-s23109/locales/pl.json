@@ -129,6 +129,7 @@
 		"unique": "Pole musi być unikatowe",
 		"len_2-32": "Pole musi mieć długość z zakresu 2-32",
 		"len_2-64": "Pole musi mieć długość z zakresu 2-64",
+		"len_max_128": "Pole nie może być dłuższe niż 128 znaków",
 		"required": "Pole jest wymagane",
 		"contains_numbers": "Pole nie może zawierać liczb",
 		"contains_special-char": "Pole nie może zawierać znaków specjalnych",

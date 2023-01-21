@@ -16,17 +16,17 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
         unique:true,
         validate:{
             notEmpty:{
-                msg :"Pole jest wymagane"
+                msg :"err.required"
             },
 
             len : {
                 args: [2,64],
-                msg: "Pole powinno zawierać od 2 do 64 znaków"
+                msg: "err.len_2-64"
             },
 
             checkWhiteChar(){
                 if (validate.containsWhiteChar(this.tytul)){
-                    throw new Error("Pole nie może zawierać białych znaków na początku i końcu");
+                    throw new Error("err.contains_white-char");
                 }
             }
         }
@@ -38,14 +38,14 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
 
         validate:{
             notEmpty:{
-                msg :"Pole jest wymagane"
+                msg :"err.required"
             },
             checkIfNotFromFuture(){
                 let nowDate = new Date();
 
                 if (nowDate < this.data_pozyskania) {
                     //jeśli wcześniejsze to z przyszłości
-                    throw new Error("Nie można podać daty z przyszłości");
+                    throw new Error("err.isDateAfterToday");
                 }
 
             }
@@ -57,21 +57,21 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
         allowNull: false,
         validate:{
             notEmpty:{
-                msg:"Pole jest wymagane"
+                msg:"err.required"
             },
             checkIfNumber(){
                 if (isNaN(this.strony)) {
-                    throw new Error("Pole musi być liczbą");
+                    throw new Error("err.isNotANumber");
                 }
             },
             checkIfPositive(){
                 if (this.strony <= 0){
-                    throw new Error("Pole musi być większą od 0");
+                    throw new Error("err.isNegative");
                 }
             },
             checkIfCałkowita(){
                 if (this.strony % 1 != 0){
-                    throw new Error("Pole musi być liczbą całkowitą");
+                    throw new Error("err.isNotInteger");
                 }
             }
         }
@@ -83,7 +83,7 @@ const Egzemplarz_ksiazki = sequelize.define('Egzemplarz_ksiazki', {
         validate: {
             len: {
                 args: [0,128],
-                msg:"Pole nie może być dłuższe niż 128 znaków"
+                msg:"err.len_max_128"
             }
         }
 
