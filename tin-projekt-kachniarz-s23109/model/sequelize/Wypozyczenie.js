@@ -17,7 +17,7 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
 
             checkIfNotDefault(){
                 if (this.Ksiazka_id == -1 || this.Ksiazka_id == null){
-                    throw new Error("Pole musi mieć wybraną wartość")
+                    throw new Error("err.selectDefault")
                 }
             }
         }
@@ -29,7 +29,7 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
         validate:{
             checkIfNotDefault(){
                 if (this.Klient_id == -1 || this.Klient_id == null){
-                    throw new Error("Pole musi mieć wybraną wartość")
+                    throw new Error("err.selectDefault")
                 }
             }
         }
@@ -39,14 +39,14 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
         allowNull: false,
         validate:{
             notEmpty:{
-                msg :"Pole jest wymagane"
+                msg :"err.required"
             },
             checkIfNotFromFuture(){
                 let nowDate = new Date();
 
                 if (nowDate < this.data_od) {
                     //jeśli wcześniejsze to z przyszłości
-                    throw new Error("Nie można podać daty z przyszłości");
+                    throw new Error("err.isDateAfterToday");
                 }
 
             }
@@ -62,7 +62,7 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
 
                     if (nowDate < this.data_do) {
                         //jeśli wcześniejsze to z przyszłości
-                        throw new Error("Nie można podać daty z przyszłości");
+                        throw new Error("err.isDateAfterToday");
                     }
                 }
             },
@@ -70,7 +70,7 @@ const Wypozyczenie = sequelize.define('Wypozyczenie', {
                 if (this.data_do != null){
 
                     if (this.data_od>this.data_do){
-                        throw new Error("Data zwrotu nie może być przed datą wypożyczenia");
+                        throw new Error("err.isBeforeDate");
                     }
 
                 }
