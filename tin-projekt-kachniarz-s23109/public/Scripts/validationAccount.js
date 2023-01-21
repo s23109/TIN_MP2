@@ -14,6 +14,8 @@ function validateForm() {
     const errorLogin = document.getElementById('errorLogin');
     const errorPassword = document.getElementById('errorPassword');
 
+    const errWhiteCharMess = document.getElementById('whiteCharErr');
+
     resetErrors([firstNameInput, lastNameInput, emailInput, loginInput, passwordInput], [errorFirstName, errorLastName, errorEmail, errorLogin, errorPassword], errorSummary);
     let whiteChar = [false,false,false];
     let valid = true;
@@ -116,7 +118,7 @@ function validateForm() {
     if (whiteChar.includes(true)){
 
 
-        if (confirm("err.messages.fields-with-white-char")){
+        if (confirm(errWhiteCharMess.innerText)){
             if (whiteChar[0]){
                 firstNameInput.value = firstNameInput.value.trim();
                 firstNameInput.classList.remove("error-input");

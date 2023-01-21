@@ -146,10 +146,10 @@
 		"isNotDate": "Pole nie jest datą",
 		"isDateAfterToday": "Data nie może być z przyszłości",
 		"isDateBeforeLimit": "Data jest zbyt wczesna",
-		"formHasErrors": "Formularz zawiera błędy",
-
-		"messages": {
-			"fields-with-white-char": "Wykryto pola z białymi znakami, czy chcesz je usunąć?"
-		}
+		"formHasErrors": "Formularz zawiera błędy"
+	},
+	"messages": {
+		"fields-with-white-char": "Wykryto pola z białymi znakami, czy chcesz je usunąć?",
+		"confirm-delete": "Czy na pewno chcesz usunąć"
 	}
 }

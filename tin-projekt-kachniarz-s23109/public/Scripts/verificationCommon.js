@@ -1,6 +1,9 @@
 function confirmDelete (value){
 value = value.toString().trim();
-result = confirm("Czy na pewno chcesz usunąć " + value + " ?");
+
+const confirmDelete = document.getElementById('confirmDelete');
+var confMess = confirmDelete.innerText + " " + value + " ?";
+result = confirm(confMess);
 
 if (result){
 console.log("Deleting " + value);
