@@ -141,7 +141,7 @@
 		"isNotANumber": "Pole nie jest liczbą",
 		"isNegative": "Pole nie może być ujemne",
 		"isNotInteger" : "Pole musi być liczbą całkowitą",
-		"isBiggerThan": "Pole nie może być większe od ",
+		"isBiggerThan": "Pole nie może być większe od ustawionego limitu",
 		"selectDefault": "Należy wybrać wartość",
 		"isNotDate": "Pole nie jest datą",
 		"isDateAfterToday": "Data nie może być z przyszłości",

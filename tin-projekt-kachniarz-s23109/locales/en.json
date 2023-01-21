@@ -142,7 +142,7 @@
     "isNotANumber": "Field must be a number",
     "isNegative": "Field must be positive",
     "isNotInteger" : "Field must be an Integer",
-    "isBiggerThan": "Field cannot be bigger than ",
+    "isBiggerThan": "Field cannot be bigger than set limit",
     "selectDefault": "Must select value",
     "isNotDate": "Field must be a date",
     "isDateAfterToday": "Date cannot be from the future",

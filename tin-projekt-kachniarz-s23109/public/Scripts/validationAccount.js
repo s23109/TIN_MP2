@@ -26,51 +26,51 @@ function validateForm() {
         // brak wartości
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole jest wymagane";
+        errorFirstName.innerText = "err.required";
     }
     else if (!checkTextLengthRange(firstNameInput.value, 2, 32)) {
         //per diagram , max length = 32
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole musi mieć długość z przedziału 2-32 znaki";
+        errorFirstName.innerText = "err.len_2-32";
     } else if (checkIfContainsNumbers(firstNameInput.value)) {
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole nie może zawierać liczb";
+        errorFirstName.innerText = "err.contains_numbers";
 
     } else if (containsSpecialChar(firstNameInput.value)){
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole nie może zawierać znaków specjalnych";
+        errorFirstName.innerText = "err.contains_special-char";
     } else if (containsWhiteChar(firstNameInput.value)){
         whiteChar[0]=true;
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole nie może zawierać białych znaków w polach kluczowych";
+        errorFirstName.innerText = "err.contains_white-char";
     }
 
     if (!checkRequired(lastNameInput.value)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole jest wymagane";
+        errorLastName.innerText = "err.required";
     }
     else if (!checkTextLengthRange(lastNameInput.value, 2, 32)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole musi mieć długość z przedziału 2-32 znaki";
+        errorLastName.innerText = "err.len_2-32";
     } else if (checkIfContainsNumbers(lastNameInput.value)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole nie może zawierać liczb";
+        errorLastName.innerText = "err.contains_numbers";
     } else  if (containsSpecialChar(lastNameInput.value)){
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole nie może zawierać znaków specjalnych";
+        errorLastName.innerText = "err.contains_special-char";
     } else if (containsWhiteChar(lastNameInput.value)){
         whiteChar[1]=true;
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole nie może zawierać białych znaków w polach kluczowych";
+        errorLastName.innerText = "err.contains_white-char";
     }
 
 
@@ -81,12 +81,12 @@ function validateForm() {
             //bad regex
             valid = false;
             emailInput.classList.add("error-input");
-            errorEmail.innerText = "Pole musi zawierać poprawny adres Email";
+            errorEmail.innerText = "err.notEmail";
         } else if (containsWhiteChar(emailInput.value)){
             whiteChar[2]=true;
             valid = false;
             emailInput.classList.add("error-input");
-            errorEmail.innerText = "Pole musi zawierać poprawny adres Email";
+            errorEmail.innerText = "err.contains_white-char";
         }
 
 
@@ -95,11 +95,11 @@ function validateForm() {
     if (!checkRequired(loginInput.value)) {
         valid = false;
         loginInput.classList.add("error-input");
-        errorLogin.innerText = "Pole jest wymagane";
+        errorLogin.innerText = "err.required";
     } else if (!checkTextLengthRange(loginInput.value, 2, 32)) {
         valid = false;
         loginInput.classList.add("error-input");
-        errorLogin.innerText = "Pole musi mieć długość z przedziału 2-32 znaki";
+        errorLogin.innerText = "err.len_2-32";
     }
 
     if (passwordInput.value.toString().length > 0) {
@@ -107,29 +107,16 @@ function validateForm() {
         if (!checkTextLengthRange(passwordInput.value, 2, 32)) {
             valid = false;
             passwordInput.classList.add("error-input");
-            errorPassword.innerText= "Pole musi mieć długość z przedziału 2-32 znaki";
+            errorPassword.innerText= "err.len_2-32";
         }
     }
 
 
 
     if (whiteChar.includes(true)){
-        var errorText = "";
 
-        if (whiteChar[0]){
-            errorText+= "Imie ";
-        }
 
-        if (whiteChar[1]){
-
-            errorText+= "Nazwisko ";
-        }
-
-        if (whiteChar[2]){
-            errorText+= "Email ";
-        }
-
-        if (confirm("Wykryto białe znaki w na początku lub końcu pól: " + errorText + ".\nCzy chcesz je usunąć przed wysłaniem?")){
+        if (confirm("err.messages.fields-with-white-char")){
             if (whiteChar[0]){
                 firstNameInput.value = firstNameInput.value.trim();
                 firstNameInput.classList.remove("error-input");
@@ -156,7 +143,7 @@ function validateForm() {
     }
 
     if (!valid) {
-        errorSummary.innerText = "Formularz zawiera błędy";
+        errorSummary.innerText = "err.formHasErrors";
         document.querySelector('form').scrollIntoView({ behavior: "smooth" });
     }
 

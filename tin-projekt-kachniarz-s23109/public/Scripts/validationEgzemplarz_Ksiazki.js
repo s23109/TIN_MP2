@@ -40,40 +40,40 @@ function validateForm() {
         //brak tytuł
         valid = false;
         titleInput.classList.add("error-input");
-        errorTitle.innerText = "Pole musi zawierać nazwę";
+        errorTitle.innerText = "err.required";
 
 
     } else if (!checkTextLengthRange(titleInput.value, 2, 64)) {
         //zła długosc tekstu 
         valid = false;
         titleInput.classList.add('error-input');
-        errorTitle.innerText = "Nazwa musi mieć długość z przedziału 2 - 64";
+        errorTitle.innerText = "err.len_2-64";
 
     } else if (containsWhiteChar(titleInput.value)){
         whiteChar= true;
         // w confirmie valid
         //   valid = false;
         titleInput.classList.add('error-input');
-        errorTitle.innerText = "Pole nie może zawierać białych znaków na początku i końcu";
+        errorTitle.innerText = "err.contains_white-char";
     }
 
     if (!checkRequired(dateInput.value)) {
         //brak daty
         valid = false;
         dateInput.classList.add("error-input");
-        errorDate.innerText = "Pole musi zawierać datę";
+        errorDate.innerText = "err.isNotDate";
 
     } else if (checkDateIfAfter(dateInput.value, nowString)) {
         // data jest po ,,dziś'' , nie można
         valid = false;
         dateInput.classList.add('error-input');
-        errorDate.innerText = "Data nie może być po dniu dzisiejszym";
+        errorDate.innerText = "err.isDateAfterToday";
 
     } else if (checkIfDateBeforeLimit(dateInput.value)) {
 
         valid = false;
         dateInput.classList.add('error-input');
-        errorDate.innerText = "Data jest zbyt wczesna";
+        errorDate.innerText = "err.isDateBeforeLimit";
 
 
     }
@@ -82,7 +82,7 @@ function validateForm() {
         //NAN 
         valid = false;
         pagesInput.classList.add('error-input');
-        errorPages.innerText = "Pole nie może być puste";
+        errorPages.innerText = "err.required";
 
     } else {
         //jeśli to ma coś
@@ -91,22 +91,22 @@ function validateForm() {
             //jeśli to nie liczba
             valid = false;
             pagesInput.classList.add('error-input');
-            errorPages.innerText = "Pole musi zawierać liczbę";
+            errorPages.innerText = "err.isNotANumber";
 
         } else if (!checkNumberRange(pagesInput.value, 1, Infinity)) {
             //jeśli nie dodatnia
             valid = false;
             pagesInput.classList.add('error-input');
-            errorPages.innerText = "Liczba musi być większa od 0";
+            errorPages.innerText = "err.isNegative";
         }
         else if (pagesInput.value % 1 != 0) {
             valid = false;
             pagesInput.classList.add('error-input');
-            errorPages.innerText = "Liczba musi być całkowita";
+            errorPages.innerText = "err.isNotInteger";
         } else if (checkIfPagesGreaterThanLimit(pagesInput.value)) {
             valid = false;
             pagesInput.classList.add('error-input');
-            errorPages.innerText = "Liczba nie może być większa niż " + maxPages;
+            errorPages.innerText = "err.isBiggerThan";
         }
 
 
@@ -114,10 +114,10 @@ function validateForm() {
 
     if (whiteChar){
 
-        if (confirm("Wykryto białe znaki w na początku lub końcu pola Tytuł.\nCzy chcesz je usunąć przed wysłaniem?")){
+        if (confirm("err.messages.fields-with-white-char")){
             titleInput.value = titleInput.value.trim();
             titleInput.classList.remove('error-input');
-            errorTitle.innerText = " "
+            errorTitle.innerText = ""
         }
         else {
             valid=false;
@@ -126,7 +126,7 @@ function validateForm() {
     }
 
     if (!valid) {
-        errorSummary.innerText = "Formularz zawiera błędy";
+        errorSummary.innerText = "err.formHasErrors";
         document.querySelector('form').scrollIntoView({ behavior: "smooth" });
     }
 
