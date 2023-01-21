@@ -44,14 +44,14 @@ function validateForm() {
 
         valid = false;
         ksiazkaInput.classList.add("error-input");
-        errorKsiazkaInput.innerText = "Pole musi mieć wartość, gratulacje za uszkodzenie selecta";
+        errorKsiazkaInput.innerText = "err.required";
 
     }
     else if (ksiazkaInput.value == "default") {
         //if defalut select - czytaj wartość "--Wybierz Książkę--"
         valid = false;
         ksiazkaInput.classList.add("error-input");
-        errorKsiazkaInput.innerText = "Pole musi mieć wybraną wartość";
+        errorKsiazkaInput.innerText = "err.selectDefault";
 
     }
 
@@ -62,31 +62,31 @@ function validateForm() {
         //nwm jak , ale taki ,,failsafe''
         valid = false;
         klientInput.classList.add("error-input");
-        errorKlientInput.innerText = "Pole musi mieć wartość, gratulacje za uszkodzenie selecta";
+        errorKlientInput.innerText = "err.required";
     }
     else if (klientInput.value == "default") {
         valid = false;
         klientInput.classList.add("error-input");
-        errorKlientInput.innerText = "Pole musi mieć wybraną wartość";
+        errorKlientInput.innerText = "err.selectDefault";
 
     }
 
     if (!checkRequired(dateFromInput.value)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFromInput.innerText = "Pole nie może być puste";
+        errorDateFromInput.innerText = "err.required";
     } else if (!checkDate(dateFromInput.value)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFromInput.innerText = "Pole musi zawierać datę";
+        errorDateFromInput.innerText = "err.isNotDate";
     } else if (checkDateIfAfter(dateFromInput.value, nowString)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFromInput.innerText = "Data wypożyczenia nie może być po dniu dzisiejszym";
+        errorDateFromInput.innerText = "err.isDateAfterToday";
     } else if (checkIfDateBeforeLimit(dateFromInput.value)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFromInput.innerText = "Data jest zbyt wczesna";
+        errorDateFromInput.innerText = "err.isDateBeforeLimit";
     }
 
     if (dateToInput.value.length > 0) {
@@ -96,28 +96,28 @@ function validateForm() {
         if (!checkDate(dateToInput.value)) {
             valid = false;
             dateToInput.classList.add("error-input");
-            errorDateToInput.innerText = "Pole musi zawierać datę";
+            errorDateToInput.innerText = "err.isNotDate";
         } else if (checkDateIfAfter(dateToInput.value, nowString)) {
             valid = false;
             dateToInput.classList.add("error-input");
-            errorDateToInput.innerText = "Data zwrotu nie może być po dniu dzisiejszym";
+            errorDateToInput.innerText = "err.isDateAfterToday";
         } else if (checkIfDateBeforeLimit(dateToInput.value)) {
             valid = false;
             dateToInput.classList.add("error-input");
-            errorDateToInput.innerText = "Data jest zbyt wczesna";
+            errorDateToInput.innerText = "err.isDateBeforeLimit";
 
         }
         else if (checkDateIfAfter(dateFromInput.value, dateToInput.value)) {
             valid = false;
             dateToInput.classList.add("error-input");
-            errorDateToInput.innerText = "Data zwrotu nie może być przed datą wypożyczenia";
+            errorDateToInput.innerText = "err.isBeforeDate";
         }
 
 
     }
 
     if (!valid) {
-        errorSummary.innerText = "Formularz zawiera błędy";
+        errorSummary.innerText = "err.formHasErrors";
         document.querySelector('form').scrollIntoView({ behavior: "smooth" });
     }
 
