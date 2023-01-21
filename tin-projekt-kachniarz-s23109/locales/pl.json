@@ -26,6 +26,7 @@
 		"delete": "Usuń"
 	},
 	"form": {
+		"default": "Wybierz wartość",
 		"actions": {
 			"return": "Powrót",
 			"edit": "Edytuj",
@@ -45,6 +46,7 @@
 			"title": "Lista klientów"
 		},
 		"form": {
+			"default": "Wybierz klienta",
 			"client-lends": "Wypożyczenia klienta",
 			"no-data": "Brak wypożyczeń klienta",
 			"add": {
@@ -76,6 +78,7 @@
 			"title": "Lista książek"
 		},
 		"form": {
+			"default": "Wybierz książkę",
 			"lend-by": "Wypożyczenia książki",
 			"no-data": "Brak wypożyczeń książki",
 			"add": {
@@ -107,6 +110,7 @@
 			"title": "Lista wypożyczeń"
 		},
 		"form": {
+			"default": "Wybierz wypożyczenie",
 			"add": {
 				"pageTitle": "Nowe wypożyczenie",
 				"btnLabel": "Dodaj"
@@ -130,13 +134,16 @@
 		"contains_special-char": "Pole nie może zawierać znaków specjalnych",
 		"contains_white-char": "Pole nie może zawierać białych znaków",
 		"notEmail": "Pole nie jest adresem Email",
-		"isAfterDate": "Pole nie może być po",
-		"isBeforeDate": "Pole nie może być przed",
+		"isBeforeDate": "Data nie może być przed dniem wypożyczenia",
+		"isAfterDate": "Data nie może być po dniu zwrotu",
 		"isNotANumber": "Pole nie jest liczbą",
-		"isNegative": "Pole jest ujemne",
-		"isBiggerThan": "Pole jest większe niż",
+		"isNegative": "Pole nie może być ujemne",
+		"isNotInteger" : "Pole musi być liczbą całkowitą",
+		"isBiggerThan": "Pole nie może być większe od ",
 		"selectDefault": "Należy wybrać wartość",
 		"isNotDate": "Pole nie jest datą",
-		"isDateAfterLimit": "Pole jest po "
+		"isDateAfterToday": "Data nie może być z przyszłości",
+		"isDateBeforeLimit": "Data jest zbyt wczesna",
+		"formHasErrors": "Formularz zawiera błędy"
 	}
 }

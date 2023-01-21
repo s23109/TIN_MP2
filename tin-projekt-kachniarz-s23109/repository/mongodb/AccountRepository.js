@@ -44,10 +44,10 @@ exports.deleteAccount = async (id) => {
 }
 
 exports.updateAccount = async (acc) => {
-    if (await this.accountExists(acc.id)){
+    if (await this.accountExists(parseInt(acc.id))){
         // tu zakładam ze nie zmieniamy przypisania danych bo to nie ma sensu???
-        db.updateOne({kliID: acc.id},
-            {$set:{login:acc.login,password:acc.password}})
+        db.updateOne({kliID: parseInt(acc.id)},
+            {$set:{login:acc.login,password:authUtil.hashPassword(acc.password)}})
     }else {
         console.log("MongoDB: Account- Tried to Update non existing kliID" + id);
     }

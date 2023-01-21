@@ -26,6 +26,7 @@
     "delete": "Delete"
   },
   "form": {
+    "default": "Choose value",
     "actions": {
       "return": "Return",
       "edit": "Edit",
@@ -45,6 +46,7 @@
       "title": "Client list"
     },
     "form": {
+      "default": "Choose client",
       "client-lends": "Client lend",
       "no-data": "No client lend",
       "add": {
@@ -76,6 +78,7 @@
       "title": "Book list"
     },
     "form": {
+      "default": "Choose book",
       "lend-by": "Book lend",
       "no-data": "No book lend",
       "add": {
@@ -108,6 +111,7 @@
       "title": "Lend list"
     },
     "form": {
+      "default": "Choose lend",
       "add": {
         "pageTitle": "New lend",
         "btnLabel": "Add"
@@ -123,22 +127,25 @@
     }
   },
   "err": {
-    "unique": "",
-    "len_2-32": "",
-    "len_2-64": "",
-    "required": "",
-    "contains_numbers": "",
-    "contains_special-char": "",
-    "contains_white-char": "",
-    "notEmail": "",
-    "isAfterDate": "",
-    "isBeforeDate": "",
-    "isNotANumber": "",
-    "isNegative": "",
-    "isBiggerThan": "",
-    "selectDefault": "",
-    "isNotDate": "",
-    "isDateAfterLimit": ""
+    "unique": "Field must be unique",
+    "len_2-32": "Field must contain between 2-32 characters",
+    "len_2-64": "Field must contain between 2-64 characters",
+    "required": "Field is required",
+    "contains_numbers": "Field cannot contain numbers",
+    "contains_special-char": "Field cannot contain special characters",
+    "contains_white-char": "Field cannot contain white characters",
+    "notEmail": "Field must be an Email adress",
+    "isBeforeDate": "Date cannot be before date of lend",
+    "isAfterDate": "Date cannot be after date of return",
+    "isNotANumber": "Field must be a number",
+    "isNegative": "Field must be positive",
+    "isNotInteger" : "Field must be an Integer",
+    "isBiggerThan": "Field cannot be bigger than ",
+    "selectDefault": "Must select value",
+    "isNotDate": "Field must be a date",
+    "isDateAfterToday": "Date cannot be from the future",
+    "isDateBeforeLimit": "Date is too early",
+    "formHasErrors": "Form contains errors"
   }
 
 }
