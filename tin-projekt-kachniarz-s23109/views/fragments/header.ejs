@@ -57,7 +57,7 @@
             </form>
 
         </div>
-        <h5 class="error-text" ><%=loginError? loginError: ''%></h5>
+        <h5 class="error-text" ><%=loginError? __("err.invalidLoginData"): ''%></h5>
     <% } else {%>
         <span><%=__('login-bar.after-login-title')%>: <span> <%=locals.loggedUser.imie + " " + locals.loggedUser.nazwisko%> </span> </span>
         <div>

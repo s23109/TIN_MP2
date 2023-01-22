@@ -147,7 +147,8 @@
     "isNotDate": "Field must be a date",
     "isDateAfterToday": "Date cannot be from the future",
     "isDateBeforeLimit": "Date is too early",
-    "formHasErrors": "Form contains errors"
+    "formHasErrors": "Form contains errors",
+    "invalidLoginData": "Bad login data"
   },
   "messages": {
     "fields-with-white-char": "Fields with white-char detected, do you want to remove them?",
