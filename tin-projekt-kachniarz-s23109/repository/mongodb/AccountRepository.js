@@ -35,14 +35,14 @@ exports.createAccount = async (acc) => {
     }
 }
 
-exports.deleteAccount = async (id) => {
-    id = parseInt(id);
-    let qbe = {kliID: id};
+exports.deleteAccount = async (kliid) => {
+    kliid = parseInt(kliid);
+    let qbe = {kliID: kliid};
 
-    if (await this.accountExists(id)){
+    if (await this.accountExists(kliid)){
         await db.deleteOne(qbe);
     }else {
-        console.log("MongoDB: Account- Tried to delete non existing kliID" + id);
+        console.log("MongoDB: Account- Tried to delete non existing kliID" + kliid);
     }
 
 }
@@ -94,4 +94,12 @@ exports.getByKliID = async (kliID) => {
 
 exports.getAmount = async () => {
     return await db.countDocuments();
+}
+
+exports.getPermission = async(kliID) => {
+    kliID = parseInt(kliID);
+
+    let query = await db.findOne({kliID:kliID});
+
+    return query.accPerm;
 }

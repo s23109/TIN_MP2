@@ -8,9 +8,9 @@ var account = {
 
 /* accPerm types
 "self" - default
-"self" - open + see/edit only self things
+"self" - open + see/edit only self things +
 "mod" - open self , see all , edit self
-"admin" - open all , see all , edit all
+"admin" - open all , see all , edit all +
  */
 
 module.exports = account;
