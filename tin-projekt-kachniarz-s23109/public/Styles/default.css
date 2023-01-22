@@ -21,13 +21,28 @@ body {
 header,
 footer,
 nav ,
-.login-container{
+.login-container,
+.lang-container{
     font-family: 'Fira Sans' ,  sans-serif ;
     color: black;
     
     text-decoration: none;
     border-radius: 5px;
     
+}
+
+.lang-container a img {
+    width: 32px;
+    height: auto;
+    filter: saturate(25%);
+}
+
+.lang-container a:hover img{
+    filter:saturate(100%);
+}
+
+.lang-container a.active img{
+    filter: drop-shadow(0px 0px 5px red);
 }
 
 main {
@@ -50,7 +65,8 @@ nav {
 
 
 
-.login-container{
+.login-container,
+.lang-container{
     margin-left: 0.75rem;
     margin-right: 0.75rem;
 }
@@ -94,13 +110,15 @@ footer a:hover {
 
  
 nav ,
-.login-container{
+.login-container,
+.lang-container{
     background-color: #a06d44;
     padding-left: 5px;
     padding-right: 5px;
 }
 
-.login-container{
+.login-container,
+.lang-container{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -610,12 +628,16 @@ nav ul  {
    header, 
    main,
    footer ,
-   .login-container{
+   .login-container
+   {
        margin: 0.25rem;
        padding: 0.85rem;
    }
 
-   
+   .lang-container {
+       margin-left: 0.25rem;
+       margin-right: 0.25rem;
+   }
 
     header {
         flex-direction: column;
@@ -790,7 +812,8 @@ nav ul  {
    header, 
    main,
    footer,
-   .login-container{
+   .login-container,
+   .lang-container{
        margin: 0;
        padding: 0;
        border-radius: unset;
