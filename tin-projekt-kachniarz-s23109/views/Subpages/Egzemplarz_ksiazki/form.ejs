@@ -24,7 +24,7 @@
             <input type="hidden" name="_id" value="<%=ksi._id%>">
 
             <label><%=__('book.fields.title')%>:<span class="symbol-required">*</span></label>
-            <input class="<%=(validationErrors.find(e => e.path.includes('tytul')) )?'error-input' : ''%>" type="text" name="tytul" id="title" required placeholder="<%=__("placeholders.book.title")%>>"
+            <input class="<%=(validationErrors.find(e => e.path.includes('tytul')) )?'error-input' : ''%>" type="text" name="tytul" id="title" required placeholder="<%=__("placeholders.book.title")%>"
                    value="<%=(ksi.tytul)?((formMode == 'createNew' || formMode == 'edit') ? fmt.removeQuoteIfExist(ksi.tytul) : fmt.addQuoteIfNotExist(ksi.tytul) ):ksi.tytul%>"
                     <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorTitle" class="error-text">

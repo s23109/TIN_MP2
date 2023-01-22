@@ -25,7 +25,7 @@
       <input type="hidden" name="_id" value="<%=kli._id%>">
 
       <label><%=__('client.fields.first-name')%>:<span class="symbol-required">*</span></label>
-      <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="<%=__("placeholders.client.firstName")%>>" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+      <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="<%=__("placeholders.client.firstName")%>" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorFirstName" class="error-text">
         <% if (validationErrors.find(e => e.path.includes('imie')) ) {%>
           <%= __(validationErrors.find(e => e.path.includes('imie')).message)%>
