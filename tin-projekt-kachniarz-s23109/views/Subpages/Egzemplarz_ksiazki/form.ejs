@@ -29,7 +29,7 @@
                     <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorTitle" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('tytul')) ) {%>
-                    <%= validationErrors.find(e => e.path.includes('tytul')).message%>
+                    <%= __(validationErrors.find(e => e.path.includes('tytul')).message)%>
                 <% } %>
             </span>
 
@@ -37,7 +37,7 @@
             <input class="<%=(validationErrors.find(e => e.path.includes('data_pozyskania')) )?'error-input' : ''%>" type="date" name="data_pozyskania" id="date" required value="<%=fmt.formatDate(ksi.data_pozyskania)%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorDate" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('data_pozyskania')) ) {%>
-                    <%= validationErrors.find(e => e.path.includes('data_pozyskania')).message%>
+                    <%= __(validationErrors.find(e => e.path.includes('data_pozyskania')).message)%>
                 <% } %>
             </span>
 
@@ -45,7 +45,7 @@
             <input class="<%=(validationErrors.find(e => e.path.includes('strony')) )?'error-input' : ''%>" type="number" name="strony" id="pages" required value="<%=ksi.strony%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorPages" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('strony')) ) {%>
-                    <%= validationErrors.find(e => e.path.includes('strony')).message%>
+                    <%= __(validationErrors.find(e => e.path.includes('strony')).message)%>
                 <% } %>
             </span>
 
@@ -54,12 +54,12 @@
             <textarea  class="<%=(validationErrors.find(e => e.path.includes('uszkodzenia')) )?'error-input' : ''%>" rows="3" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%>  <%= (formMode == 'showDetails') ? 'disabled' : ''%>><%=ksi.uszkodzenia%></textarea>
             <span id="errorDamage" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('uszkodzenia')) ) {%>
-                    <%= validationErrors.find(e => e.path.includes('uszkodzenia')).message%>
+                    <%= __(validationErrors.find(e => e.path.includes('uszkodzenia')).message)%>
                 <% } %>
             </span>
 
             <div class="form-buttons">
-                <p id="errorSummary" class="error-text"><%=(validationErrors.length  > 0 ) ? 'Formularz zawiera błędy' : ''%></p>
+                <p id="errorSummary" class="error-text"><%=(validationErrors.length  > 0 ) ? __("err.formHasErrors") : ''%></p>
                 <%if (formMode== 'showDetails') {%>
                     <a href="/egzemplarz_ksiazki/edit/<%= ksi._id%>" class="button-edit">
                         <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">

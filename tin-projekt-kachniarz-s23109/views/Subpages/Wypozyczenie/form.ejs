@@ -42,7 +42,7 @@
             </select>
             <span id="errorKsiazka" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('Ksiazka_id')) ) {%>
-                    <%= validationErrors.find(e => e.path.includes('Ksiazka_id')).message%>
+                    <%= __(validationErrors.find(e => e.path.includes('Ksiazka_id')).message)%>
                 <% } %>
             </span>
 
@@ -61,7 +61,7 @@
             </select>
             <span id="errorKlient" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('Klient_id')) ) {%>
-                    <%= validationErrors.find(e => e.path.includes('Klient_id')).message%>
+                    <%= __(validationErrors.find(e => e.path.includes('Klient_id')).message)%>
                 <% } %>
             </span>
 
@@ -69,7 +69,7 @@
             <input class="<%=(validationErrors.find(e => e.path.includes('data_od')))? 'error-input':'' %>" type="date" name="data_od" id="dateFrom" required value="<%= (wyp != null) ? (fmt.formatDate(wyp.data_od)) : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorDateFrom" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('data_od')) ) {%>
-                    <%= validationErrors.find(e => e.path.includes('data_od')).message%>
+                    <%= __(validationErrors.find(e => e.path.includes('data_od')).message)%>
                 <% } %>
             </span>
 
@@ -77,7 +77,7 @@
             <input class="<%=(validationErrors.find(e => e.path.includes('data_do')))? 'error-input':'' %>" type="date" name="data_do" id="dateTo" value="<%= (wyp != null) ? (fmt.formatDate(wyp.data_do)) : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorDateTo" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('data_do')) ) {%>
-                    <%= validationErrors.find(e => e.path.includes('data_do')).message%>
+                    <%= __(validationErrors.find(e => e.path.includes('data_do')).message)%>
                 <% } %>
             </span>
 
