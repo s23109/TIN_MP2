@@ -3,7 +3,7 @@ var router = express.Router();
 const AuthRepo = require('../controllers/authController');
 const AccountController = require('../controllers/accountController');
 const authUtil = require("../utils/authUtil");
-
+const LangController = require('../controllers/LangController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,13 +12,13 @@ router.get('/', function(req, res, next) {
 
 router.post('/login',AuthRepo.login);
 router.get('/logout',AuthRepo.logout);
-
+router.get('/changeLang/:lang',LangController.changeLang);
 
 //dropped due to mongo foch
-router.get('/register', AccountController.showCreateAccountForm);
+//router.get('/register', AccountController.showCreateAccountForm);
 //TODO: ogarnij te permit auth strict
-router.get('/account/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showDetailsAccountForm);
-router.get('/account_edit/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showEditAccountForm);
+//router.get('/account/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showDetailsAccountForm);
+//router.get('/account_edit/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showEditAccountForm);
 
 
 

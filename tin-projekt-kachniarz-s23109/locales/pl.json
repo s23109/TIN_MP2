@@ -147,7 +147,7 @@
 		"isDateAfterToday": "Data nie może być z przyszłości",
 		"isDateBeforeLimit": "Data jest zbyt wczesna",
 		"formHasErrors": "Formularz zawiera błędy",
-		"invalidLoginData": "Zły dane logowania"
+		"invalidLoginData": "Złe dane logowania"
 	},
 	"messages": {
 		"fields-with-white-char": "Wykryto pola z białymi znakami, czy chcesz je usunąć?",

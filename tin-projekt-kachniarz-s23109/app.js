@@ -10,7 +10,7 @@ i18n.configure({
     locales: ['pl','en'], //języki
     directory: path.join(__dirname,'locales'), //dir do słowników
     objectNotation: true, // do zagnieżdzonych kluczy w notacji obiektowej
-    cookie: 'lang' //nazwa cookie do przechowywania info o curr-języku
+    cookie: 'langCook' //nazwa cookie do przechowywania info o curr-języku
 })
 
 const indexRouter = require('./routes/index');
@@ -29,6 +29,7 @@ const fmt = require('./utils/formatting');
 const authUtil = require('./utils/authUtil');
 
 const {log} = require("debug");
+
 
 
 mongoInit.init().catch(err => {
@@ -65,6 +66,15 @@ app.use(session(
       resave: false,
     }
 ));
+
+app.use((req,res,next) => {
+    if (!res.locals.lang){
+        const currentLang = req.cookies['langCook'];
+        res.locals.lang = currentLang;
+    }
+    next();
+})
+
 // aby dane usera były dostępne w szablonach
 app.use((req,res,next)=>{
     const loggedUser = req.session.loggedUser;
