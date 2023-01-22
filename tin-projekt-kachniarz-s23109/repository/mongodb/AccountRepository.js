@@ -3,6 +3,7 @@ const client = mongo.client;
 const account = require('../../model/mongodb/Account');
 const authUtil = require('../../utils/authUtil');
 const {hashPassword} = require("../../utils/authUtil");
+const {parse} = require("nodemon/lib/cli");
 
 const db = client.collection('LoginData');
 
@@ -12,6 +13,7 @@ exports.createAccountUnsafe = async (acc) => {
 }
 
 exports.accountExists = async (id) => {
+    id = parseInt(id);
     let qbe = {kliID: id};
 
     const query = await db.findOne(qbe);
@@ -24,6 +26,7 @@ exports.accountExists = async (id) => {
 }
 
 exports.createAccount = async (acc) => {
+    acc.kliID = parseInt(acc.kliID);
     if (await this.accountExists(acc.kliID)){
         throw new Error("Login Already Used");
     }
@@ -33,6 +36,7 @@ exports.createAccount = async (acc) => {
 }
 
 exports.deleteAccount = async (id) => {
+    id = parseInt(id);
     let qbe = {kliID: id};
 
     if (await this.accountExists(id)){
@@ -44,6 +48,8 @@ exports.deleteAccount = async (id) => {
 }
 
 exports.updateAccount = async (acc) => {
+    acc.id = parseInt(acc.id);
+
     if (await this.accountExists(parseInt(acc.id))){
         // tu zakładam ze nie zmieniamy przypisania danych bo to nie ma sensu???
         db.updateOne({kliID: parseInt(acc.id)},
@@ -61,7 +67,7 @@ exports.getByLogin = async (login) => {
         return {
             login: query.login,
             password: query.password,
-            kliID:query.kliID
+            kliID:parseInt(query.kliID)
         };
     }
     return null;
