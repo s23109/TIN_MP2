@@ -153,5 +153,21 @@
   "messages": {
     "fields-with-white-char": "Fields with white-char detected, do you want to remove them?",
     "confirm-delete": "Are you sure you want to delete"
+  },
+  "placeholders": {
+    "client": {
+      "firstName": "2-32 characters",
+      "lastName": "2-32 characters",
+      "email": "ABC@DE.FG",
+      "noEmail": "Empty"
+    },
+    "book": {
+      "title": "2-64 characters",
+      "damages": "0-128 characters",
+      "noDamages": "Empty"
+    },
+    "account": {
+
+    }
   }
 }

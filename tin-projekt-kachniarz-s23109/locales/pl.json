@@ -152,5 +152,21 @@
 	"messages": {
 		"fields-with-white-char": "Wykryto pola z białymi znakami, czy chcesz je usunąć?",
 		"confirm-delete": "Czy na pewno chcesz usunąć"
+	},
+	"placeholders": {
+		"client": {
+			"firstName": "2-32 znaków",
+			"lastName": "2-32 znaków",
+			"email": "ABC@DE.FG",
+			"noEmail": "Brak"
+		},
+		"book": {
+			"title": "2-64 znaków",
+			"damages": "0-128_znaków",
+			"noDamages": "Brak"
+		},
+		"account": {
+
+		}
 	}
 }

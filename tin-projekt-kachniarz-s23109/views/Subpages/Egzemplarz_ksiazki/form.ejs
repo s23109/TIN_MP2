@@ -24,7 +24,7 @@
             <input type="hidden" name="_id" value="<%=ksi._id%>">
 
             <label><%=__('book.fields.title')%>:<span class="symbol-required">*</span></label>
-            <input class="<%=(validationErrors.find(e => e.path.includes('tytul')) )?'error-input' : ''%>" type="text" name="tytul" id="title" required placeholder="2-64 znaków"
+            <input class="<%=(validationErrors.find(e => e.path.includes('tytul')) )?'error-input' : ''%>" type="text" name="tytul" id="title" required placeholder="<%=__("placeholders.book.title")%>>"
                    value="<%=(ksi.tytul)?((formMode == 'createNew' || formMode == 'edit') ? fmt.removeQuoteIfExist(ksi.tytul) : fmt.addQuoteIfNotExist(ksi.tytul) ):ksi.tytul%>"
                     <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
             <span id="errorTitle" class="error-text">
@@ -51,7 +51,7 @@
 
 
             <label><%=__('book.fields.damages')%>:</label>
-            <textarea  class="<%=(validationErrors.find(e => e.path.includes('uszkodzenia')) )?'error-input' : ''%>" rows="3" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? "Brak": "0-128_znaków"%>  <%= (formMode == 'showDetails') ? 'disabled' : ''%>><%=ksi.uszkodzenia%></textarea>
+            <textarea  class="<%=(validationErrors.find(e => e.path.includes('uszkodzenia')) )?'error-input' : ''%>" rows="3" name="uszkodzenia" id="damage" placeholder=<%= (formMode == 'showDetails')? __("placeholders.book.noDamages"): __("placeholders.book.damages")%>  <%= (formMode == 'showDetails') ? 'disabled' : ''%>><%=ksi.uszkodzenia%></textarea>
             <span id="errorDamage" class="error-text">
                 <% if (validationErrors.find(e => e.path.includes('uszkodzenia')) ) {%>
                     <%= __(validationErrors.find(e => e.path.includes('uszkodzenia')).message)%>

@@ -25,7 +25,7 @@
       <input type="hidden" name="_id" value="<%=kli._id%>">
 
       <label><%=__('client.fields.first-name')%>:<span class="symbol-required">*</span></label>
-      <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+      <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="<%=__("placeholders.client.firstName")%>>" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorFirstName" class="error-text">
         <% if (validationErrors.find(e => e.path.includes('imie')) ) {%>
           <%= __(validationErrors.find(e => e.path.includes('imie')).message)%>
@@ -33,7 +33,7 @@
       </span>
 
       <label><%=__('client.fields.last-name')%>:<span class="symbol-required">*</span></label>
-      <input class="<%=(validationErrors.find(e => e.path.includes('nazwisko')) )?'error-input' : ''%>" type="text" name="nazwisko" id="lastName" required placeholder="2-32 znaków" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+      <input class="<%=(validationErrors.find(e => e.path.includes('nazwisko')) )?'error-input' : ''%>" type="text" name="nazwisko" id="lastName" required placeholder="<%=__("placeholders.client.lastName")%>" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorLastName" class="error-text">
         <% if (validationErrors.find(e => e.path.includes('nazwisko')) ) {%>
           <%= __(validationErrors.find(e => e.path.includes('nazwisko')).message)%>
@@ -41,7 +41,7 @@
       </span>
 
       <label><%=__('client.fields.email')%>:</label>
-      <input class="<%=(validationErrors.find(e => e.path.includes('email')) )?'error-input' : ''%>" type="email" name="email" id="email" placeholder=<%= (formMode == 'showDetails')? "Brak" : "ABC@DE.FG"%> value="<%=kli.email%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+      <input class="<%=(validationErrors.find(e => e.path.includes('email')) )?'error-input' : ''%>" type="email" name="email" id="email" placeholder=<%= (formMode == 'showDetails')? __("placeholders.client.noEmail") : __("placeholders.client.email") %> value="<%=kli.email%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
       <span id="errorEmail" class="error-text">
         <% if (validationErrors.find(e => e.path.includes('email')) ) {%>
           <%= __(validationErrors.find(e => e.path.includes('email')).message)%>
