@@ -4,7 +4,7 @@
 
     <h2><%=__('book.list.title')%></h2>
 
-
+    <% if (ksis.length > 0 ){%>
 
     <table class="table-list">
 
@@ -56,6 +56,9 @@
 
     </table>
 
+    <%} else { %>
+    <p><%=__('book.list.noData')%></p>
+    <% } %>
     <p><a href="/egzemplarz_ksiazki/add" class="button-add"><%=__('book.list.addNew')%></a> </p>
 
   </main>
