@@ -30,7 +30,7 @@
 
                 <% if (formMode != 'showDetails' ) {%>
                 <% /* Przypadek gdzie się nie wczytuje reszty tabel */%>
-                    <option <%=(formMode == 'createNew') ? 'selected' : ''%> disabled hidden value="default">--Wybierz Książkę--</option>
+                    <option <%=(formMode == 'createNew') ? 'selected' : ''%> disabled hidden value="default">--<%=__('book.form.default')%>--</option>
                     <% for (let ksi of allKsi) {%>
                     <option value="<%=ksi._id%>"<%=(wyp != null)? ((wyp.Ksiazka_id == ksi._id) ? 'selected' : '' ) : ''%> ><%="\"" + ksi.tytul + "\" ID:"  + ksi._id%></option>
                     <% } %>
@@ -50,7 +50,7 @@
             <select class="<%=(validationErrors.find(e => e.path.includes('Klient_id')))? 'error-input':'' %>" name="Klient_id" id="klient" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 <% if (formMode != 'showDetails' ) {%>
                     <% /* Przypadek gdzie się nie wczytuje reszty tabel */%>
-                <option <%=(formMode == 'createNew') ? 'selected' : ''%> disabled hidden value="default">--Wybierz Klienta--</option>
+                <option <%=(formMode == 'createNew') ? 'selected' : ''%> disabled hidden value="default">--<%=__('client.form.default')%>--</option>
                 <% for (let kli of allKli){%>
                     <option value="<%= kli._id%>" <%=(wyp != null)? ((wyp.Klient_id == kli._id) ? 'selected' : '' ) : ''%>><%= kli.imie + " " + kli.nazwisko + " ID:" + kli._id%></option>
                 <% } %>
