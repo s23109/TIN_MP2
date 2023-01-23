@@ -128,7 +128,7 @@ exports.addAccount = async (req,res,next) => {
 
         res.redirect('/');
     } else {
-        
+
         res.render('Subpages/Account/form',{
             navLocation:'Register' ,
             docType:'form',
@@ -227,6 +227,16 @@ exports.editAccount = async (req,res,next) => {
 
 };
 
-exports.deleteAccount = (req,res,next) => {
+exports.deleteAccount = async (req,res,next) => {
+    const kliID = req.params.kliID;
+
+    try {
+        await AccountRepository.deleteAccount(kliID);
+        await KlientRepository.deleteKlient(kliID);
+        res.redirect('/');
+    }
+    catch (err){
+        throw new Error("Error in deleting account");
+    };
 
 };

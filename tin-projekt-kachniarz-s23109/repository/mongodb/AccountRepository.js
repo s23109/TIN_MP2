@@ -63,11 +63,11 @@ exports.createAccount = async (acc) => {
     }
 }
 
-exports.deleteAccount = async (kliid) => {
-    kliid = parseInt(kliid);
-    let qbe = {kliID: kliid};
+exports.deleteAccount = async (kliID) => {
+    kliID = parseInt(kliID);
+    let qbe = {kliID: kliID};
 
-    if (await this.clientHasAccount(kliid)){
+    if (await this.clientHasAccount(kliID)){
         await db.deleteOne(qbe);
     }else {
         console.log("MongoDB: Account- Tried to delete non existing kliID" + kliid);

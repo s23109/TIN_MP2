@@ -14,18 +14,16 @@ router.post('/login',AuthRepo.login);
 router.get('/logout',AuthRepo.logout);
 router.get('/changeLang/:lang',LangController.changeLang);
 
-//dropped due to mongo foch
+
 router.get('/register', AccountController.showCreateAccountForm);
-//TODO: ogarnij te permit auth strict
 router.get('/account/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showDetailsAccountForm);
 router.get('/account_edit/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showEditAccountForm);
 
 
 
 router.post('/createAccount',AccountController.addAccount);
-router.post('/editAccount/:kliID',AccountController.editAccount);
-//delete tutaj tylko konto, dane o wypożyczeniu (+ klient zostaje)?
-router.delete('/deleteAccount/:kliID',AccountController.deleteAccount)
+router.post('/editAccount/:kliID',authUtil.permitAuthenticatedStrict,AccountController.editAccount);
+router.get('/deleteAccount/:kliID',authUtil.permitAuthenticatedStrict,AccountController.deleteAccount)
 
 
 
