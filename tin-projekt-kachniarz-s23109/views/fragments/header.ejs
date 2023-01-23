@@ -15,11 +15,11 @@
     <% switch (docType) {
         case 'form': %>
     <%- include('formValidations.ejs') %>
-    <span id="whiteCharErr" style="display: none"><%=__("messages.fields-with-white-char")%></span>
+
     <% break;
     case 'list' :%>
     <script type="application/javascript" src="/Scripts/verificationCommon.js"></script>
-    <span id="confirmDelete" style="display: none"><%=__("messages.confirm-delete")%></span>
+
     <% break ;
     default: %>
     <!--Doc type not implemented-->

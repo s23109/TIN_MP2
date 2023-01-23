@@ -16,7 +16,7 @@ exports.login =  (req,res,next) => {
                 // not found acc
                 res.render('index',{
                     navLocation: 'Main' , docType:'index', loginError: 'Zły Login'
-                })
+                });
 
             }else if (authUtil.comparePasswords(password,acc.password) === true){
                 //git - zwracamy nie dane logowania a dane konta
