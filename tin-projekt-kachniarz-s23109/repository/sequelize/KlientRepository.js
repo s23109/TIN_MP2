@@ -1,6 +1,7 @@
 const Klient = require("../../model/sequelize/Klient");
 const Egzemplarz_Ksiazki = require("../../model/sequelize/Egzemplarz_ksiazki");
 const Wypozyczenie = require("../../model/sequelize/Wypozyczenie");
+const {Sequelize, ValidationError} = require("sequelize");
 
 /*
 Wymagane funkcje :
@@ -54,13 +55,15 @@ exports.deleteKlient = (kliID) => {
 
 }
 
-exports.validateData = (newKlientData) => {
+exports.validateData = async (newKlientData) => {
     //jak da returna to git model ?
-    return new Klient({
+    let  a =  Klient.build({
         imie : newKlientData.imie,
         nazwisko : newKlientData.nazwisko,
         email : newKlientData.email
     });
+
+    return await a.validate();
 
 }
 

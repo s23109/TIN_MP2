@@ -80,33 +80,67 @@ exports.addAccount = async (req,res,next) => {
         AccountRepository.loginUsedError()
     }
     catch (err){
-        customErr.push(err);
+        customErr.push({path :"login", message:"err.loginUsed"});
     }
 
     try {
         Account.validateLogin(accObj.login);
     }
     catch (err){
-        customErr.push(err);
+        customErr.push({path :"login", message:"err.len_2-32"});
     }
 
     try {
         Account.validatePassword(accObj.password);
     }
     catch (err){
-        customErr.push(err);
+        customErr.push({path :"password", message:"err.len_2-32"});
     }
 
     try {
-        KlientRepository.validateData(clientObj);
+       let abc = await KlientRepository.validateData(clientObj);
+       delete abc;
     }
     catch (err){
        // customErr.push(...err.errors);
-        console.log(JSON.stringify(err.errors));
-        console.log(JSON.stringify(customErr));
+        console.log("ERR Client {\n");
+        for (let er of err.errors){
+            console.log(JSON.stringify(er));
+        }
+        console.log("\n}");
     }
 
-    console.log(customErr);
+    console.log("ERR Login{");
+    for (let er of customErr){
+        console.log(er);
+    }
+    console.log("}");
+
+    //previous
+    /*
+    if (customErr.length==0){
+
+        KlientRepository.createKlient(clientObj).then( ()=>{
+            res.redirect('/')
+        }
+        ).catch(err => {
+            newErr = [];
+            newErr.push(...err.errors);
+            newErr.push(...customErr);
+
+            res.render('Subpages/Account/form', {
+
+            })
+
+        })
+
+    } else {
+
+    }
+
+    //console.log(customErr);
+    throw new Error("amogus");
+    */
     throw new Error("amogus");
     };
 
