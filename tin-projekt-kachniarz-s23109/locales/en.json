@@ -175,6 +175,11 @@
     "addButtonLabel": "Create Account",
     "editButtonLabel": "Save Changes",
     "detailsButtonLabel": "Edit Account"
-  }
+  },
+    "formTitles": {
+      "add": "Create Account",
+      "edit": "Account Edit",
+      "details": "Account Details"
+    }
 }
 }

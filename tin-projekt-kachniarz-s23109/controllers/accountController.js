@@ -1,6 +1,7 @@
 const KlientRepository = require("../repository/sequelize/KlientRepository");
 const AccountRepository = require("../repository/mongodb/AccountRepository");
 const AuthUtil = require('../utils/authUtil');
+const {parse} = require("nodemon/lib/cli");
 
 exports.showCreateAccountForm = function (req, res, next) {
     res.render('Subpages/Account/form',{
@@ -18,7 +19,6 @@ exports.showCreateAccountForm = function (req, res, next) {
 exports.showEditAccountForm = async  (req, res, next) => {
     
     const kliID = req.params.kliID;
-    await AuthUtil.permitAuthenticatedStrict(req,res,next);
     const accInfo = await AccountRepository.getByKliID(kliID);
 
         KlientRepository.getKlientByID(kliID).then(kli => {

@@ -23,7 +23,8 @@ exports.permitAuthenticated = (req,res,next) => {
 exports.permitAuthenticatedStrict = (req,res,next) => {
     const kliID = req.params.kliID;
     const loggedUser = req.session.loggedUser;
-    if (loggedUser && loggedUser.kliID === kliID) {
+    // nie === bo param to string
+    if (loggedUser && loggedUser._id == kliID) {
         next();
     }else {
         res.redirect(403,'/');

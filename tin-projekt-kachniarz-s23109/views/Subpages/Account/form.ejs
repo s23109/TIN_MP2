@@ -2,7 +2,20 @@
 
 <main>
 
-    <h2><%=pageTitle%></h2>
+    <h2><%switch(formMode){
+        case 'createNew': %>
+        <%=__('account.formTitles.add')%>
+        <%break;%>
+        <%case 'edit':%>
+        <%=__('account.formTitles.edit')%>
+        <%break;%>
+        <%case 'showDetails':%>
+        <%=__('account.formTitles.details')%>
+        <%break;%>
+        <%default:%>
+        Error in determining form type, see respective form.ejs
+        <%break;%>
+        <% } %></h2>
 
 
 
@@ -31,7 +44,7 @@
         <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
         <span id="errorFirstName" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('imie')) ) {%>
-                <%= validationErrors.find(e => e.path.includes('imie')).message%>
+                <%= __(validationErrors.find(e => e.path.includes('imie')).message)%>
             <% } %>
         </span>
 

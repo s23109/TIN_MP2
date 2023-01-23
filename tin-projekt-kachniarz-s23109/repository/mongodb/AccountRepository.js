@@ -81,7 +81,7 @@ exports.getByKliID = async (kliID) => {
 
     const qbe = {kliID:kliID};
 
-    const query= await db.findOne(qbe, {_id:0,login:1,password:0,kliID:1});
+    const query= await db.findOne(qbe, {_id:0,login:1,password:0,kliID:1,accPerm:0});
 
     console.log("Object from MDB:" + JSON.stringify(query));
 
