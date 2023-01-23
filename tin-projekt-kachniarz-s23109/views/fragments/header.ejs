@@ -41,7 +41,6 @@
 </header>
 
 <div class="login-container">
-    <%/* console.log("LOGGED USER DATA: " + JSON.stringify(locals)) */%>
     <% if (!locals.loggedUser) {%>
         <h5><%=__('login-bar.login-title')%> :</h5>
         <div class="login-container-form">
@@ -51,9 +50,7 @@
             <label><%=__('login-bar.password-label')%> :</label>
             <input type="password" id="password" name="password">
             <input type="submit" value="<%=__('login-bar.button-login')%>" class="login-container-log-in">
-                <!--
-                <a href="/register" class="login-container-register"><%=__('login-bar.button-register')%></a>
-                -->
+            <a href="/register" class="login-container-register"><%=__('login-bar.button-register')%></a>
             </form>
 
         </div>
@@ -62,9 +59,7 @@
         <span><%=__('login-bar.after-login-title')%>: <span> <%=locals.loggedUser.imie + " " + locals.loggedUser.nazwisko%> </span> </span>
         <div>
         <a href="/logout" class="login-container-log-out"><%=__('login-bar.button-logout')%></a>
-        <!--
-            <a href="/account_edit/<%=locals.loggedUser._id%>" class="login-container-edit-acc"><%=__('login-bar.button-account')%></a>
-        -->
+        <a href="/account_edit/<%=locals.loggedUser._id%>" class="login-container-edit-acc"><%=__('login-bar.button-account')%></a>
         </div>
     <% } %>
 </div>

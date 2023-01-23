@@ -15,10 +15,10 @@ router.get('/logout',AuthRepo.logout);
 router.get('/changeLang/:lang',LangController.changeLang);
 
 //dropped due to mongo foch
-//router.get('/register', AccountController.showCreateAccountForm);
+router.get('/register', AccountController.showCreateAccountForm);
 //TODO: ogarnij te permit auth strict
-//router.get('/account/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showDetailsAccountForm);
-//router.get('/account_edit/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showEditAccountForm);
+router.get('/account/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showDetailsAccountForm);
+router.get('/account_edit/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showEditAccountForm);
 
 
 

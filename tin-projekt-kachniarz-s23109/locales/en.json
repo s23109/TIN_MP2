@@ -169,5 +169,12 @@
     "account": {
 
     }
+  },
+  "account" : {
+  "form": {
+    "addButtonLabel": "Create Account",
+    "editButtonLabel": "Save Changes",
+    "detailsButtonLabel": "Edit Account"
   }
+}
 }

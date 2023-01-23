@@ -168,5 +168,13 @@
 		"account": {
 
 		}
+
+	},
+	"account" : {
+		"form": {
+			"addButtonLabel": "Utwórz konto",
+			"editButtonLabel": "Zapisz zmiany",
+			"detailsButtonLabel": "Edytuj konto"
+		}
 	}
 }
