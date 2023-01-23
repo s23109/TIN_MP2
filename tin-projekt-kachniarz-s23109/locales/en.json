@@ -169,7 +169,8 @@
     "account": {
       "login": "2-32 characters",
       "password": "2-32 characters",
-      "passwordLeave" : "Blank=No_change"
+      "passwordLeave" : "Blank=No_change",
+      "passwordDetails" : "Hidden"
     }
   },
   "account" : {

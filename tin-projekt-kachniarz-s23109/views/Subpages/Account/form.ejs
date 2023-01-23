@@ -34,7 +34,7 @@
 
         <label><%=__('login-bar.password-label')%>:<span class="symbol-required">*</span></label>
         <% /*Tu specjalnie bez value,bo hasło? nwm */%>
-        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="password" name="password" id="accPass" placeholder=<%= (formMode == 'edit') ? __('placeholders.account.passwordLeave') : __('placeholders.account.password') %> >
+        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="password" name="password" id="accPass" placeholder=<%= (formMode == 'edit') ? __('placeholders.account.passwordLeave') : ((formMode == 'showDetails') ? __('placeholders.account.passwordDetails') : __('placeholders.account.password')) %>  <%= (formMode == 'showDetails') ? 'disabled' : ''%> >
         <span id="errorPassword" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('password')) ) {%>
                 <%= __(validationErrors.find(e => e.path.includes('password')).message)%>
