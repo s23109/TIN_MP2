@@ -24,7 +24,7 @@ exports.showEditAccountForm = async  (req, res, next) => {
 
         KlientRepository.getKlientByID(kliID).then(kli => {
 
-        const formActionTemp = '/editAccount' + kliID;
+        const formActionTemp = '/editAccount/' + kliID;
         kli.login = accInfo.login;
 
         res.render('Subpages/Account/form', {
@@ -128,15 +128,16 @@ exports.addAccount = async (req,res,next) => {
 
         res.redirect('/');
     } else {
+        
         res.render('Subpages/Account/form',{
             navLocation:'Register' ,
             docType:'form',
-            kli: {},
+            kli: req.body,
             formMode: 'createNew',
             btnLabel: 'Dodaj',
             formAction: '/createAccount',
             pageTitle: 'Utwórz Konto',
-            validationErrors: customErr.toArray()
+            validationErrors: customErr
         })
     }
 
@@ -211,6 +212,17 @@ exports.editAccount = async (req,res,next) => {
 
     } else {
 
+        const formActionTemp = '/editAccount/' + clientObj._id;
+        res.render('Subpages/Account/form', {
+            navLocation:'Register' ,
+            docType:'form',
+            kli: req.body,
+            formMode: 'edit',
+            btnLabel: 'Zmień',
+            formAction: formActionTemp,
+            pageTitle: 'Edytuj Konto',
+            validationErrors:customErr
+        });
     }
 
 };
