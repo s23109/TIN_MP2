@@ -67,3 +67,12 @@ exports.validateData = async (newKlientData) => {
 
 }
 
+exports.getKliIDByData = async (kliData) => {
+    const kliFromDb = await Klient.findOne({where:{
+            imie : kliData.imie,
+            nazwisko: kliData.nazwisko,
+            email: kliData.email
+        }});
+
+    return parseInt(kliFromDb._id);
+}

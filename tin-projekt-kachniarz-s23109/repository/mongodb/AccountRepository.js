@@ -9,6 +9,7 @@ const {log} = require("debug");
 const db = client.collection('LoginData');
 
 exports.createAccountUnsafe = async (acc) => {
+    acc.accPerm = "self";
     acc.password = authUtil.hashPassword(acc.password);
     await db.insertOne(acc);
 }

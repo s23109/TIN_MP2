@@ -2,6 +2,7 @@ const KlientRepository = require("../repository/sequelize/KlientRepository");
 const AccountRepository = require("../repository/mongodb/AccountRepository");
 const AuthUtil = require('../utils/authUtil');
 const Account = require('../model/mongodb/Account');
+const {parse} = require("nodemon/lib/cli");
 
 exports.showCreateAccountForm = function (req, res, next) {
     res.render('Subpages/Account/form',{
@@ -142,7 +143,29 @@ exports.addAccount = async (req,res,next) => {
     //console.log(customErr);
     throw new Error("amogus");
     */
-    throw new Error("amogus");
+
+    if (customErr.length == 0){
+        //dopisz kliID nowego
+        await KlientRepository.createKlient(clientObj);
+        let newkliID = await KlientRepository.getKliIDByData(clientObj);
+        accObj.kliID = parseInt(newkliID);
+        await AccountRepository.createAccountUnsafe(accObj);
+
+        res.redirect('/');
+    } else {
+        res.render('Subpages/Account/form',{
+            navLocation:'Register' ,
+            docType:'form',
+            kli: {},
+            formMode: 'createNew',
+            btnLabel: 'Dodaj',
+            formAction: '/createAccount',
+            pageTitle: 'Utwórz Konto',
+            validationErrors: customErr.toArray()
+        })
+    }
+
+
     };
 
 exports.editAccount = (req,res,next) => {
