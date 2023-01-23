@@ -1,6 +1,7 @@
 const Klient = require("../../model/sequelize/Klient");
 const Egzemplarz_Ksiazki = require("../../model/sequelize/Egzemplarz_ksiazki");
 const Wypozyczenie = require("../../model/sequelize/Wypozyczenie");
+const Mongo = require("../mongodb/AccountRepository");
 const {Sequelize, ValidationError} = require("sequelize");
 
 /*
@@ -49,7 +50,12 @@ exports.updateKlient = async (kliID , kliData) => {
 
 }
 
-exports.deleteKlient = (kliID) => {
+exports.deleteKlient = async (kliID) => {
+    let hasAcc= await Mongo.clientHasAccount(kliID);
+
+    if (hasAcc){
+        await Mongo.deleteAccount(kliID);
+    }
 
     return Klient.destroy({where: {_id: kliID}});
 
