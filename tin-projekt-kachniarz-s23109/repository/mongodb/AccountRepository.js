@@ -39,6 +39,20 @@ exports.loginUsedError = async (login) => {
     return null;
 }
 
+exports.checkIfLoginUsedByOther = async (login,kliID) => {
+    //wywali błąd jak login używany przez inny kliID
+    let qbe = {login: login};
+
+    const query = await db.findOne(qbe);
+
+    kliID = parseInt(kliID);
+
+    if (query.kliID != kliID) {
+        throw new Error({path :"login", message:"err.loginUsed"});
+    }
+    return null;
+}
+
 exports.createAccount = async (acc) => {
     acc.kliID = parseInt(acc.kliID);
     if (await this.clientHasAccount(acc.kliID)){
@@ -62,15 +76,30 @@ exports.deleteAccount = async (kliid) => {
 }
 
 exports.updateAccount = async (acc) => {
-    acc.id = parseInt(acc.id);
+    //nie zmienia permisji acc
+    acc.kliID = parseInt(acc.kliID);
 
-    if (await this.clientHasAccount(parseInt(acc.id))){
+    //przypadek gdy pass jest pusty :
+    if (acc.password === "") {
+        if (await this.clientHasAccount(parseInt(acc.kliID))){
+           await db.updateOne({kliID: parseInt(acc.kliID)},
+                {$set:{login:acc.login}})
+        } else {
+            console.log("MongoDB: Account- Tried to Update non existing kliID" + id);
+        }
+    }
+    else {
+        // jak zmienia hasło
+    if (await this.clientHasAccount(parseInt(acc.kliID))){
         // tu zakładam ze nie zmieniamy przypisania danych bo to nie ma sensu???
-        db.updateOne({kliID: parseInt(acc.id)},
+      await  db.updateOne({kliID: parseInt(acc.kliID)},
             {$set:{login:acc.login,password:authUtil.hashPassword(acc.password)}})
-    }else {
+    } else {
         console.log("MongoDB: Account- Tried to Update non existing kliID" + id);
     }
+
+    }
+
 }
 
 exports.getByLogin = async (login) => {

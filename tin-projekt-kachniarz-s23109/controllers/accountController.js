@@ -78,7 +78,7 @@ exports.addAccount = async (req,res,next) => {
 
     // Mongo moment
     try {
-        AccountRepository.loginUsedError()
+        AccountRepository.loginUsedError(accObj.login);
     }
     catch (err){
         customErr.push({path :"login", message:"err.loginUsed"});
@@ -118,32 +118,7 @@ exports.addAccount = async (req,res,next) => {
     }
     console.log("}");
 
-    //previous
-    /*
-    if (customErr.length==0){
-
-        KlientRepository.createKlient(clientObj).then( ()=>{
-            res.redirect('/')
-        }
-        ).catch(err => {
-            newErr = [];
-            newErr.push(...err.errors);
-            newErr.push(...customErr);
-
-            res.render('Subpages/Account/form', {
-
-            })
-
-        })
-
-    } else {
-
-    }
-
-    //console.log(customErr);
-    throw new Error("amogus");
-    */
-
+    //wszystko git, brak err
     if (customErr.length == 0){
         //dopisz kliID nowego
         await KlientRepository.createKlient(clientObj);
@@ -168,7 +143,75 @@ exports.addAccount = async (req,res,next) => {
 
     };
 
-exports.editAccount = (req,res,next) => {
+exports.editAccount = async (req,res,next) => {
+    console.log(JSON.stringify(req.body));
+    let clientObj = {};
+    clientObj._id = req.body._id;
+    clientObj.imie = req.body.imie;
+    clientObj.nazwisko = req.body.nazwisko;
+    clientObj.email = req.body.email;
+
+    let accObj = {};
+
+    accObj.kliID = req.body._id;
+    accObj.login = req.body.login;
+    accObj.password = req.body.password;
+
+    let customErr = [];
+
+    // Mongo moment
+    try {
+        AccountRepository.checkIfLoginUsedByOther(accObj.login,accObj.kliID);
+    }
+    catch (err){
+        customErr.push({path :"login", message:"err.loginUsed"});
+    }
+
+    try {
+        Account.validateLogin(accObj.login);
+    }
+    catch (err){
+        customErr.push({path :"login", message:"err.len_2-32"});
+    }
+
+    try {
+        Account.validatePassword(accObj.password);
+    }
+    catch (err){
+        customErr.push({path :"password", message:"err.len_2-32"});
+    }
+
+    try {
+        let abc = await KlientRepository.validateData(clientObj);
+        delete abc;
+    }
+    catch (err){
+        // customErr.push(...err.errors);
+
+        for (let er of err.errors){
+            // console.log(JSON.stringify(er));
+            customErr.push({path:er.path,message:er.message});
+        }
+
+    }
+
+    console.log("ERR Login{");
+    for (let er of customErr){
+        console.log(er);
+    }
+    console.log("}");
+
+    //git edit
+    if (customErr.length == 0){
+
+        await AccountRepository.updateAccount(accObj);
+        await KlientRepository.updateKlient(clientObj._id,clientObj);
+
+        res.redirect('/');
+
+    } else {
+
+    }
 
 };
 
