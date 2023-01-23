@@ -104,7 +104,7 @@
 			"date-to": "Data Zwrotu"
 		},
 		"list": {
-			"pageTitle": "Wypożycznia",
+			"pageTitle": "Wypożyczenia",
 			"addNew": "Dodaj wypożyczenie",
 			"noData": "Brak wypożyczeń w bazie",
 			"title": "Lista wypożyczeń"
@@ -184,6 +184,16 @@
 			"add": "Utwórz konto",
 			"edit": "Edytuj konto",
 			"details": "Szczegóły konta"
+		},
+		"list": {
+			"title": "Konta",
+			"noData": "Brak kont w bazie",
+			"pageTitle": "Konto",
+			"addNew": "Dodaj nowe konto"
+		},
+		"fields": {
+			"acc_login": "Login",
+			"acc_permission": "Uprawnienia"
 		}
 	}
 }

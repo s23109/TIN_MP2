@@ -1,0 +1,56 @@
+<%- include('../../fragments/header.ejs') %>
+
+<main>
+
+    <h2><%=__('account.list.title')%></h2>
+
+    <%if (accs.length > 0) { %>
+        <table class="table-list">
+        <thead>
+        <tr>
+            <th><%=__('account.fields.acc_login')%></th>
+            <th><%=__('account.fields.acc_permission')%></th>
+            <th><%=__('lend.fields.client')%></th>
+            <th><%=__('list.actions')%></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (acc of accs) { %>
+        <tr>
+            <td><%=acc.login%></td>
+            <td><%=acc.accPerm%></td>
+            <td><%= acc.imie + " " + acc.nazwisko %></td>
+            <td>
+                <ul class="list-actions">
+                    <li>
+                        <a class="list-actions-button-details" href="/account/<%=acc.kliID%>">
+                            <img src="/Images/icons8-more-details-64.png" class="list-actions-button-details-icon">
+                            <span class="list-actions-button-details-text"><%=__('list.details')%></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="list-actions-button-edit" href="/account_edit/<%=acc.kliID%>">
+                            <img src="/Images/icons8-pencil-64.png" class="list-actions-button-edit-icon">
+                            <span class="list-actions-button-edit-text"><%=__('list.edit')%></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="list-actions-button-delete" href="/deleteAccount/<%=acc.kliID%>" onclick="return confirmDelete(<%=acc.login%>);">
+                            <img src="/Images/icons8-remove-64.png" class="list-actions-button-delete-icon">
+                            <span class="list-actions-button-delete-text"><%=__('list.delete')%></span>
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
+        </table>
+    <% } else { %>
+    <p><%=__('account.list.noData')%></p>
+    <% } %>
+    <p><a href="/register" class="button-add"><%=__('account.list.addNew')%></a> </p>
+
+</main>
+
+<%- include('../../fragments/footer.ejs') %>

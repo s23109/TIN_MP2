@@ -240,3 +240,24 @@ exports.deleteAccount = async (req,res,next) => {
     };
 
 };
+
+
+exports.getAccList = async (req,res,next) => {
+
+    let kliList = await KlientRepository.getAllKlients();
+    let accList = await AccountRepository.getAllAccounts();
+
+    for (acc of accList){
+        let corrKli = kliList.find(x => x._id == acc.kliID);
+        acc.imie = corrKli.imie;
+        acc.nazwisko = corrKli.nazwisko;
+        acc.email = corrKli.email;
+    }
+
+    res.render('Subpages/Account/list',{
+        navLocation:'Register',
+        docType: 'list', //do importów
+        accs : accList
+    });
+
+}

@@ -184,6 +184,16 @@
       "add": "Create Account",
       "edit": "Account Edit",
       "details": "Account Details"
+    },
+    "list": {
+      "title": "Accounts",
+      "noData": "No accounts in Database",
+      "pageTitle": "Account",
+      "addNew": "Add new Account"
+    },
+    "fields": {
+      "acc_login": "Username",
+      "acc_permission": "Permissions"
     }
 }
 }

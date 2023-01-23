@@ -148,3 +148,9 @@ exports.getPermission = async(kliID) => {
 
     return query.accPerm;
 }
+
+exports.getAllAccounts = async () => {
+    //return all except _id and pass (obviously...)
+    let accs = await db.find({},{login:1,password:0,kliID:1,_id:0,accPerm:1});
+    return accs.toArray();
+}

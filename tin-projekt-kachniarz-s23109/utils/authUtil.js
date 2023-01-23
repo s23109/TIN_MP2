@@ -25,6 +25,10 @@ exports.permitAuthenticatedStrict =  async (req,res,next) => {
     const kliID = req.params.kliID;
     const loggedUser = req.session.loggedUser;
 
+    if (loggedUser) {
+
+
+
     const accPerm = await mongo.getPermission(loggedUser._id);
         if (accPerm === "admin"){
             next();
@@ -33,6 +37,20 @@ exports.permitAuthenticatedStrict =  async (req,res,next) => {
         } else {
             res.redirect(403,'/');
         }
-
+    }
+    else {
+        res.redirect(403,'/');
+    }
 };
 
+exports.permitOnlyAdmin = async (req,res,next) => {
+    const loggedUser = req.session.loggedUser;
+    const accPerm = await mongo.getPermission(loggedUser._id);
+
+    if (accPerm === "admin"){
+        next();
+    }else {
+        res.redirect(403,'/');
+    }
+
+}
