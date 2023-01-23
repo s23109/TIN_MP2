@@ -97,9 +97,11 @@ exports.getAmount = async () => {
 }
 
 exports.getPermission = async(kliID) => {
-    kliID = parseInt(kliID);
 
-    let query = await db.findOne({kliID:kliID});
+
+    let query = await db.findOne({kliID:parseInt(kliID)},{accPerm:1});
+    console.log(query);
+    console.log(JSON.stringify(query));
 
     return query.accPerm;
 }

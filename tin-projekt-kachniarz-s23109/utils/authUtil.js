@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
-
 const salt = bcrypt.genSaltSync(8);
+const mongo = require('../repository/mongodb/AccountRepository');
+
 
 exports.hashPassword = (plainPass) => {
     const passHashed = bcrypt.hashSync(plainPass,salt);
@@ -20,14 +21,18 @@ exports.permitAuthenticated = (req,res,next) => {
     }
 };
 
-exports.permitAuthenticatedStrict = (req,res,next) => {
+exports.permitAuthenticatedStrict =  async (req,res,next) => {
     const kliID = req.params.kliID;
     const loggedUser = req.session.loggedUser;
-    // nie === bo param to string
-    if (loggedUser && loggedUser._id == kliID) {
-        next();
-    }else {
-        res.redirect(403,'/');
-    }
+
+    const accPerm = await mongo.getPermission(loggedUser._id);
+        if (accPerm === "admin"){
+            next();
+        } else if (loggedUser && loggedUser._id == kliID) {
+            next();
+        } else {
+            res.redirect(403,'/');
+        }
+
 };
 
