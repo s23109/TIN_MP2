@@ -40,40 +40,40 @@ function validateForm() {
         //brak tytuł
         valid = false;
         titleInput.classList.add("error-input");
-        errorTitle.innerText = "err.required";
+        errorTitle.innerText = document.getElementById("err.required").innerText;
 
 
     } else if (!checkTextLengthRange(titleInput.value, 2, 64)) {
         //zła długosc tekstu 
         valid = false;
         titleInput.classList.add('error-input');
-        errorTitle.innerText = "err.len_2-64";
+        errorTitle.innerText = document.getElementById("err.len_2-64").innerText;
 
     } else if (containsWhiteChar(titleInput.value)){
         whiteChar= true;
         // w confirmie valid
         //   valid = false;
         titleInput.classList.add('error-input');
-        errorTitle.innerText = "err.contains_white-char";
+        errorTitle.innerText = document.getElementById("err.contains_white-char").innerText;
     }
 
     if (!checkRequired(dateInput.value)) {
         //brak daty
         valid = false;
         dateInput.classList.add("error-input");
-        errorDate.innerText = "err.isNotDate";
+        errorDate.innerText = document.getElementById("err.isNotDate").innerText;
 
     } else if (checkDateIfAfter(dateInput.value, nowString)) {
         // data jest po ,,dziś'' , nie można
         valid = false;
         dateInput.classList.add('error-input');
-        errorDate.innerText = "err.isDateAfterToday";
+        errorDate.innerText = document.getElementById("err.isDateAfterToday").innerText;
 
     } else if (checkIfDateBeforeLimit(dateInput.value)) {
 
         valid = false;
         dateInput.classList.add('error-input');
-        errorDate.innerText = "err.isDateBeforeLimit";
+        errorDate.innerText = document.getElementById("err.isDateBeforeLimit").innerText;
 
 
     }
@@ -82,7 +82,7 @@ function validateForm() {
         //NAN 
         valid = false;
         pagesInput.classList.add('error-input');
-        errorPages.innerText = "err.required";
+        errorPages.innerText = document.getElementById("err.required").innerText;
 
     } else {
         //jeśli to ma coś
@@ -91,22 +91,22 @@ function validateForm() {
             //jeśli to nie liczba
             valid = false;
             pagesInput.classList.add('error-input');
-            errorPages.innerText = "err.isNotANumber";
+            errorPages.innerText = document.getElementById("err.isNotANumber").innerText;
 
         } else if (!checkNumberRange(pagesInput.value, 1, Infinity)) {
             //jeśli nie dodatnia
             valid = false;
             pagesInput.classList.add('error-input');
-            errorPages.innerText = "err.isNegative";
+            errorPages.innerText = document.getElementById("err.isNegative").innerText;
         }
         else if (pagesInput.value % 1 != 0) {
             valid = false;
             pagesInput.classList.add('error-input');
-            errorPages.innerText = "err.isNotInteger";
+            errorPages.innerText = document.getElementById("err.isNotInteger").innerText;
         } else if (checkIfPagesGreaterThanLimit(pagesInput.value)) {
             valid = false;
             pagesInput.classList.add('error-input');
-            errorPages.innerText = "err.isBiggerThan";
+            errorPages.innerText = document.getElementById("err.isBiggerThan").innerText;
         }
 
 
@@ -114,7 +114,7 @@ function validateForm() {
 
     if (whiteChar){
 
-        if (confirm("err.messages.fields-with-white-char")){
+        if (confirm(document.getElementById("whiteCharErr").innerText)){
             titleInput.value = titleInput.value.trim();
             titleInput.classList.remove('error-input');
             errorTitle.innerText = ""
@@ -126,7 +126,7 @@ function validateForm() {
     }
 
     if (!valid) {
-        errorSummary.innerText = "err.formHasErrors";
+        errorSummary.innerText = document.getElementById("err.formHasErrors").innerText;
         document.querySelector('form').scrollIntoView({ behavior: "smooth" });
     }
 

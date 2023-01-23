@@ -44,14 +44,14 @@ function validateForm() {
 
         valid = false;
         ksiazkaInput.classList.add("error-input");
-        errorKsiazkaInput.innerText = "err.required";
+        errorKsiazkaInput.innerText = document.getElementById("err.required").innerText;
 
     }
     else if (ksiazkaInput.value == "default") {
         //if defalut select - czytaj wartość "--Wybierz Książkę--"
         valid = false;
         ksiazkaInput.classList.add("error-input");
-        errorKsiazkaInput.innerText = "err.selectDefault";
+        errorKsiazkaInput.innerText = document.getElementById("err.selectDefault").innerText;
 
     }
 
@@ -62,31 +62,31 @@ function validateForm() {
         //nwm jak , ale taki ,,failsafe''
         valid = false;
         klientInput.classList.add("error-input");
-        errorKlientInput.innerText = "err.required";
+        errorKlientInput.innerText = document.getElementById("err.required").innerText;
     }
     else if (klientInput.value == "default") {
         valid = false;
         klientInput.classList.add("error-input");
-        errorKlientInput.innerText = "err.selectDefault";
+        errorKlientInput.innerText = document.getElementById("err.selectDefault").innerText;
 
     }
 
     if (!checkRequired(dateFromInput.value)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFromInput.innerText = "err.required";
+        errorDateFromInput.innerText = document.getElementById("err.required").innerText;
     } else if (!checkDate(dateFromInput.value)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFromInput.innerText = "err.isNotDate";
+        errorDateFromInput.innerText = document.getElementById("err.isNotDate").innerText;
     } else if (checkDateIfAfter(dateFromInput.value, nowString)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFromInput.innerText = "err.isDateAfterToday";
+        errorDateFromInput.innerText = document.getElementById("err.isDateAfterToday").innerText;
     } else if (checkIfDateBeforeLimit(dateFromInput.value)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFromInput.innerText = "err.isDateBeforeLimit";
+        errorDateFromInput.innerText = document.getElementById("err.isDateBeforeLimit").innerText;
     }
 
     if (dateToInput.value.length > 0) {
@@ -96,28 +96,28 @@ function validateForm() {
         if (!checkDate(dateToInput.value)) {
             valid = false;
             dateToInput.classList.add("error-input");
-            errorDateToInput.innerText = "err.isNotDate";
+            errorDateToInput.innerText = document.getElementById("err.isNotDate").innerText;
         } else if (checkDateIfAfter(dateToInput.value, nowString)) {
             valid = false;
             dateToInput.classList.add("error-input");
-            errorDateToInput.innerText = "err.isDateAfterToday";
+            errorDateToInput.innerText = document.getElementById("err.isDateAfterToday").innerText;
         } else if (checkIfDateBeforeLimit(dateToInput.value)) {
             valid = false;
             dateToInput.classList.add("error-input");
-            errorDateToInput.innerText = "err.isDateBeforeLimit";
+            errorDateToInput.innerText = document.getElementById("err.isDateBeforeLimit").innerText;
 
         }
         else if (checkDateIfAfter(dateFromInput.value, dateToInput.value)) {
             valid = false;
             dateToInput.classList.add("error-input");
-            errorDateToInput.innerText = "err.isBeforeDate";
+            errorDateToInput.innerText = document.getElementById("err.isBeforeDate").innerText;
         }
 
 
     }
 
     if (!valid) {
-        errorSummary.innerText = "err.formHasErrors";
+        errorSummary.innerText = document.getElementById("err.formHasErrors").innerText;
         document.querySelector('form').scrollIntoView({ behavior: "smooth" });
     }
 

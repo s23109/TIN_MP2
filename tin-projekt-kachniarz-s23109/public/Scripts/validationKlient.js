@@ -20,51 +20,51 @@ function validateForm() {
         // brak wartości 
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "err.required";
+        errorFirstName.innerText = document.getElementById("err.required").innerText;
     }
     else if (!checkTextLengthRange(firstNameInput.value, 2, 32)) {
         //per diagram , max length = 32
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "err.len_2-32";
+        errorFirstName.innerText = document.getElementById("err.len_2-32").innerText;
     } else if (checkIfContainsNumbers(firstNameInput.value)) {
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "err.contains_numbers";
+        errorFirstName.innerText = document.getElementById("err.contains_numbers").innerText;
 
     } else if (containsSpecialChar(firstNameInput.value)){
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "err.contains_special-char";
+        errorFirstName.innerText = document.getElementById("err.contains_special-char").innerText;
     } else if (containsWhiteChar(firstNameInput.value)){
         whiteChar[0]=true;
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "err.contains_white-char";
+        errorFirstName.innerText = document.getElementById("err.contains_white-char").innerText;
     }
 
     if (!checkRequired(lastNameInput.value)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "err.required";
+        errorLastName.innerText = document.getElementById("err.required").innerText;
     }
     else if (!checkTextLengthRange(lastNameInput.value, 2, 32)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "err.len_2-32";
+        errorLastName.innerText = document.getElementById("err.len_2-32").innerText;
     } else if (checkIfContainsNumbers(lastNameInput.value)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "err.contains_numbers";
+        errorLastName.innerText = document.getElementById("err.contains_numbers").innerText;
     } else  if (containsSpecialChar(lastNameInput.value)){
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "err.contains_special-char";
+        errorLastName.innerText = document.getElementById("err.contains_special-char").innerText;
     } else if (containsWhiteChar(lastNameInput.value)){
         whiteChar[1]=true;
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "err.contains_white-char";
+        errorLastName.innerText = document.getElementById("err.contains_white-char").innerText;
     }
 
 
@@ -75,12 +75,12 @@ function validateForm() {
             //bad regex
             valid = false;
             emailInput.classList.add("error-input");
-            errorEmail.innerText = "err.notEmail";
+            errorEmail.innerText = document.getElementById("err.notEmail").innerText;
         } else if (containsWhiteChar(emailInput.value)){
             whiteChar[2]=true;
             valid = false;
             emailInput.classList.add("error-input");
-            errorEmail.innerText = "err.contains_white-char";
+            errorEmail.innerText = document.getElementById("err.contains_white-char").innerText;
         }
 
 
@@ -117,7 +117,7 @@ function validateForm() {
     }
 
     if (!valid) {
-        errorSummary.innerText = "err.formHasErrors";
+        errorSummary.innerText = document.getElementById("err.formHasErrors").innerText;
         document.querySelector('form').scrollIntoView({ behavior: "smooth" });
     }
 
