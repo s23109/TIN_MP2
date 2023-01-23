@@ -15,7 +15,8 @@
         <%default:%>
         Error in determining form type, see respective form.ejs
         <%break;%>
-        <% } %></h2>
+        <% } %>
+    </h2>
 
 
 
@@ -24,7 +25,7 @@
         <input type="hidden" name="_id" value="<%=kli._id%>">
 
         <label><%=__('login-bar.login-label')%>:<span class="symbol-required">*</span></label>
-        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="text" name="login" id="accName" required value="<%=kli.login%>" placeholder="2-32 znaków"  <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="text" name="login" id="accName" required value="<%=kli.login%>" placeholder="<%=__("placeholders.account.login")%>"  <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
         <span id="errorLogin" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('login')) ) {%>
                 <%= __(validationErrors.find(e => e.path.includes('login')).message)%>
@@ -33,7 +34,7 @@
 
         <label><%=__('login-bar.password-label')%>:<span class="symbol-required">*</span></label>
         <% /*Tu specjalnie bez value,bo hasło? nwm */%>
-        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="password" name="password" id="accPass" placeholder=<%= (formMode == 'edit') ? "Leave blank if not want to change" : "2-32 znaków"%> >
+        <input class="<%=(validationErrors.find(e => e.path.includes('login')) )?'error-input' : ''%>" type="password" name="password" id="accPass" placeholder=<%= (formMode == 'edit') ? __('placeholders.account.passwordLeave') : __('placeholders.account.password') %> >
         <span id="errorPassword" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('password')) ) {%>
                 <%= __(validationErrors.find(e => e.path.includes('password')).message)%>
@@ -41,7 +42,7 @@
         </span>
 
         <label><%=__('client.fields.first-name')%>:<span class="symbol-required">*</span></label>
-        <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="2-32 znaków" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <input class="<%=(validationErrors.find(e => e.path.includes('imie')) )?'error-input' : ''%>" type="text" name="imie" id="firstName" required placeholder="<%=__("placeholders.client.firstName")%>" value="<%=kli.imie%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
         <span id="errorFirstName" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('imie')) ) {%>
                 <%= __(validationErrors.find(e => e.path.includes('imie')).message)%>
@@ -49,7 +50,7 @@
         </span>
 
         <label><%=__('client.fields.last-name')%>:<span class="symbol-required">*</span></label>
-        <input class="<%=(validationErrors.find(e => e.path.includes('nazwisko')) )?'error-input' : ''%>" type="text" name="nazwisko" id="lastName" required placeholder="2-32 znaków" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <input class="<%=(validationErrors.find(e => e.path.includes('nazwisko')) )?'error-input' : ''%>" type="text" name="nazwisko" id="lastName" required placeholder="<%=__("placeholders.client.lastName")%>" value="<%=kli.nazwisko%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
         <span id="errorLastName" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('nazwisko')) ) {%>
                 <%= __(validationErrors.find(e => e.path.includes('nazwisko')).message)%>
@@ -57,7 +58,7 @@
         </span>
 
         <label><%=__('client.fields.email')%>:</label>
-        <input class="<%=(validationErrors.find(e => e.path.includes('email')) )?'error-input' : ''%>" type="email" name="email" id="email" placeholder=<%= (formMode == 'showDetails')? "Brak" : "ABC@DE.FG"%> value="<%=kli.email%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
+        <input class="<%=(validationErrors.find(e => e.path.includes('email')) )?'error-input' : ''%>" type="email" name="email" id="email" placeholder=<%= (formMode == 'showDetails')? __("placeholders.client.noEmail") : __("placeholders.client.email") %> value="<%=kli.email%>" <%= (formMode == 'showDetails') ? 'disabled' : ''%>>
         <span id="errorEmail" class="error-text">
             <% if (validationErrors.find(e => e.path.includes('email')) ) {%>
                 <%= __(validationErrors.find(e => e.path.includes('email')).message)%>
@@ -67,7 +68,7 @@
         <!-- Buttons end form -->
         <div class="form-buttons">
 
-            <p id="errorSummary" class="error-text"><%=(validationErrors.length  > 0 ) ? 'Formularz zawiera błędy' : ''%></p>
+            <p id="errorSummary" class="error-text"><%=(validationErrors.length  > 0 ) ? __('err.formHasErrors') : ''%></p>
 
             <%if (formMode== 'showDetails') {%>
                 <a href="" class="button-edit">

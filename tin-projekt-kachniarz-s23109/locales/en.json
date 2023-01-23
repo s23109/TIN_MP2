@@ -167,7 +167,9 @@
       "noDamages": "Empty"
     },
     "account": {
-
+      "login": "2-32 characters",
+      "password": "2-32 characters",
+      "passwordLeave" : "Blank=No_change"
     }
   },
   "account" : {
