@@ -54,3 +54,13 @@ exports.deleteKlient = (kliID) => {
 
 }
 
+exports.validateData = (newKlientData) => {
+    //jak da returna to git model ?
+    return new Klient({
+        imie : newKlientData.imie,
+        nazwisko : newKlientData.nazwisko,
+        email : newKlientData.email
+    });
+
+}
+

@@ -1,7 +1,7 @@
 const KlientRepository = require("../repository/sequelize/KlientRepository");
 const AccountRepository = require("../repository/mongodb/AccountRepository");
 const AuthUtil = require('../utils/authUtil');
-const {parse} = require("nodemon/lib/cli");
+const Account = require('../model/mongodb/Account');
 
 exports.showCreateAccountForm = function (req, res, next) {
     res.render('Subpages/Account/form',{
@@ -23,14 +23,16 @@ exports.showEditAccountForm = async  (req, res, next) => {
 
         KlientRepository.getKlientByID(kliID).then(kli => {
 
+        const formActionTemp = '/editAccount' + kliID;
         kli.login = accInfo.login;
+
         res.render('Subpages/Account/form', {
             navLocation:'Register' ,
             docType:'form',
             kli: kli,
             formMode: 'edit',
             btnLabel: 'Zmień',
-            formAction: '/editAccount',
+            formAction: formActionTemp,
             pageTitle: 'Edytuj Konto',
             validationErrors:[]
         });
@@ -53,13 +55,65 @@ exports.showDetailsAccountForm =  async (req, res , next) => {
             pageTitle: 'Szczegóły Konta',
             validationErrors: []
         });
+
     });
 };
 
-exports.addAccount = (req,res,next) => {
+exports.addAccount = async (req,res,next) => {
+    //console.log(JSON.stringify(req.body));
+    let clientObj = {};
+    clientObj.imie = req.body.imie;
+    clientObj.nazwisko = req.body.nazwisko;
+    clientObj.email = req.body.email;
+
+    let accObj = {};
+
+    //nie mozna nadać kliID bo konto jeszcze nie istnieje
+    //accObj.kliID = req.body._id;
+    accObj.login = req.body.login;
+    accObj.password = req.body.password;
+
+    let customErr = [];
+
+    // Mongo moment
+    try {
+        AccountRepository.loginUsedError()
+    }
+    catch (err){
+        customErr.push(err);
+    }
+
+    try {
+        Account.validateLogin(accObj.login);
+    }
+    catch (err){
+        customErr.push(err);
+    }
+
+    try {
+        Account.validatePassword(accObj.password);
+    }
+    catch (err){
+        customErr.push(err);
+    }
+
+    try {
+        KlientRepository.validateData(clientObj);
+    }
+    catch (err){
+       // customErr.push(...err.errors);
+        console.log(JSON.stringify(err.errors));
+        console.log(JSON.stringify(customErr));
+    }
+
+    console.log(customErr);
+    throw new Error("amogus");
+    };
+
+exports.editAccount = (req,res,next) => {
 
 };
 
-exports.editAccount;
+exports.deleteAccount = (req,res,next) => {
 
-exports.deleteAccount;
+};

@@ -22,9 +22,10 @@ router.get('/account_edit/:kliID',authUtil.permitAuthenticatedStrict,AccountCont
 
 
 
-// router.post('/createAccount',);
-// router.post('/editAccount',);
-// router.delete('/deleteAccount/:kliID',)
+router.post('/createAccount',AccountController.addAccount);
+router.post('/editAccount/:kliID',AccountController.editAccount);
+//delete tutaj tylko konto, dane o wypożyczeniu (+ klient zostaje)?
+router.delete('/deleteAccount/:kliID',AccountController.deleteAccount)
 
 
 

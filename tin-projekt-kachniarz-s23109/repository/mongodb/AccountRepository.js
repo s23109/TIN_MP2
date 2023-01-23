@@ -4,6 +4,7 @@ const account = require('../../model/mongodb/Account');
 const authUtil = require('../../utils/authUtil');
 const {hashPassword} = require("../../utils/authUtil");
 const {parse} = require("nodemon/lib/cli");
+const {log} = require("debug");
 
 const db = client.collection('LoginData');
 
@@ -12,7 +13,7 @@ exports.createAccountUnsafe = async (acc) => {
     await db.insertOne(acc);
 }
 
-exports.accountExists = async (id) => {
+exports.clientHasAccount = async (id) => {
     id = parseInt(id);
     let qbe = {kliID: id};
 
@@ -25,10 +26,22 @@ exports.accountExists = async (id) => {
     return false;
 }
 
+exports.loginUsedError = async (login) => {
+
+    let qbe = {login: login};
+
+    const query = await db.findOne(qbe);
+
+    if (query){
+        throw new Error({path :"login", message:"err.loginUsed"});
+    }
+    return null;
+}
+
 exports.createAccount = async (acc) => {
     acc.kliID = parseInt(acc.kliID);
-    if (await this.accountExists(acc.kliID)){
-        throw new Error("Login Already Used");
+    if (await this.clientHasAccount(acc.kliID)){
+        throw new Error("Client has Account");
     }
     else {
         this.createAccountUnsafe(acc);
@@ -39,7 +52,7 @@ exports.deleteAccount = async (kliid) => {
     kliid = parseInt(kliid);
     let qbe = {kliID: kliid};
 
-    if (await this.accountExists(kliid)){
+    if (await this.clientHasAccount(kliid)){
         await db.deleteOne(qbe);
     }else {
         console.log("MongoDB: Account- Tried to delete non existing kliID" + kliid);
@@ -50,7 +63,7 @@ exports.deleteAccount = async (kliid) => {
 exports.updateAccount = async (acc) => {
     acc.id = parseInt(acc.id);
 
-    if (await this.accountExists(parseInt(acc.id))){
+    if (await this.clientHasAccount(parseInt(acc.id))){
         // tu zakładam ze nie zmieniamy przypisania danych bo to nie ma sensu???
         db.updateOne({kliID: parseInt(acc.id)},
             {$set:{login:acc.login,password:authUtil.hashPassword(acc.password)}})
