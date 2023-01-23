@@ -103,11 +103,12 @@ exports.addAccount = async (req,res,next) => {
     }
     catch (err){
        // customErr.push(...err.errors);
-        console.log("ERR Client {\n");
+
         for (let er of err.errors){
-            console.log(JSON.stringify(er));
+           // console.log(JSON.stringify(er));
+            customErr.push({path:er.path,message:er.message});
         }
-        console.log("\n}");
+
     }
 
     console.log("ERR Login{");
