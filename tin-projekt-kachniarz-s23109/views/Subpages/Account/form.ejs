@@ -91,6 +91,10 @@
                     <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
                     <span class="button-return-text"><%=__('form.actions.return')%></span>
                 </a>
+                <a href="/deleteAccount/<%=kli._id%>" onclick="return confirmDelete(<%=__('account.list.msgThisAcc')%>);">
+                    <img src="/Images/icons8-remove-64.png" class="list-actions-button-delete">
+                    <span class="list-actions-button-details-text"><%=__('account.list.delete')%></span>
+                </a>
 
             <%} else {%>
             <input type="submit" class="form-button-submit" value="<%switch(formMode){

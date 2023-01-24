@@ -316,6 +316,11 @@ exports.deleteAccount = async (req,res,next) => {
     try {
         await AccountRepository.deleteAccount(kliID);
         await KlientRepository.deleteKlient(kliID);
+        //wyczyszczenie cookies jak to własne
+        if (req.session.loggedUser._id == kliID){
+            req.session.loggedUser = undefined;
+        }
+
         res.redirect('/');
     }
     catch (err){

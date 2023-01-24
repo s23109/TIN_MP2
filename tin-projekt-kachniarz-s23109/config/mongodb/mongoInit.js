@@ -37,9 +37,9 @@ const init = async () => {
     let num = await Mongo.getAmount();
     if (num == 0 ){
         console.log("No account data found- creating");
-        Mongo.createAccount({kliID:1,login:"aaa",password:"aaaa",accPerm:"admin"});
-        Mongo.createAccount({kliID:2,login:"abc",password:"abc",accPerm:"self"});
-        Mongo.createAccount({kliID:3,login:"bac",password:"lol",accPerm:"self"});
+        Mongo.createAccountUnsafe({kliID:1,login:"aaa",password:"aaaa",accPerm:"admin"});
+        Mongo.createAccountUnsafe({kliID:2,login:"abc",password:"abc",accPerm:"self"});
+        Mongo.createAccountUnsafe({kliID:3,login:"bac",password:"lol",accPerm:"self"});
     }else {
         console.log("Account data found, documents number ="+num);
     }

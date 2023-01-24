@@ -8,9 +8,22 @@ const {log} = require("debug");
 const db = client.collection('LoginData');
 
 exports.createAccountUnsafe = async (acc) => {
-    acc.accPerm = "self";
+    if (!acc.accPerm){
+        acc.accPerm = "self";
+    }
     acc.password = authUtil.hashPassword(acc.password);
     await db.insertOne(acc);
+}
+
+exports.createAccount = async (acc) => {
+    acc.kliID = parseInt(acc.kliID);
+    acc.accPerm = "self";
+    if (await this.clientHasAccount(acc.kliID)){
+        throw new Error("Client has Account");
+    }
+    else {
+        this.createAccountUnsafe(acc);
+    }
 }
 
 exports.clientHasAccount = async (id) => {
@@ -52,15 +65,7 @@ exports.checkIfLoginUsedByOther = async (login,kliID) => {
     return null;
 }
 
-exports.createAccount = async (acc) => {
-    acc.kliID = parseInt(acc.kliID);
-    if (await this.clientHasAccount(acc.kliID)){
-        throw new Error("Client has Account");
-    }
-    else {
-        this.createAccountUnsafe(acc);
-    }
-}
+
 
 exports.deleteAccount = async (kliID) => {
     kliID = parseInt(kliID);

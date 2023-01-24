@@ -190,10 +190,12 @@
 			"details": "Szczegóły konta"
 		},
 		"list": {
-			"title": "Konta",
+			"title": "Lista Kont",
 			"noData": "Brak kont w bazie",
 			"pageTitle": "Konto",
-			"addNew": "Dodaj nowe konto"
+			"addNew": "Dodaj nowe konto",
+			"delete": "Usuń konto",
+			"msgThisAcc" : "to konto"
 		},
 		"fields": {
 			"acc_login": "Login",

@@ -193,7 +193,9 @@
       "title": "Accounts",
       "noData": "No accounts in Database",
       "pageTitle": "Account",
-      "addNew": "Add new Account"
+      "addNew": "Add new Account",
+      "delete": "Delete Account",
+      "msgThisAcc" : "this account"
     },
     "fields": {
       "acc_login": "Username",
