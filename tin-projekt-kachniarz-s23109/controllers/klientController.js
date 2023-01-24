@@ -107,7 +107,7 @@ exports.updateKlient = async (req, res,next) => {
         if (loggedUser.accPerm == "admin"){
 
             if (loggedUser._id == kliData._id){
-                //reload user data 
+                //reload user data
                 req.session.loggedUser = undefined;
                 let kliData = await KlientRepo.getOnlyKlientByID(loggedUser._id)
                 let accData = await AccountRepository.getByKliID(loggedUser._id)

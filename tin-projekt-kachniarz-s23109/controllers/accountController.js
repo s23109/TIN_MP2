@@ -3,6 +3,7 @@ const AccountRepository = require("../repository/mongodb/AccountRepository");
 const AuthUtil = require('../utils/authUtil');
 const Account = require('../model/mongodb/Account');
 const {parse} = require("nodemon/lib/cli");
+const KlientRepo = require("../repository/sequelize/KlientRepository");
 
 exports.showCreateAccountForm = async function (req, res, next) {
  //   let acc = req.
@@ -277,6 +278,16 @@ exports.editAccount = async (req,res,next) => {
 
         if (isAdminPerm) {
             await  AccountRepository.setPermission(clientObj._id,req.body.accPerm);
+        }
+
+        if (req.session.loggedUser._id == clientObj._id){
+            //reload cookie
+            req.session.loggedUser = undefined;
+            let kliData = await KlientRepo.getOnlyKlientByID(loggedUser._id)
+            let accData = await AccountRepository.getByKliID(loggedUser._id)
+            kliData.dataValues.accPerm = accData.accPerm;
+            console.log("Reloaded logged user for " + loggedUser._id);
+            req.session.loggedUser = kliData ;
         }
 
         res.redirect('/');
