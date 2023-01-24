@@ -274,7 +274,7 @@ exports.editAccount = async (req,res,next) => {
 
         await AccountRepository.updateAccount(accObj);
         await KlientRepository.updateKlient(clientObj._id,clientObj);
-        
+
         if (isAdminPerm) {
             await  AccountRepository.setPermission(clientObj._id,req.body.accPerm);
         }

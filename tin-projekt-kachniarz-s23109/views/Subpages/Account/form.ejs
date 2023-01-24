@@ -87,7 +87,7 @@
                     <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
                     <span class="button-edit-text"><%=__('account.form.detailsButtonLabel')%></span>
                 </a>
-                <a href="/" class="button-return">
+                <a href="<%=(isAdmin)?'/accountList':'/'%>" class="button-return">
                     <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
                     <span class="button-return-text"><%=__('form.actions.return')%></span>
                 </a>
@@ -104,7 +104,7 @@
 Error in determining form type, see respective form.ejs
                         <%break;%>
                         <% } %>">
-            <a href="/" class="form-button-cancel"><%=__('form.actions.cancel')%></a>
+            <a href="<%=(isAdmin)?'/accountList':'/'%>" class="form-button-cancel"><%=__('form.actions.cancel')%></a>
             <%}%>
 
 
