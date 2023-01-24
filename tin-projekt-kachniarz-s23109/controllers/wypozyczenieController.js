@@ -17,7 +17,7 @@ exports.showWypozyczenieList = async (req, res, next) => {
                 return ele.Klient_id == loggedUser._id;
             });
         }
-        
+
         res.render('Subpages/Wypozyczenie/list',{
             navLocation:'Wypozyczenie',
             docType:'list',

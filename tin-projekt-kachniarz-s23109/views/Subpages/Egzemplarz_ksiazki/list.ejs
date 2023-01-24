@@ -14,7 +14,9 @@
           <th><%=__('book.fields.date')%></th>
           <th><%=__('book.fields.pages')%></th>
           <th><%=__('book.fields.damages')%></th>
+          <% if (locals.loggedUser.accPerm == "admin") { %>
           <th><%=__('list.actions')%></th>
+          <% } %>
         </tr>
       </thead>
 
@@ -26,6 +28,7 @@
         <td><%=fmt.formatDate(ksi.data_pozyskania)%></td>
         <td><%=ksi.strony%></td>
         <td><%=ksi.uszkodzenia%></td>
+        <% if (locals.loggedUser.accPerm == "admin") { %>
         <td>
           <ul class="list-actions">
             <li>
@@ -48,6 +51,7 @@
             </li>
           </ul>
         </td>
+        <% } %>
       </tr>
       <% } %>
       </tbody>
@@ -59,8 +63,10 @@
     <%} else { %>
     <p><%=__('book.list.noData')%></p>
     <% } %>
+    
+    <% if (locals.loggedUser.accPerm == "admin") { %>
     <p><a href="/egzemplarz_ksiazki/add" class="button-add"><%=__('book.list.addNew')%></a> </p>
-
+    <% } %>
   </main>
 
 <%- include('../../fragments/footer.ejs') %>
