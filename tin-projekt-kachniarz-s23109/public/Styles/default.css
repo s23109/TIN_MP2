@@ -640,6 +640,14 @@ nav ul  {
        margin-right: 0.25rem;
    }
 
+    .login-container h5 {
+        display: none;
+    }
+
+    .login-container .login-container-form label {
+        font-size: 0.75rem;
+    }
+
     header {
         flex-direction: column;
     }   
@@ -820,7 +828,9 @@ nav ul  {
        border-radius: unset;
    }
 
-   main {
+
+
+    main {
        padding-bottom: 0.1rem;
    }
 
