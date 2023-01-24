@@ -154,6 +154,8 @@
   "messages": {
     "fields-with-white-char": "Fields with white-char detected, do you want to remove them?",
     "confirm-delete": "Are you sure you want to delete",
+    "accessDeniedTitle": "403 Forbidden",
+    "accessDeniedExp": "You tried to access protected data without proper account permissions. Access denied.",
     "accessDeniedMsg": "Click on image to return to main page"
   },
   "placeholders": {

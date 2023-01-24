@@ -153,6 +153,8 @@
 	"messages": {
 		"fields-with-white-char": "Wykryto pola z białymi znakami, czy chcesz je usunąć?",
 		"confirm-delete": "Czy na pewno chcesz usunąć",
+		"accessDeniedTitle": "403 Niedozwolone",
+		"accessDeniedExp": "Próbowałeś uzyskać dostęp do danych chronionych bez wymaganych do tego zezwoleń. Odmowa dostępu.",
 		"accessDeniedMsg": "Kliknij na zdjęcie aby powrócić do strony głównej"
 	},
 	"placeholders": {
