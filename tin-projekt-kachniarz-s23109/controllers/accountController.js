@@ -4,7 +4,20 @@ const AuthUtil = require('../utils/authUtil');
 const Account = require('../model/mongodb/Account');
 const {parse} = require("nodemon/lib/cli");
 
-exports.showCreateAccountForm = function (req, res, next) {
+exports.showCreateAccountForm = async function (req, res, next) {
+ //   let acc = req.
+    //req.session.loggedUser = undefined;
+    let isAdminPerm = false;
+
+    if (req.session.loggedUser){
+        let acc = req.session.loggedUser._id;
+
+        if (await AccountRepository.getPermission(acc) === "admin"){
+            isAdminPerm = true;
+        }
+
+    }
+
     res.render('Subpages/Account/form',{
         navLocation:'Register' ,
         docType:'form',
@@ -13,19 +26,33 @@ exports.showCreateAccountForm = function (req, res, next) {
         btnLabel: 'Dodaj',
         formAction: '/createAccount',
         pageTitle: 'Utwórz Konto',
-        validationErrors:[]
+        validationErrors:[],
+        isAdmin:isAdminPerm
     })
 };
 
 exports.showEditAccountForm = async  (req, res, next) => {
-    
+    let isAdminPerm = false;
+    let seenAccPerm = null;
+    if (req.session.loggedUser){
+        let acc = req.session.loggedUser._id;
+        seenAccPerm = await AccountRepository.getPermission(acc);
+        if ( seenAccPerm === "admin"){
+            isAdminPerm = true;
+        }
+
+    }
     const kliID = req.params.kliID;
+
+    let kliPerm = await AccountRepository.getPermission(kliID);
+
     const accInfo = await AccountRepository.getByKliID(kliID);
 
         KlientRepository.getKlientByID(kliID).then(kli => {
 
         const formActionTemp = '/editAccount/' + kliID;
         kli.login = accInfo.login;
+        kli.accPerm = kliPerm;
 
         res.render('Subpages/Account/form', {
             navLocation:'Register' ,
@@ -35,16 +62,30 @@ exports.showEditAccountForm = async  (req, res, next) => {
             btnLabel: 'Zmień',
             formAction: formActionTemp,
             pageTitle: 'Edytuj Konto',
-            validationErrors:[]
+            validationErrors:[],
+            isAdmin:isAdminPerm
         });
     });
 };
 
 exports.showDetailsAccountForm =  async (req, res , next) => {
+    let isAdminPerm = false;
+    let seenAccPerm = null;
+    if (req.session.loggedUser){
+        let acc = req.session.loggedUser._id;
+         seenAccPerm = await AccountRepository.getPermission(acc);
+
+        if ( seenAccPerm === "admin"){
+            isAdminPerm = true;
+        }
+
+    }
     const kliID = req.params.kliID;
     const accInfo = await AccountRepository.getByKliID(kliID);
+    let kliPerm = await AccountRepository.getPermission(kliID);
     KlientRepository.getKlientByID(kliID).then(kli => {
         kli.login = accInfo.login;
+        kli.accPerm = kliPerm;
         console.log(JSON.stringify(kli));
 
         res.render('Subpages/Account/form', {
@@ -54,13 +95,24 @@ exports.showDetailsAccountForm =  async (req, res , next) => {
             formMode: 'showDetails',
             formAction: '',
             pageTitle: 'Szczegóły Konta',
-            validationErrors: []
+            validationErrors: [],
+            isAdmin:isAdminPerm
         });
 
     });
 };
 
 exports.addAccount = async (req,res,next) => {
+    let isAdminPerm = false;
+
+    if (req.session.loggedUser){
+        let acc = req.session.loggedUser._id;
+
+        if (await AccountRepository.getPermission(acc) === "admin"){
+            isAdminPerm = true;
+        }
+
+    }
     //console.log(JSON.stringify(req.body));
     let clientObj = {};
     clientObj.imie = req.body.imie;
@@ -137,7 +189,8 @@ exports.addAccount = async (req,res,next) => {
             btnLabel: 'Dodaj',
             formAction: '/createAccount',
             pageTitle: 'Utwórz Konto',
-            validationErrors: customErr
+            validationErrors: customErr,
+            isAdmin:isAdminPerm
         })
     }
 
@@ -145,6 +198,16 @@ exports.addAccount = async (req,res,next) => {
     };
 
 exports.editAccount = async (req,res,next) => {
+    let isAdminPerm = false;
+
+    if (req.session.loggedUser){
+        let acc = req.session.loggedUser._id;
+
+        if (await AccountRepository.getPermission(acc) === "admin"){
+            isAdminPerm = true;
+        }
+
+    }
     console.log(JSON.stringify(req.body));
     let clientObj = {};
     clientObj._id = req.body._id;
@@ -221,7 +284,8 @@ exports.editAccount = async (req,res,next) => {
             btnLabel: 'Zmień',
             formAction: formActionTemp,
             pageTitle: 'Edytuj Konto',
-            validationErrors:customErr
+            validationErrors:customErr,
+            isAdmin:isAdminPerm
         });
     }
 

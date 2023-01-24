@@ -65,6 +65,18 @@
             <% } %>
         </span>
 
+        <%if (isAdmin) {  /* czy tu jest sens dawać errory ? */%>
+        <label><%=__('account.fields.acc_permission')%></label>
+        <select name="permission" id="accPerm" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <%if (formMode == 'showDetails' ) { %>
+            <option value="<%=kli.accPerm%>" selected ><%=kli.accPerm%></option>
+            <% } else { %>
+            <option value="self" <%= (kli.accPerm == 'self') ? 'selected' : '' %> >self</option>
+            <option value="admin" <%= (kli.accPerm == 'admin') ? 'selected' : '' %>>admin</option>
+            <% } %>
+        </select>
+        <% } %>
+
         <!-- Buttons end form -->
         <div class="form-buttons">
 
