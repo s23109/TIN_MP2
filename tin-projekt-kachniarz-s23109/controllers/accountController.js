@@ -178,6 +178,10 @@ exports.addAccount = async (req,res,next) => {
         accObj.kliID = parseInt(newkliID);
         await AccountRepository.createAccountUnsafe(accObj);
 
+        if (isAdminPerm) {
+            await  AccountRepository.setPermission(newkliID,req.body.accPerm);
+        }
+
         res.redirect('/');
     } else {
 
@@ -270,6 +274,10 @@ exports.editAccount = async (req,res,next) => {
 
         await AccountRepository.updateAccount(accObj);
         await KlientRepository.updateKlient(clientObj._id,clientObj);
+        
+        if (isAdminPerm) {
+            await  AccountRepository.setPermission(clientObj._id,req.body.accPerm);
+        }
 
         res.redirect('/');
 

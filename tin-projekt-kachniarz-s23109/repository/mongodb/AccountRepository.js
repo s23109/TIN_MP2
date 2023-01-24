@@ -3,7 +3,6 @@ const client = mongo.client;
 const account = require('../../model/mongodb/Account');
 const authUtil = require('../../utils/authUtil');
 const {hashPassword} = require("../../utils/authUtil");
-const {parse} = require("nodemon/lib/cli");
 const {log} = require("debug");
 
 const db = client.collection('LoginData');
@@ -154,4 +153,18 @@ exports.getAllAccounts = async () => {
     //return all except _id and pass (obviously...)
     let accs = await db.find({},{login:1,password:0,kliID:1,_id:0,accPerm:1});
     return accs.toArray();
+}
+
+exports.setPermission = async (kliID,permission) => {
+    let qbe = {kliID:parseInt(kliID)};
+
+    if (await this.clientHasAccount(parseInt(kliID))){
+
+        await db.updateOne(qbe,
+            {$set:{accPerm:permission}});
+
+    }else {
+        console.log("tried to change permission on non existing account" + kliID);
+    }
+
 }
