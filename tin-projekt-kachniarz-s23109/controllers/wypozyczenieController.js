@@ -2,13 +2,26 @@
 const WypozyczenieRepository = require('../repository/sequelize/WypozyczenieRepository');
 const KlientRepository = require('../repository/sequelize/KlientRepository');
 const Egzemplarz_KsiazkiRepository = require('../repository/sequelize/Egzemplarz_ksiazkiRepository');
+const AccountRepo =require('../repository/mongodb/AccountRepository');
 
-exports.showWypozyczenieList = (req, res, next) => {
-    WypozyczenieRepository.getAllWypozyczenie().then(wyps => {
+
+exports.showWypozyczenieList = async (req, res, next) => {
+    WypozyczenieRepository.getAllWypozyczenie().then(async wyps => {
+        let wypsAllowed = null;
+        const loggedUser = req.session.loggedUser;
+
+        if (await AccountRepo.getPermission(loggedUser._id) == "admin"){
+            wypsAllowed = wyps;
+        }else {
+            wypsAllowed = wyps.filter((ele) => {
+                return ele.Klient_id == loggedUser._id;
+            });
+        }
+        
         res.render('Subpages/Wypozyczenie/list',{
             navLocation:'Wypozyczenie',
             docType:'list',
-            wyps : wyps
+            wyps : wypsAllowed
         });
     });
 

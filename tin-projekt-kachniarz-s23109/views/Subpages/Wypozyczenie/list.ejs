@@ -11,20 +11,27 @@
       <thead>
         <tr>
           <th><%=__('lend.fields.book-title')%></th>
+          <%if (locals.loggedUser.accPerm == "admin") { %>
           <th><%=__('lend.fields.client')%></th>
           <th class="cut-detail"><%=__('lend.fields.email')%></th>
+          <% } %>
           <th><%=__('lend.fields.date-from')%></th>
           <th><%=__('lend.fields.date-to')%></th>
+          <% if (locals.loggedUser.accPerm == "admin") { %>
           <th><%=__('list.actions')%></th>
+          <% } %>
         </tr>
       </thead>
       <% for( let wyp of wyps){%>
       <tr>
         <td><%="\""+ wyp.ksiazka.tytul + "\""%></td>
+        <%if (locals.loggedUser.accPerm == "admin"){%>
         <td><%=wyp.klient.imie + " " + wyp.klient.nazwisko%></td>
         <td class="cut-detail"><%= wyp.klient.email%></td>
+        <% } %>
         <td><%=wyp.data_od.toISOString().split('T')[0]%></td>
         <td><%= (wyp.data_do) ? wyp.data_do.toISOString().split('T')[0]: ''%></td>
+        <% if (locals.loggedUser.accPerm == "admin") { %>
         <td>
           <ul class="list-actions">
             <li>
@@ -48,6 +55,7 @@
             </li>
           </ul>
         </td>
+        <% } %>
       </tr>
       <% } %>
       <tbody>
@@ -60,8 +68,10 @@
     <% } else { %>
     <p><%=__('lend.list.noData')%></p>
     <% } %>
-    <p><a href="/wypozyczenie/add" class="button-add"><%=__('lend.list.addNew')%></a> </p>
 
+    <%if (locals.loggedUser.accPerm == "admin") {%>
+    <p><a href="/wypozyczenie/add" class="button-add"><%=__('lend.list.addNew')%></a> </p>
+    <% } %>
   </main>
 
 <%- include('../../fragments/footer.ejs') %>
