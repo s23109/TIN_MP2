@@ -1,5 +1,7 @@
 
 const KlientRepository = require('../repository/sequelize/KlientRepository');
+const AccountRepository = require("../repository/mongodb/AccountRepository");
+
 
 exports.showKlientList = (req, res, next) => {
     KlientRepository.getAllKlients().then(klis => {
@@ -117,7 +119,23 @@ exports.updateKlient = (req, res,next) => {
 exports.deleteKlient = (req, res,next) => {
     const kliID = req.params.kliID;
     KlientRepository.deleteKlient(kliID).then(result => {
-       res.redirect('/klient');
+
+        if (req.session.loggedUser){
+            let acc = req.session.loggedUser._id;
+
+            if (kliID == acc){
+                //delete własnego konta przez klienta
+                //coś a la log out
+                req.session.loggedUser = undefined;
+                res.redirect('/');
+            }
+            else {
+                res.redirect('/klient');
+            }
+
+        }
+
+
     }).catch(err => {
         //failsafe
         alert("Nieznany błąd:" + JSON.stringify(err));

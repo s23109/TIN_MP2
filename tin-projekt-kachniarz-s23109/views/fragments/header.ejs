@@ -67,7 +67,7 @@
 <nav>
     <ul>
         <li><a href="/"  class ="<%= navLocation == 'Main' ? 'active' : '' %>"><%=__('nav.main-page')%></a> </li>
-        <li><a href="/klient" class ="<%= navLocation == 'Klient' ? 'active' : '' %>"><%=__('nav.client')%></a> </li>
+        <li><a href="/<%=(locals.loggedUser.accPerm == "admin")?'klient':('Klient/details/'+locals.loggedUser._id)%>" class ="<%= navLocation == 'Klient' ? 'active' : '' %>"><%=__('nav.client')%></a> </li>
         <li><a href="/wypozyczenie" class ="<%= navLocation == 'Wypozyczenie' ? 'active' : '' %>"><%=__('nav.lend')%></a> </li>
         <li><a href="/egzemplarz_ksiazki" class ="<%= navLocation == 'Egzemplarz_Ksiazki' ? 'active' : '' %>"><%=__('nav.book')%></a> </li>
         <% if (locals.loggedUser.accPerm == "admin") { %>
