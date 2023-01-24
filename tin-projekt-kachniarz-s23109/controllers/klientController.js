@@ -1,6 +1,7 @@
 
 const KlientRepository = require('../repository/sequelize/KlientRepository');
 const AccountRepository = require("../repository/mongodb/AccountRepository");
+const KlientRepo = require("../repository/sequelize/KlientRepository");
 
 
 exports.showKlientList = (req, res, next) => {
@@ -96,12 +97,37 @@ exports.addKlient = (req, res,next) => {
         });
     });
 }
-
-exports.updateKlient = (req, res,next) => {
+//asyncCepcja
+exports.updateKlient = async (req, res,next) => {
     const kliID = req.body._id;
     const kliData = {... req.body};
-    KlientRepository.updateKlient(kliID,kliData).then(result => {
-        res.redirect('/klient');
+    KlientRepository.updateKlient(kliID,kliData).then(async result => {
+
+        const loggedUser = req.session.loggedUser;
+        if (loggedUser.accPerm == "admin"){
+
+            if (loggedUser._id == kliData._id){
+                //reload user data 
+                req.session.loggedUser = undefined;
+                let kliData = await KlientRepo.getOnlyKlientByID(loggedUser._id)
+                let accData = await AccountRepository.getByKliID(loggedUser._id)
+                kliData.dataValues.accPerm = accData.accPerm;
+                console.log("Reloaded logged user for " + loggedUser._id);
+                req.session.loggedUser = kliData ;
+            }
+
+            res.redirect('/klient');
+        }else {
+            req.session.loggedUser = undefined;
+            let kliData = await KlientRepo.getOnlyKlientByID(loggedUser._id)
+            let accData = await AccountRepository.getByKliID(loggedUser._id)
+            kliData.dataValues.accPerm = accData.accPerm;
+            console.log("Reloaded logged user for " + loggedUser._id);
+            req.session.loggedUser = kliData ;
+            res.redirect('/');
+        }
+
+
     }).catch(err => {
         res.render('Subpages/Klient/form', {
             navLocation:'Klient' ,
