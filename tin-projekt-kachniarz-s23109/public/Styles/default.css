@@ -343,7 +343,8 @@ main h2 {
 .list-actions-button-delete ,
 .list-actions-button-edit,
 .button-return,
-.button-edit {
+.button-edit ,
+.button-delete{
     display: inline-block;
     width: 75px;
     padding: 0.25rem 0.5rem;
@@ -356,6 +357,7 @@ main h2 {
 .button-add ,
 .button-edit,
 .button-return,
+.button-delete,
 .form-button-submit,
 .form-button-cancel{
     border: none;
@@ -368,11 +370,14 @@ main h2 {
     font-weight: bold;
 }
 
+
+
 .list-actions-button-details,
 .list-actions-button-edit,
 .list-actions-button-delete,
 .button-edit,
-.button-return  {
+.button-return ,
+.button-delete{
     margin-right: 0.35rem;
     margin-left: 0.35rem;
     margin-top: 0.05rem;
@@ -381,7 +386,8 @@ main h2 {
 }
 
 .list-actions-button-delete,
-.form-button-cancel {
+.form-button-cancel ,
+.button-delete {
     background-color: #d3210d;
 }
 
@@ -392,6 +398,8 @@ main h2 {
     background-color: #ff7b00;
 }
 
+
+
 .list-actions-button-edit:hover,
 .button-edit:hover ,
 .list-actions-button-details:hover,
@@ -399,7 +407,8 @@ main h2 {
 .list-actions-button-delete:hover ,
 .form-button-cancel:hover,
 .button-add:hover ,
-.form-button-submit:hover {
+.form-button-submit:hover,
+.button-delete:hover{
     filter: brightness(120%);
     color: white;
     filter: drop-shadow(0px 0px 5px white);
@@ -573,7 +582,8 @@ nav ul  {
 .list-actions-button-delete-icon,
 .list-actions-button-edit-icon ,
 .button-return-icon,
-.button-edit-icon {
+.button-edit-icon,
+.button-delete-icon{
     display: none;
 }
 
@@ -581,7 +591,8 @@ nav ul  {
 .list-actions-button-edit-text,
 .list-actions-button-delete-text,
 .button-return-text,
-.button-edit-text{
+.button-edit-text,
+.button-delete-text{
     font-size: 0.8rem;
     color: inherit;
 }
@@ -742,7 +753,8 @@ nav ul  {
     .list-actions-button-edit,
     .button-return,
     .button-add,
-    .button-edit
+    .button-edit,
+    .button-delete
     {
         font-size: 0.5rem;
         max-width: 1.8rem;
@@ -767,7 +779,8 @@ nav ul  {
     .list-actions-button-edit-icon,
     .list-actions-button-delete-icon,
     .button-return-icon,
-    .button-edit-icon{
+    .button-edit-icon,
+    .button-delete-icon{
         display: unset;
         height: 24px;
     }
@@ -776,7 +789,8 @@ nav ul  {
     .list-actions-button-edit-text,
     .list-actions-button-delete-text,
     .button-return-text,
-    .button-edit-text
+    .button-edit-text,
+    .button-delete-text
     {
         font-size: 0.5rem;
         color: black;
@@ -786,7 +800,8 @@ nav ul  {
     .list-actions-button-details:hover img,
     .list-actions-button-delete:hover img,
     .button-return:hover img,
-    .button-edit:hover img{
+    .button-edit:hover img,
+    .button-delete:hover img{
         filter: invert(100%);
     }
 
@@ -794,7 +809,8 @@ nav ul  {
     .list-actions-button-edit:hover span ,
     .list-actions-button-details:hover span ,
     .button-return:hover span ,
-    .button-edit:hover span{
+    .button-edit:hover span,
+    .button-delete:hover span{
         color: white;
     }
 
@@ -869,7 +885,8 @@ nav ul  {
     .list-actions-button-edit-icon,
     .list-actions-button-delete-icon,
     .button-return-icon,
-    .button-edit-icon{
+    .button-edit-icon,
+    .button-delete-icon{
         display: unset;
         height: 16px;
         position: unset;
@@ -898,7 +915,8 @@ nav ul  {
     }
 
     .button-edit ,
-    .button-return {
+    .button-return,
+    .button-delete{
        padding-left: 35%;
        padding-right: 35% ;
        margin-left: 10%;
@@ -912,7 +930,8 @@ nav ul  {
     .list-actions-button-delete-text,
     .list-actions-button-return-text,
     .button-edit-text,
-    .button-return-text
+    .button-return-text,
+    .button-delete-text
     {
         display: none;
     }
