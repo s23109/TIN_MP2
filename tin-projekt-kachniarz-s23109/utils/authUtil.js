@@ -17,7 +17,7 @@ exports.permitAuthenticated = (req,res,next) => {
     if (loggedUser) {
         next();
     }else {
-        res.redirect(403,'/');
+        res.redirect('/accessDenied');
     }
 };
 
@@ -35,11 +35,11 @@ exports.permitAuthenticatedStrict =  async (req,res,next) => {
         } else if (loggedUser && loggedUser._id == kliID) {
             next();
         } else {
-            res.redirect(403,'/');
+            res.redirect('/accessDenied');
         }
     }
     else {
-        res.redirect(403,'/');
+        res.redirect('/accessDenied');
     }
 };
 
@@ -50,7 +50,7 @@ exports.permitOnlyAdmin = async (req,res,next) => {
     if (accPerm === "admin"){
         next();
     }else {
-        res.redirect(403,'/');
+        res.redirect('/accessDenied');
     }
 
 }

@@ -25,7 +25,9 @@ router.post('/createAccount',AccountController.addAccount);
 router.post('/editAccount/:kliID',authUtil.permitAuthenticatedStrict,AccountController.editAccount);
 router.get('/deleteAccount/:kliID',authUtil.permitAuthenticatedStrict,AccountController.deleteAccount)
 
-
+router.get('/accessDenied', function(req, res, next) {
+  res.render('accessDenied', {} );
+});
 
 
 module.exports = router;
