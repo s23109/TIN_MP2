@@ -110,7 +110,8 @@ exports.getByLogin = async (login) => {
         return {
             login: query.login,
             password: query.password,
-            kliID:parseInt(query.kliID)
+            kliID:parseInt(query.kliID),
+            accPerm: query.accPerm
         };
     }
     return null;

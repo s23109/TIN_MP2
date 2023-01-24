@@ -7,7 +7,8 @@
 		"client": "Klient",
 		"book": "Egzemplarz Książki",
 		"lend": "Wypożyczenie",
-		"account": "Konto"
+		"account": "Konto",
+		"accounts": "Konta"
 	},
 	"login-bar": {
 		"login-title": "Logowanie",

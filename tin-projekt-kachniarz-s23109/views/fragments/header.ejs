@@ -70,6 +70,9 @@
         <li><a href="/klient" class ="<%= navLocation == 'Klient' ? 'active' : '' %>"><%=__('nav.client')%></a> </li>
         <li><a href="/wypozyczenie" class ="<%= navLocation == 'Wypozyczenie' ? 'active' : '' %>"><%=__('nav.lend')%></a> </li>
         <li><a href="/egzemplarz_ksiazki" class ="<%= navLocation == 'Egzemplarz_Ksiazki' ? 'active' : '' %>"><%=__('nav.book')%></a> </li>
+        <% if (locals.loggedUser.accPerm == "admin") { %>
+        <li><a href="/accountList" class="<%= navLocation == 'Register' ? 'active' : '' %>"><%=__('nav.accounts')%></a></li>
+        <% } %>
     </ul>
 </nav>
 <% } %>

@@ -21,9 +21,9 @@ exports.login =  (req,res,next) => {
             }else if (authUtil.comparePasswords(password,acc.password) === true){
                 //git - zwracamy nie dane logowania a dane konta
                 KlientRepo.getOnlyKlientByID(acc.kliID).then(kliData => {
+                    kliData.dataValues.accPerm = acc.accPerm;
                     console.log("Trying to assign to loggedUser : " + JSON.stringify(kliData));
                     req.session.loggedUser = kliData ;
-                    console.log(JSON.stringify(res.locals.loggedUser));
                     res.redirect('/');
                 });
 

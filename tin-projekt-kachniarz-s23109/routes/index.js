@@ -19,7 +19,7 @@ router.get('/register', AccountController.showCreateAccountForm);
 router.get('/account/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showDetailsAccountForm);
 router.get('/account_edit/:kliID',authUtil.permitAuthenticatedStrict,AccountController.showEditAccountForm);
 
-router.get('/accountList',AccountController.getAccList);
+router.get('/accountList',authUtil.permitOnlyAdmin,AccountController.getAccList);
 
 router.post('/createAccount',AccountController.addAccount);
 router.post('/editAccount/:kliID',authUtil.permitAuthenticatedStrict,AccountController.editAccount);
