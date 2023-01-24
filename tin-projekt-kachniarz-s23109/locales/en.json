@@ -195,7 +195,7 @@
       "pageTitle": "Account",
       "addNew": "Add new Account",
       "delete": "Delete Account",
-      "msgThisAcc" : "this account"
+      "msgThisAcc" : "\"this account\""
     },
     "fields": {
       "acc_login": "Username",

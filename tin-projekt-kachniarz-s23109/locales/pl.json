@@ -195,7 +195,7 @@
 			"pageTitle": "Konto",
 			"addNew": "Dodaj nowe konto",
 			"delete": "Usuń konto",
-			"msgThisAcc" : "to konto"
+			"msgThisAcc" : "\"to konto\""
 		},
 		"fields": {
 			"acc_login": "Login",
