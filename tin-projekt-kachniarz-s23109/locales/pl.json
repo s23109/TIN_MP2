@@ -152,7 +152,8 @@
 	},
 	"messages": {
 		"fields-with-white-char": "Wykryto pola z białymi znakami, czy chcesz je usunąć?",
-		"confirm-delete": "Czy na pewno chcesz usunąć"
+		"confirm-delete": "Czy na pewno chcesz usunąć",
+		"accessDeniedMsg": "Kliknij na zdjęcie aby powrócić do strony głównej"
 	},
 	"placeholders": {
 		"client": {

@@ -153,7 +153,8 @@
   },
   "messages": {
     "fields-with-white-char": "Fields with white-char detected, do you want to remove them?",
-    "confirm-delete": "Are you sure you want to delete"
+    "confirm-delete": "Are you sure you want to delete",
+    "accessDeniedMsg": "Click on image to return to main page"
   },
   "placeholders": {
     "client": {
