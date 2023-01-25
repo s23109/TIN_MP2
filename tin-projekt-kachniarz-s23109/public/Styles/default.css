@@ -532,7 +532,8 @@ textarea {
 }
 
 .form input.error-input ,
-.form select.error-input {
+.form select.error-input ,
+.form textarea.error-input{
 border: 3px solid #e74c3c;
 }
 

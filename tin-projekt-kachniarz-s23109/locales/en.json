@@ -168,7 +168,7 @@
     },
     "book": {
       "title": "2-64 characters",
-      "damages": "0-128 characters",
+      "damages": "0-128_characters",
       "noDamages": "Empty"
     },
     "account": {

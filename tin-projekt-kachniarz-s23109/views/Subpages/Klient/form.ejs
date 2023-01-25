@@ -87,11 +87,11 @@ Error in determining form type, see respective form.ejs
 
     </form>
 
-    <% if (formMode == 'showDetails' || formMode == 'edit') {%>
+    <% if (formMode == 'showDetails' ) {%>
 
     <% if (kli.wypozyczenia != null) {%>
     <%if (kli.wypozyczenia.length > 0 ) {%>
-      <h2><%=__("client.form.client-lends")%>></h2>
+      <h2><%=__("client.form.client-lends")%></h2>
         <table class="table-list">
           <thead>
           <tr>

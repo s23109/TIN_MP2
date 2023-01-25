@@ -49,7 +49,7 @@ exports.permitAuthenticatedStrictViaBodyKlient = async (req,res,next) => {
         //zalogowany
         let idFromBodyKlient = req.body._id;
 
-        if (await mongo.getPermission(idFromBodyKlient) == "admin"){
+        if (await mongo.getPermission(loggedUser._id) == "admin"){
             next();
         }else {
             if (parseInt(idFromBodyKlient) === parseInt(loggedUser._id)) {

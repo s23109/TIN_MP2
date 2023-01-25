@@ -112,6 +112,16 @@ function validateForm() {
 
     }
 
+    if (damageInput.value.length>0){
+
+        if (damageInput.value.length >= 128){
+            valid = false;
+            damageInput.classList.add('error-input');
+            errorDamage.innerText = document.getElementById("err.len_max_128").innerText;
+        }
+
+    }
+
     if (whiteChar){
 
         if (confirm(document.getElementById("whiteCharErr").innerText)){
