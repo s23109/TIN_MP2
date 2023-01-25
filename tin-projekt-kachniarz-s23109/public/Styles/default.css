@@ -909,7 +909,7 @@ nav ul  {
     }
 
     .login-container .login-container-form label {
-        font-size: 0.65rem;
+        display: none;
     }
 
    
