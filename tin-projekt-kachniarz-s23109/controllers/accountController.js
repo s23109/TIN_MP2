@@ -3,7 +3,6 @@ const AccountRepository = require("../repository/mongodb/AccountRepository");
 const AuthUtil = require('../utils/authUtil');
 const Account = require('../model/mongodb/Account');
 const {parse} = require("nodemon/lib/cli");
-const KlientRepo = require("../repository/sequelize/KlientRepository");
 
 exports.showCreateAccountForm = async function (req, res, next) {
  //   let acc = req.
@@ -127,25 +126,25 @@ exports.addAccount = async (req,res,next) => {
     accObj.login = req.body.login;
     accObj.password = req.body.password;
 
-    let customErr = [];
+    var customErr = [];
 
     // Mongo moment
     try {
-        AccountRepository.loginUsedError(accObj.login);
+       await AccountRepository.loginUsedError(accObj.login);
     }
     catch (err){
         customErr.push({path :"login", message:"err.loginUsed"});
     }
 
     try {
-        Account.validateLogin(accObj.login);
+        await Account.validateLogin(accObj.login);
     }
     catch (err){
         customErr.push({path :"login", message:"err.len_2-32"});
     }
 
     try {
-        Account.validatePassword(accObj.password);
+        await Account.validatePassword(accObj.password);
     }
     catch (err){
         customErr.push({path :"password", message:"err.len_2-32"});
@@ -230,21 +229,21 @@ exports.editAccount = async (req,res,next) => {
 
     // Mongo moment
     try {
-        AccountRepository.checkIfLoginUsedByOther(accObj.login,accObj.kliID);
+        await  AccountRepository.checkIfLoginUsedByOther(accObj.login,accObj.kliID);
     }
     catch (err){
         customErr.push({path :"login", message:"err.loginUsed"});
     }
 
     try {
-        Account.validateLogin(accObj.login);
+        await Account.validateLogin(accObj.login);
     }
     catch (err){
         customErr.push({path :"login", message:"err.len_2-32"});
     }
 
     try {
-        Account.validatePassword(accObj.password);
+        await  Account.validatePassword(accObj.password);
     }
     catch (err){
         customErr.push({path :"password", message:"err.len_2-32"});
@@ -283,7 +282,7 @@ exports.editAccount = async (req,res,next) => {
         if (req.session.loggedUser._id == clientObj._id){
             //reload cookie
             req.session.loggedUser = undefined;
-            let kliData = await KlientRepo.getOnlyKlientByID(loggedUser._id)
+            let kliData = await KlientRepository.getOnlyKlientByID(loggedUser._id)
             let accData = await AccountRepository.getByKliID(loggedUser._id)
             kliData.dataValues.accPerm = accData.accPerm;
             console.log("Reloaded logged user for " + loggedUser._id);
