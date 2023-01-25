@@ -58,7 +58,7 @@
           <img src="/Images/icons8-more-details-64.png" class="button-edit-icon">
           <span class="button-edit-text"><%=__('client.form.details.btnLabel')%></span>
           </a>
-          <a href="/Klient" class="button-return">
+          <a href="<%=(locals.loggedUser.accPerm == "admin" ? "/klient" : "/" )%>" class="button-return">
             <img src="/Images/icons8-u-turn-to-left-64.png" class="button-return-icon">
             <span class="button-return-text"><%=__('form.actions.return')%></span>
           </a>
@@ -78,7 +78,7 @@
 Error in determining form type, see respective form.ejs
                         <%break;%>
                         <% } %>">
-          <a href="/klient" class="form-button-cancel"><%=__('form.actions.cancel')%></a>
+          <a href="<%=(locals.loggedUser.accPerm == "admin" ? "/klient" : ("/Klient/details/"+kli._id ))%>" class="form-button-cancel"><%=__('form.actions.cancel')%></a>
         <%}%>
 
 
