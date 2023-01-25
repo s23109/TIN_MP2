@@ -59,8 +59,11 @@ exports.checkIfLoginUsedByOther = async (login,kliID) => {
 
     kliID = parseInt(kliID);
 
+    //dla przypadku jak konto nie używane , to query == null , jak jest używane to wejdzie
+    if (query){
     if (query.kliID != kliID) {
         throw new Error({path :"login", message:"err.loginUsed"});
+    }
     }
     return null;
 }

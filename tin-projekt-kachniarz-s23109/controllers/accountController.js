@@ -246,11 +246,13 @@ exports.editAccount = async (req,res,next) => {
         customErr.push({path :"login", message:"err.len_2-32"});
     }
 
+    if (accObj.password !== ""){
     try {
         await  Account.validatePassword(accObj.password);
     }
     catch (err){
         customErr.push({path :"password", message:"err.len_2-32"});
+    }
     }
 
     try {
@@ -278,13 +280,14 @@ exports.editAccount = async (req,res,next) => {
 
         await AccountRepository.updateAccount(accObj);
         await KlientRepository.updateKlient(clientObj._id,clientObj);
-
+        const loggedUser = req.session.loggedUser;
         if (isAdminPerm) {
             await  AccountRepository.setPermission(clientObj._id,req.body.accPerm);
         }
 
         if (req.session.loggedUser._id == clientObj._id){
             //reload cookie
+
             req.session.loggedUser = undefined;
             let kliData = await KlientRepository.getOnlyKlientByID(loggedUser._id)
             let accData = await AccountRepository.getByKliID(loggedUser._id)
