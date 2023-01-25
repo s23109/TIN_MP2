@@ -94,9 +94,13 @@ app.use('/klient',authUtil.permitAuthenticated,klientRouter);
 app.use('/wypozyczenie',authUtil.permitAuthenticated , wypozyczenieRouter);
 app.use('/egzemplarz_ksiazki',authUtil.permitAuthenticated,egzemplarz_ksiazkiRouter);
 
+
+/*
+//Api routes odpięte bo brak login
 app.use('/api/klient' , klientAPIRouter);
 app.use('/api/wypozyczenie' , wypozyczeniaAPIRouter);
 app.use('/api/egzemplarz_ksiazki', egzemplarz_ksiazkiAPIRouter);
+*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
