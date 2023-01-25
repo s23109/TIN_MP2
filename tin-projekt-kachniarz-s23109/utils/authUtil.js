@@ -66,12 +66,20 @@ exports.permitAuthenticatedStrictViaBodyKlient = async (req,res,next) => {
 
 exports.permitOnlyAdmin = async (req,res,next) => {
     const loggedUser = req.session.loggedUser;
-    const accPerm = await mongo.getPermission(loggedUser._id);
 
-    if (accPerm === "admin"){
-        next();
-    }else {
+    if (loggedUser){
+        const accPerm = await mongo.getPermission(loggedUser._id);
+
+        if (accPerm === "admin"){
+            next();
+        }else {
+            res.redirect('/accessDenied');
+        }
+    }
+    else {
         res.redirect('/accessDenied');
     }
+
+
 
 }
