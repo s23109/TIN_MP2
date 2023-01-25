@@ -149,7 +149,7 @@
     "isDateAfterToday": "Date cannot be from the future",
     "isDateBeforeLimit": "Date is too early",
     "formHasErrors": "Form contains errors",
-    "invalidLoginData": "Bad login data",
+    "invalidLoginData": "Login Error",
     "loginUsed": "Login is already used"
   },
   "messages": {

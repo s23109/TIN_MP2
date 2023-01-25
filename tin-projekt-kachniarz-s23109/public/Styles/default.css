@@ -655,6 +655,20 @@ nav ul  {
         display: none;
     }
 
+    .login-container .error-text {
+        display: unset;
+        font-size: 0.65rem;
+    }
+    .login-container-form form label {
+        margin-right: 0.25rem;
+    }
+
+    .login-container-form form input[type="text"],
+    .login-container-form form input[type="password"]{
+        width: 4rem;
+        font-size: x-small;
+    }
+
     .login-container .login-container-form label {
         font-size: 0.75rem;
     }
@@ -879,6 +893,24 @@ nav ul  {
        font-stretch: extra-condensed;
        
    }
+
+    .login-container .error-text {
+        display: unset;
+        font-size: 0.5rem;
+    }
+    .login-container-form form label {
+        margin-right: 0.15rem;
+    }
+
+    .login-container-form form input[type="text"],
+    .login-container-form form input[type="password"]{
+        width: 3.5rem;
+        font-size: xx-small;
+    }
+
+    .login-container .login-container-form label {
+        font-size: 0.65rem;
+    }
 
    
     .list-actions-button-details-icon,

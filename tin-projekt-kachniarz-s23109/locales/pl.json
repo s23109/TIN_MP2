@@ -148,7 +148,7 @@
 		"isDateAfterToday": "Data nie może być z przyszłości",
 		"isDateBeforeLimit": "Data jest zbyt wczesna",
 		"formHasErrors": "Formularz zawiera błędy",
-		"invalidLoginData": "Złe dane logowania",
+		"invalidLoginData": "Błąd logowania",
 		"loginUsed": "Login jest już używany"
 	},
 	"messages": {
