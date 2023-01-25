@@ -20,7 +20,7 @@
 
 
 
-    <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+    <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm(<%="\"" +formMode +"\""%>);">
 
         <input type="hidden" name="_id" value="<%=kli._id%>">
 

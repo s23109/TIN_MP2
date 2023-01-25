@@ -1,4 +1,4 @@
-function validateForm() {
+function validateForm(formMode) {
     console.log("Account - validateForm");
     const firstNameInput = document.getElementById('firstName');
     const lastNameInput = document.getElementById('lastName');
@@ -105,14 +105,29 @@ function validateForm() {
         errorLogin.innerText = document.getElementById("err.len_2-32").innerText;
     }
 
-    if (passwordInput.value.toString().length > 0) {
-        //if not empty
-        if (!checkTextLengthRange(passwordInput.value, 2, 32)) {
+    if (formMode == "createNew"){
+
+        if (passwordInput.value.toString().length == 0){
+            valid = false;
+            passwordInput.classList.add("error-input");
+            errorPassword.innerText= document.getElementById("err.required").innerText;
+        } else if (!checkTextLengthRange(passwordInput.value, 2, 32)) {
             valid = false;
             passwordInput.classList.add("error-input");
             errorPassword.innerText= document.getElementById("err.len_2-32").innerText;
         }
+
+    }else {
+        if (passwordInput.value.toString().length > 0) {
+            //if not empty
+            if (!checkTextLengthRange(passwordInput.value, 2, 32)) {
+                valid = false;
+                passwordInput.classList.add("error-input");
+                errorPassword.innerText= document.getElementById("err.len_2-32").innerText;
+            }
+        }
     }
+
 
 
 

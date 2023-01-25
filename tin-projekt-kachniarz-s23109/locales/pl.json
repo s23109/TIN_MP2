@@ -172,7 +172,7 @@
 		},
 		"account": {
 			"login": "2-32 znaków",
-			"password": "2-32 znaków",
+			"password": "2-32_znaków",
 			"passwordLeave" : "Puste=Brak_Zmiany",
 			"passwordDetails" : "Ukryte"
 		}
