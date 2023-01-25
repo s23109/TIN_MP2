@@ -143,6 +143,10 @@ exports.addAccount = async (req,res,next) => {
         customErr.push({path :"login", message:"err.len_2-32"});
     }
 
+    if (accObj.password.length == 0){
+        customErr.push({path :"password", message:"err.required"})
+    }
+
     try {
         await Account.validatePassword(accObj.password);
     }
