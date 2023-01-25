@@ -67,7 +67,7 @@
 
         <%if (isAdmin) {  /* czy tu jest sens dawać errory ? */%>
         <label><%=__('account.fields.acc_permission')%></label>
-        <select name="permission" id="accPerm" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+        <select name="accPerm" id="accPerm" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <%if (formMode == 'showDetails' ) { %>
             <option value="<%=kli.accPerm%>" selected ><%=kli.accPerm%></option>
             <% } else { %>
